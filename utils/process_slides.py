@@ -28,6 +28,7 @@ def process_slides(input_file, output_file):
                         "filepath": slide.get("filepath", ""),
                     }
                 )
+        # Recursively process children
         if "children" in section:
             for child in section["children"]:
                 processed_slides.extend(process_section(child))
@@ -41,9 +42,3 @@ def process_slides(input_file, output_file):
         json.dump(processed_data, file, ensure_ascii=False, indent=4)
 
     print(f"Processed data has been saved to {output_file}")
-
-
-input_json = "data/slides/ai-1_slides.json"
-output_json = "data/slides/processed_ai-1_slides.json"
-
-process_slides(input_json, output_json)
