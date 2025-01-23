@@ -3,6 +3,7 @@ __pycache__/
 /data/
 # Ignore virtual environment folder
 venv/
+env
 .env.local
 # Ignore results file if you don't want to track it in version control
 Results.json

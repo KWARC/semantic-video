@@ -1,4 +1,7 @@
+requests
 opencv-python
 pytesseract
 rapidfuzz
-tesseract
+python-dotenv
+BeautifulSoup4
+flask
