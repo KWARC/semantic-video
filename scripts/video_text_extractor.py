@@ -120,7 +120,8 @@ def extract_text_from_video(video_path):
 
     end_time = time.time()
     total_time = end_time - start_time
-    save_results(video_name, text_dict, total_time, processing_datetime)
+    # only for debugging purpose (donot remove )
+    # save_results(video_name, text_dict, total_time, processing_datetime)
     print(f"Total processing time: {total_time:.2f} seconds")
 
     return text_dict
