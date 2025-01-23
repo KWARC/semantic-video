@@ -12,9 +12,10 @@ text_data = []
 for result in results:
     video_name = result["video_name"]
     for key, text_entry in result["text_data"].items():
+        start_time = text_entry["start_time"] + 1
         text_data.append({
             "video_name": video_name,
-            "start_time": text_entry["start_time"],
+            "start_time": start_time,
             "end_time": text_entry["end_time"],
             "text_value": text_entry["text_value"]
         })
@@ -38,7 +39,7 @@ for slide in slides:
                 entry for entry in text_data if entry["text_value"] == matched_text
             )
 
-            # slide["video_name"] = matched_entry["video_name"]
+            slide["video_name"] = matched_entry["video_name"]
             slide["start_time"] = matched_entry["start_time"]
             slide["end_time"] = matched_entry["end_time"]
 
