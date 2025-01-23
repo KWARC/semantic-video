@@ -19,15 +19,15 @@ with open(results_file_path, "r", encoding="utf-8") as results_file:
     results = json.load(results_file)
 
 text_data = []
-for result in results:
-    video_name = result["video_name"]
-    for key, text_entry in result["text_data"].items():
+for video_id, video_info in results.items():
+    url = video_info["url"]
+    for key, text_entry in video_info["extracted_text"].items():
         text_data.append(
             {
-                "video_name": video_name,
                 "start_time": text_entry["start_time"],
                 "end_time": text_entry["end_time"],
                 "text_value": text_entry["text_value"],
+                "url": url,
             }
         )
 
@@ -50,8 +50,9 @@ for slide in slides:
 
             slide["start_time"] = matched_entry["start_time"]
             slide["end_time"] = matched_entry["end_time"]
+            slide["url"] = matched_entry["url"]
 
-with open(output_file_path, "w", encoding="utf-8") as slides_file:
-    json.dump(slides, slides_file, indent=4, ensure_ascii=False)
+with open(output_file_path, "w", encoding="utf-8") as output_file:
+    json.dump(slides, output_file, indent=4, ensure_ascii=False)
 
-print("Slides updated with timestamps successfully!")
+print("Slides updated with timestamps and URLs successfully!")
