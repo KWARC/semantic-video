@@ -1,0 +1,702 @@
+{
+    "54630": {
+    "url": "https://cdn.video.uni-erlangen.de/symlinks/7440a3a0-f907-4b95-8718-d3c7cfdaeec2.m4v",
+    "extracted_text": {
+    "0.43": {
+    "start_time": 0.43,
+    "end_time": 160.08,
+    "text_value": "= INU) ElangersNomberg\n\nUnification (Definitions\n\n> Definition 1.12. For given terms A and B, unification is the problem of finding\na substitution , such that o(A) = 0(B).\n> Notation: We write term pairs as A=\"B e.g. F(X)=\"F(g(Y))\n> Definition 1.13. Solutions (e.g. [g(a)/X].[a/Y], [e(e(a))/X) ate) Y],o1\n[e(Z)/X],[Z/Y)) are called unifiers, U(A=\u2019B) := {a|0(A)\n> Idea: Find representatives in U(A=\"B), that generate the set an\nion 1.14. Let o and 0 be substitutions and W C Y,, we say that a\n\nitution o is more general than @ (on W; write o<6[W)), iff there is a\nsubstitution p, such that 8=(p 0c)[W], where o=p[W], iff o(X) = p(X) for all\n\nArtificial Intelligence |\n\ninition 1.15. is called a most general unifier (mgu) of A and B, iff it is\nWS 2024/2025 in U(A=\"B) wrt. <|(free(A) U free(B))]\n\nProf. Dr. Michael Kohihase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "160.08": {
+    "start_time": 160.08,
+    "end_time": 190.12,
+    "text_value": "= INU) Elangeromberg\n\nSolved forms and Most General Unifiers\n\n> Definition 1.18. We call a pair A=\"B solved in a unification problem &, iff\nX=\"ANE!, and X \u00a2 (free free(\u20ac\")). We call an unification\nproblem \u20ac a solved form, iff all its pairs are solved\n> Lemma 1.19. Solved forms are of the form X'=\"B1 \\... \\> where the\nX! are distinct and X' \u00a2 free(B/).\n\n> Lemma 1.21. If\u20ac = X1='B1/...\nunique most general unifier o\u00a2:=[B1/X}], ...,B\"/X\nArtificial Intelligence | > pelle we E)\nthen 6(X!\nWS 2024/2025 2. and thus 6=(6\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "190.12": {
+    "start_time": 190.12,
+    "end_time": 750.23,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\nEAX=\"A X\n(A/X|(E) AXA\nLemma 1.23. U/ is correct: EF implies U(F) \u00a9 U(E)\n\n>\n> Lemma 1.24. U/ is complete: E1F implies U(E) C U(F).\n\n> Lemma 1.25. U/ is fluent: the order of derivations does not matter.\n>\n\nCorollary 1.26. el is unitary: i.e. al unifiers are\nunique up to renaming of introduced variables.\n\n> Proof sketch: U is trivially branching\n\nFAU Micbesl chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "750.23": {
+    "start_time": 750.23,
+    "end_time": 1482.97,
+    "text_value": "E INU) Enangen Nomberg\nUnification (Termination) \u2014\u2014\u2014\u2014s\u2014\u201cCs\u2014sSCSCid\n\n> Definition 1.28. Let S and T be multisets and <a partial ordering on $U T.\nThen we define $<\u201d S, iff $= Cw T\u2019 and T = Cw {t}, where s<t for all\n5 \u00a9 5\u2019, We call <\u201d the multiset ordering induced by\n\n> Definition 1.29. We call a variable X solved in an unification\ncontains a solved pair X=A.\n\n> Lemma 1.30. If < is linear/terminating On S, then ~\u201d is linear/terminatin\n\non P(S).\n> Lemma 1.31. U/ is terminating. (any U-derivation is finite)\n> Proof: We prove termination by mapping U/ transformation into a Noetherian\nspace.\n1. Let u(\u20ac):=(n,.N), where\nArtificial Intelligence | > nis the number of u ariables in &\n\n> N is the multiset of term depths in \u20ac\n\nWS 2024/2025 The lexicographic order < on pairs 1(E) is decreased by all inferei\n2.1. Udec and Utriv decrease the multiset of term depths without\nincreasing the unsolved variabl\n2.2. Uelim decreases the number of un: variables (by one), but may\nincrease term depths.\n\nFAU Micheel chase Anil\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1482.97": {
+    "start_time": 1482.97,
+    "end_time": 1558.48,
+    "text_value": "= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\nA\u2019)=\"F(B1\nBIA\n\nEAX=\"A X\n\nLemma 1.23. U/ is correct: tF implies U(F\n\n>\n\n> Lemma 1.24. U/ is complete: E+-wF implies U(E) < U(F).\n\n> Lemma 1.25. U/ is confluent: the order of derivations does not matter.\n>\n\nArtificial Intelligence |\n\nCorollary 1.26. el is unitary: i.e.\nWS 2024/2025 unique up to renaming of introduced variables\n> Proof sketch: UU is trivially branching.\n\nFAU Bi sael chia\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1558.48": {
+    "start_time": 1558.48,
+    "end_time": 1562.46,
+    "text_value": "Ee INU) Enangen Nomen\nUnification (Termination) \u2014\u2014\u201c\u2014s\u2014CSCSCis\n\nion 1.28. Let S and T be mu a ing on SUT.\nThen we define S <\u201d S, iff $= Cw T\u2019 and T=C , where s<t for all\n5 \u00a9 5\u2019, We call <\u201d the multiset ordering induced by\n\n> Definition 1.29. We call a variable X solved in an unification problem &, iff \u20ac\ncontains a solved pair X=\"A.\n\n> Lemma 1.30. /f < is linear/terminating On S, then ~\u201d is linear/terminating\n\non P(S).\n> Lemma 1.31. U/ is terminating. (any U-derivation is finite)\n> Proof: We prove termination by mapping // transformation into a Noetherian\nspace.\n1. Let u(\u20ac)=(n,.N), where\nArtificial Intelligence | > mis the number of unsolved variables in \u20ac\n> N is the multi of term depths in \u20ac\nWS 2024/2025 icographic order ~ on pairs 4(\u20ac) is decreased by all infere\n\nc and Utriv decrease the multiset of term depths without\nincreasing the unsolved variables.\n2.2. Uclim decreases the number of unsolved variables (by one), but may\nincrease term depths.\n\nFAU Micheal chlbaee Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1562.46": {
+    "start_time": 1562.46,
+    "end_time": 1751.72,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n(A/XI(E) AXA\nLemma 1.23. U/ is correct: E\\-F implies U(F) C U(E)\n\n>\n> Lemma 1.24. 1/ is complete: E'-,F implies U(E) C U(F).\n\n> Lemma 1.25. U/ is fluent: the order of derivations does not matter.\n>\n\nCorollary 1.26. e is unitary: i.e. neral unifiers are\nunique up to renaming of introduced variables.\n\n> Proof sketch: U is trivially branching.\n\nFAU Bi sael chia\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1751.72": {
+    "start_time": 1751.72,
+    "end_time": 1989.45,
+    "text_value": "= INU) ElangersNomberg\n\nUnification (Termination)\n\n> Definition 1.28. Let S and T be multisets and <a partial ordering on SU T.\nThen we define $<\u201d S, iff $= Cw T\u2019 and T = Cw {t}, where s<t for all\n5 \u00a9 S\u2019, We call <\u201d the multiset ordering induced by\n\n> Definition 1.29. We call a variable X solved in an un\ncontains a solved pair X=A.\n\n| > Lemma 1.30. /f = is linear/terminating On S, then r/terminating\non P(S).\n> Lemma 1.31. U/ is terminatir (any U-derivation is finite)\n> Proof: We prove termination by mapping // transformation into a Noetherian\nspace.\n1. Let u(E):=(n,N), where\nArtificial Intelligence | > nis the number of u ariables in \u20ac\n\n> N is the multiset of term depths in \u20ac\n\nWS 2024/2025 The lexicographic order < on pairs 1(E) is decreased by all inferei\n2.1. Udec and Utriv decrease the multiset of term depths without\nincreasing the unsolved variabl\n2.2. Uelim decreases the number of unsolved variables (by one), but may\nincrease term depths.\n\nFAU Micheal chlaaee Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1989.45": {
+    "start_time": 1989.45,
+    "end_time": 2193.05,
+    "text_value": "= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n(AL\nAl=\"Br\nEAX='A X\n(A/X AX=\"A\nLemma 1.23. U/ is correct: E+yF implies UF) C U(\n\nLemma 1.24. U/ is complete: E+-uF implies U(E) < U(F).\n\n>\n>\n> Lemma 1.25. U/ is it: the order of derivations does not matter.\n>\n\nArtificial Intelligence |\n\nCorollary 1.26. er unif is unitary: ie. al unifi\nWS 2024/2025 unique up to renaming of introduced variables.\n> Proof sketch: U is trivially branching.\n\nFAU Bi cael chases\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2193.05": {
+    "start_time": 2193.05,
+    "end_time": 2310.08,
+    "text_value": "= INU) ElangersNomberg\n\nComplexity of Unification\n\n> Observation: Naive implementations of unification are exponential in time and\nspace\n> Example 1.35. Consider the terms\n\nF(F(xo, x0), FF (x1,\nF (x1, F(x2, F(x, F(-\n\nOf Sp and fp is\non = [F (x0, x0)/xa], [F(F(x0, xp); F(<0, x0))/x2], [FFF (x0, x0), F(x0, x0), F(F(x0, x0), F(x0,\n\n2! = 2\" _ 2 occurrences of the variable xo. (exponential)\n\nArtificial Intelligence |\n\nWS 2024/2025 > Problem: The variable xo has been copied too often.\n> Idea: Find a term representation that re-uses subterms.\n\n> It contains >\u201d,\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2310.08": {
+    "start_time": 2310.08,
+    "end_time": 2400.08,
+    "text_value": "= INU) Elangeromberg\n\nDirected Acyclic Graphs (DAGs) for Terms\n\n> Recall: Terms in first-order logic are essentially trees.\n\n> Concrete Idea: Use directed acycli s for representing terms:\n> variables my only occur once in the D:\n> subterms can be referenced multiply. (subterm sharing)\n> we can even represent multiple terms in a common DAG\n\n> Observation 1.36. Terms can be transformed into D in linear time.\n> Example 1.37. Continuing from 2? ...53, t3, and 3(s3) as D\n\no(ts)\n\nArtificial Intelligence |\nWS 2024/2025\n\n(just count)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2400.08": {
+    "start_time": 2400.08,
+    "end_time": 2455.47,
+    "text_value": "= INU) ElangersNomberg\n\nAG Unification Algorithm\n\n> Observation: In //, the U/clim rule applies solved pairs ~+ subterm duplication.\n\n> Idea: Replace U/clim the notion of solved forms by something better.\n\n> Definition 1.38. We say that X=\u2019B1 X\"=\"B\" is a DAG solved form, iff\nthe X/ are distinct and X' \u00a2 free(B/) for i <j.\n\n> Definition 1.39. The inference system DU/ contains rules U/dec and Utriv from\nU plus the following:\n\nENX='ANX='B A,B?\nEAX=AKA\n\nArtificial Intelligence | EAX='Y X#Y X,Y \u20ac freo(E) ,\nY/X|(\u20ac) AX=Y\nWS 2024/2025\n\nwhere |A| is the number of symbols in A.\n\n> The analysis for U/ applies mutatis mutandis,\n\nFAU Michel chasse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2455.47": {
+    "start_time": 2455.47,
+    "end_time": 2472.89,
+    "text_value": "= INU) ElangersNomberg\n\nUnification by DAG-chase\n\n> Idea: Extend the Input-DAGs by edges that represent unifiers\n> Definition 1.40. Write n.a, if ais the symbol of node n.\n> (standard) auxiliary procedures: (all constant or linear time in DAGs)\n\n> find(n) follows the path from n and returns the end node.\n> union(n, m) adds an edge between n and m\n> occur(n, m) determines whether n.x occurs in the DAG with root m.\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2472.89": {
+    "start_time": 2472.89,
+    "end_time": 2485.23,
+    "text_value": "Ee INU) Ehingen Nero\n\nAlgorithm dag\u2014unify\n\n> Input: symmetric pairs of nodes in DAG\n\ntrue\nm) then true else union(n,m)\n\nfun dag\u2014unify(n,n)\n\n| dag\u2014unify(n.x,m) = if occur\u2018\n\n| dag\u2014unify(n.f.m.g) =\nif gl=F then false\n\n> dag\u2014unify(find(i),find(j)) (chld m,chld n)\n\nforall (i,j) =\nend\n> Observation 1.41. dag\u2014unify uses linear space, since no new no\ncreated, and at most one link per variable.\n> Problem: dag\u2014unify still uses exponential time\n> Example 1.42. Consider terms f(sp,f(t/ns Xn); f(tm f(S/nsY\nxi\n\nArtificial Intelligence |\ns il(s\neee Sunity rena comely, many recursive calls to unify the nodes xq, and\n(they are unified after n calls, but checking needs the time)\n\nWS 2024/2025\n\n\u00bb))), where\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2485.23": {
+    "start_time": 2485.23,
+    "end_time": 3371.64,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) Elangeromberg\n\nTerminatio Multiplicity in Tableaux\n\n> Recall: In 7, all rules only needed to be applied once.\nTo terminates and thus induces a d n procedure for PL\u2019.\n> Observation 1.48. All 7;\u00b0 rules except 7,/\\/ only need to be applied once.\n> Example 1.49. A tableau proof for (p(a) V p(b))\nStart, close left branch | use 7;'V again (right branch)\n((p(a) Vv p(b))\n((p(2) v p(6)) ) (p(a) v p(b))\n(p(a) Vv p(b))\" (Ax.p(x))\n(ax.p(x))\" (Vx.-p(x)\nNi\n(\u00a5x.-p(x))\nply)\"\nply)\npla)\u2019 | p(b)\"\n[a/y]\n\nAfter we have used up p(y)\u2019 by applying [a/y] in 7,/1, we have to get a new\n\ninstance p(z)\u2019 via 7;/V.\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3371.64": {
+    "start_time": 3371.64,
+    "end_time": 3411.48,
+    "text_value": "= INU) Elangeromberg\n\nTermination and Multiplicity in Tableaux\n\n> Recall: In Jp, all rules only needed to be applied once\n+ Tp terminates and thus induces a decision procedure for PI?\n\n> Observation 1.63. All 7,\u2019 rules except T;'V only need to be applied once.\n\n> Example 1.64. A tableau proof for (p(a) V p(b)) = (3.p())\n\n> Definition 1.65. Let T be a tableau for A, and a positive occurrence of Vx.B\nin A, then we call the number of applications of 7j\u2019\\/ to Vx.B its multiplicity\n\n> Observation 1.66. Given a prescribed multiplicity for each positive\nsaturation with Tj terminates.\n\n> Proof sketch: All 7\u00b0 rules reduce the number of conne\u00ab and negative V or\nthe multiplicity of positive\n\nArtificial Intelligence | Theorem 1.67. 7\u00b0 is only complete with unbounded multi\n\nWS 2024/2025 Proof sketch: Replace p(a) V p(b) with p(ai) V...V p(aq) in 27.\nRemark: Otherwise validity in PI\u2019 would be d\nImplementation: We need an iterative multipli\u00a2\n\nFAU Micheal as\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3411.48": {
+    "start_time": 3411.48,
+    "end_time": 3857.46,
+    "text_value": "= INU) Elangeromberg\n\nFirst-Order Resolution (and CNF)\n\n> Definition 2.1. The first-order CNF calculus CVF; is given by the inference\nrules of CF extended by the following quantifier rules:\n\n(free(A) U free(\n([Z/x\\(A)\n\nthe first-order CNF CIVF,(\u00ae) of \u00a9 is the set of all clauses that can be derived\n\nfrom \u00a9.\nwees : > Definition 2.2 (First-Order Resolution Calculus). The First-order resolution\nArtificial Intelligence | calculus (R;) is a test calculus that manipulates formulae in conju ormal\n\nWS 2024/2025 form. RR; has two inferen:\n\nATVC BF VD o =mgu(A,B) B\u00ae VC o = mgu(A,B)\n(o(Q) v (o(D)) A)) Vv (o(C\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3857.46": {
+    "start_time": 3857.46,
+    "end_time": 3860.04,
+    "text_value": "E, AU Ehingenntneg\n\nFirst-Order CNF \u2014 Derived Rules\n\n}. The following inf ules are derivable from the ones above\n(VX.5A):\n\n(BX.A)T VC : fe off new\n(LF(X1\n\n(ax.ayivc z\n(4\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU Michosl Keb\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3860.04": {
+    "start_time": 3860.04,
+    "end_time": 3898.24,
+    "text_value": "= INU) ElangersNomberg\n\nFirst-Order Resolution (and CNF)\n\n> Definition 2.1. The first-order CNF calculus CIVF; is given by the inference\nrules of CF extended by the following quantifier rules:\nvc\n\nree(VX.A) f \u00ab\nF(X Xx)/X)* VC\nthe first-order CNF CIVF,(\u00ae) of \u00a9 is the set of all clauses that can be derived\n\nfrom \u00a9.\nwees : > Definition 2.2 (First-Order Resolution Calculus). The First-order resolution\nArtificial Intelligence | calculus (R;) is a test calculus that manipulates formulae in conju mal\n\nWS 2024/2025 form. ; has two inference rules:\nA'VC BvDo\n(o(Q)\n\nFAU Micbeel chia Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3898.24": {
+    "start_time": 3898.24,
+    "end_time": 3904.02,
+    "text_value": "E, INU) Ehigenntnbey\n\nFirst-Order CNF \u2014 Derived Rules\n\nules are derivable from the ones above\n\nX1,.+.X4} = free(VX.A) f \u20ac E#* new\n\n(F (X21, X\u00ab)/X)\" VC\n\n(ax.a)Fvc Z\n(IZ,\n\nArtificial Intelligence |\nWS 2024/2025\n\nMichasl Koh\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3904.02": {
+    "start_time": 3904.02,
+    "end_time": 3992.7,
+    "text_value": "= INU) ElangersNomberg\n\nCol. West, a Criminal?\n\n> Example 2.4. From [RNO9]\nThe law says it is a crime for an American to sell weapons to hostile nations.\nThe country Nono, an enemy of America, has some missiles, and all of its\nmissiles were sold to it by Colonel West, who is American.\nProve that Col. West is a criminal.\n> Remark: Modern resolution theorem provers prove this in less than 50ms.\n> Problem: That is only true, if we only give the theorem prover exactly the\n\nright laws and background knowledge. If we give it all of them, it drowns in the\nmbinatorial explosion.\n\n> Let us build a resolution proof for the claim above.\n\nArtificial Intelligence |\nWS 2024/2025\n\n> But first we must translate the situation into first-order lo,\n\nIn what follows, for better readability we will sometimes write\nPAQAR\u00ae& S instead of clau: QF vrFvst\n\nAU Michoacan\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3992.7": {
+    "start_time": 3992.7,
+    "end_time": 4080.82,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) Elangeromberg\n\nCol. West, a Criminal?\n\n> It is a crime for an American to sell weapons to hostile nations:\nClause: ami(X) A weap( Yi) A sell(X:, Ya, Z1) A host(Z;) = crook(X:)\n> Nono has some missiles: 4X.own(NN, X) A mle(X)\nClauses: own(NN, c)\" and mle(c) m constant)\n> All of Nono's missiles were sold to it by Colonel Wes\nClause: mle(Xp) Ac\n> Missiles are weapons:\nClause: mle(X3) + v\n> An enemy of America\nClause: enmy(Xa, |\n\n> West is an American:\nClause: ami(West)\n\nFAU Bias chee As\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4080.82": {
+    "start_time": 4080.82,
+    "end_time": 4091.84,
+    "text_value": "= INU) Elangeromberg\n\nCol. West, a Criminal?\n\n> Example 2.4. From [RNO9]\nThe law says it is a crime for an American to sell weapons to hostile nations.\nThe country Nono, an enemy of America, has some missiles, and all of its\nmissiles were sold to it by Colonel West, who is American.\nProve that Col. West is a criminal.\n> Remark: Modern resolution theorem pr prove this in less than 50ms.\n> Problem: That is only true, if we only give the theorem prover exactly the\n\nright laws and background knowledge. If we give it all of them, it drowns in the\nombinatorial explosion.\n\n> Let us build a resolution proof for the claim above.\n\nArtificial Intelligence |\nWS 2024/2025\n\nfirst we must translate the situation into first-order lo,\n\n> Convention: In what follows, for better readability we will sometimes write\nimpli PAQAR\u00ae& S instead of clauses P* V QF v RF v ST.\n\nFAU isha ai\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4091.84": {
+    "start_time": 4091.84,
+    "end_time": 4110.04,
+    "text_value": "= INU) ElangersNomberg\n\nCol. West, a Criminal?\n\n> It isa crime for an American to sell weapons to hostile nations:\nClause: ami(X:) A weap(Y1) A sell(X1, Yi, Z1) A host(Z:) = crook(X1)\n> Nono has some missiles: IX.own(NN, X) \\ mle(X)\nClauses: own( and mile(c) em constant)\n> All of Nono\u2019s missiles were sold to it by Colonel W\nClause: mle(X2) A own( ell(V\n> Missiles are weapons\nClause: mle(X3)\n\n> An enemy of America counts as \u201chostile\u201d:\n\n. Clause: enmy(X,, USA) > host(X4)\nArtificial Intelligence | ee ee \nWest is an American:\n\nWS 2024/2025 Clause: ami(West)\n> The country Nono is an enemy of America:\nenmy(ND\n\nFAU ichaslKchbase Ao\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4110.04": {
+    "start_time": 4110.04,
+    "end_time": 4196.76,
+    "text_value": "Ee INU) Enangen Nomen\nCol. West, a Criminal! PL1 Resolution Proof\n\nami(X) V weapon( Yi)\" V sell(%1, Yi, Z1)\" V hostile(Z1)\" V crook(X:)\" crook(West)\n\nami(West)\" __ Ves Zi) v hostile(Z1)\n\nmissile(X3)\" V we e hostile(Z:)\n\nhostile(Zi)\"\n\nmissile(X2)\" V own(NoNo, X2) V sell(West, X2, NoNo)\"\n\nsell(West, c, 21) V hostile(Z,)\n\nle(c)\"\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4196.76": {
+    "start_time": 4196.76,
+    "end_time": 4210.9,
+    "text_value": "berg\n\nFAU\n\n14.3. Logic Programming as Resolution Theorem\nProving\n\nArtificial Intelligence |\nWS 2024/2025\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4210.9": {
+    "start_time": 4210.9,
+    "end_time": 4238.05,
+    "text_value": "= INU) ElangersNomberg\n\nCuriosity Killed the Cat! PL1 Resolution Proof\n\ncat(garf)\u2122 anl(X5)\"\n\nani(garf)\" anl(Y3)\" V kill(%s, Ys)\" V love(Zs, Xs)\"\n\ner\n\nkill(Xs, garf)* V love(Zs,X3)\" kill(jack, garf)\" v kill(curt,\n\ncial Intelligence I\nWS 2024/2025\n\nMicheal chasse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4238.05": {
+    "start_time": 4238.05,
+    "end_time": 4240.04,
+    "text_value": "= INU) Elangeromberg\n\nCol. West, a Criminal?\n\n> It isa crime for an American to sell weapons to hostile nations:\nClause: ami(X:) ap(Y1) A sell(X:, Yi, Z1) A host(Z,) => crook(X1)\n\n> Nono has some X.own(NN, X) A mle(X)\nClauses: NN, c)' and mle(c) constant)\n\n> All of Nono's missiles were sold to it by Colonel Wes\nClause: mle(X2) A \u00ab\n\n> Missiles are weapons\nClause: mle(X3) > weap(Xs)\n\n> An enemy of America counts as \u201chostile\nClause: enmy(X4, USA) = host(X4)\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU Bi sael chiens\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4240.04": {
+    "start_time": 4240.04,
+    "end_time": 4280.04,
+    "text_value": "= INU) ElangersNomberg\n\nCol. West, a Criminal?\n\n> Example 2.4. From [RNO9]\nThe law says it is a crime for an American to sell weapons to hostile nations.\nThe country Nono, an enemy of America, has some missiles, and all of its\nmissiles were sold to it by Colonel West, who is American.\nProve that Col. West is a criminal.\n> Remark: Modern resolution theorem pr prove this in less than 50ms.\n> Problem: That is only true, if we only give the theorem prover exactly the\n\nright laws and background knowledge. If we give it all of them, it drowns in the\nmbinatorial ex,\n\n> Let us build a resolution proof for the claim above.\n\nArtificial Intelligence |\nWS 2024/2025\n\n> But first we must translate the situation into first-order lo,\n\nIn what follows, for better readability we will sometimes write\nPAQAR=S instead of clau: Qi vrFvst\n\nFAU ichoa ai\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4280.04": {
+    "start_time": 4280.04,
+    "end_time": 4513.09,
+    "text_value": "E INU) ElangerNomberg\n\nWe know all this already\n\n> Goals, goal sets, rules, and facts are just clauses.\n\n> Observation 3.1 (Rule). H: .Bn. corresponds to H\u2122\n(head the only pos eral)\n\n> Observation 3.2 (Goal set). ?\u2014 G1,...,Gp. corresponds to G\n\n> Observation 3.3 (Fact). F. corresponds to the unit clause F\u2122\n\n> Definition 3.4. A Horn clause is a clause with at most one posit!\n> Recall: Backchaining as\n> state | goal state\no(B1),..-,0(Bm),0(R1),---,\u00a2(Ri)) if there is a rule\nwith o(H) = o(G)\n\nArtificial Intelligence |\nWS 2024/2025\n\npositive, unit-resulting hyperresolution (PURR)\n\nFAU Bical chia\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4513.09": {
+    "start_time": 4513.09,
+    "end_time": 4560.31,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangerNomberg\n\nition 3.5. A is called a Horn clause, iff contains at most one\npositive literal, ie. if it is of the form By\" V Bn\u2019 VAT ~i.e. A:\u2014By\nin Prolog notation.\n\nRule clause: general case, e.g. fallible(X) : human(X)\nFact clause: no negative literals, e.g. human(sokrates)\nProgram: set of rule and fact c\n\nQuery: no positive literals: e.g. ?\u2014 fallible(X), greek(X).\n> Definition 3.6. Horn logic is the forma whose language is the set of\nHorn s together with the calculus #1 given by MP, A/, and Subst\n> Definition 3.7. A logic program P entails a query Q with answer substitution\n\u00ab, iff there is a H derivation D of Q from P and o is the combined su!\nof the Sul stances in D\n\nFAU Mishoslcblbase As\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4560.31": {
+    "start_time": 4560.31,
+    "end_time": 4619.3,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nberg\n\nFAU\n\nPROLOG: Our Example\n\n> Program:\n\nhuman(leibniz).\n\nhuman(sokrates)..\n\ngreek sokrates),\n\nfallible(X):\u2014human(X)\n> Example 3.8 (Query). ?\u2014 fallible(X), greek(X).\n> Answer substitution: [sokrates/X]\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4619.3": {
+    "start_time": 4619.3,
+    "end_time": 4620.47,
+    "text_value": "= INU) ElangerNomberg\n\nKnowledge Base (Example)\n\n> Example 3.9. car(c). is in the knowlege base generated by\n\nhas_motor(c).\nhas wheels(c,4)\ncar(X):\u2014 has_motor(X),has_wheels(X,4).\n\nmc) w( \\ w(x, 4) = car()\n\u2014\u2014\u2014 aj}. \u2014\u2014\u2014\u2014\u2014\u2014 Subst\n\nm(c) Aw m(c) A w(c,4) = car()\nMP\ncar(c)\n\ncial Intelligence I\nWS 2024/2025\n\nU Michael Kcblbase As\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4620.47": {
+    "start_time": 4620.47,
+    "end_time": 4695.35,
+    "text_value": "= INU) ElangersNomberg\n\nWhy Only Horn Clat\n\n> eg. greek(sokrates), greek (perikles)\n> Question: Are there fallible greeks?\n> Indefinite answer: Yes, Perikles or Sokrates\n> Warning: how about Sokrates and Perikles?\n> eg. greek(sokrates) ,roman(sokrates):\u2014\n> Query: Are there fallible greeks?\n> Answer: Yes, Sokrates, if he is not a roman\n> Is this abduction?????\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4695.35": {
+    "start_time": 4695.35,
+    "end_time": 4924.72,
+    "text_value": "="
+    }
+    }
+    },
+    "54629": {
+    "url": "https://cdn.video.uni-erlangen.de/symlinks/5d3a9f28-b0b6-4e99-9b8e-6a1985450727.m4v",
+    "extracted_text": {
+    "0.43": {
+    "start_time": 0.43,
+    "end_time": 690.12,
+    "text_value": "Ee INU) ElangerNomberg\nV2 is Irrational (the Proof\n\n=\ny\nm\ng\n3\n3\n\nEe\n\nformula | NDjust\n| va, m lemma\nlemma\n\nin, p.prime(p) #( ) | lemma\n\u00a5x.irr(x) + 3(Sp, 4. definition\nir(V2) (Gp, q.V2 = p/a)\n\nirr( V2)\n\n(Ap, q.V2 = p/a)\n\np,9.V2 = p/q\n\nv2=p/q\n2q'\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "690.12": {
+    "start_time": 690.12,
+    "end_time": 700.04,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n>\ny\nm\ng\n3\n3\n\nEe\n\nV2 is Irrational (the Proof\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nformula\n\nn, p.prime(p)\n\nx.irx(x)\n2) <> =(Sp,q.V2 = p/a)\nv2)\n(3p,4-v2 = p/a)\np.4.V2 = p/q\n2=p/q\n\n(#(q) +1)\n\nProf. Dr. Michael Kohlhase\n\nEe INU) ElangersNomberg\n\n| NDjust\n\n| lemma\nlemma\nlemma\ndefinition\nNDLVE(4)\n=E(6,5)\nND?-E(7)\nNDS Ax\n\n(9)\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "700.04": {
+    "start_time": 700.04,
+    "end_time": 763.95,
+    "text_value": "Ee INU) Enangen Nomberg\nV2 is Irrational (the Proof\n\nful\na\no\nal\n=\n\nformula | NDjust\n\n1 | lemma\n\nlemma\n\nYn, p.prime(p) (#( ) | lemma\n\u00a5x.irr(x) definition\nB (Sp, q.V2 = p/q) ND}VE(4)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "763.95": {
+    "start_time": 763.95,
+    "end_time": 780.08,
+    "text_value": "Artificial Intelligence |\n\nWS 2024/2025\n\nND} Exampl\n\n#\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\n| hyp |\n\nformula\nVn, m.(2n\n\nn, p.prime(p\nx.irr(x) Pg.\n(Sp, 4.V2 =\n\nProf. Dr. Michael Kohlhase\n\nV2 is Irrational (the Proof)\n\nP,\np/q)\n\n= INU) ElangersNomberg\n\n| NDjust\nTemma\nlemma\nlemma\ndefinition\nNDLVE(4)\nNDS Ax\n=E(6,5)\nND?-E(7)\nAD2Ax\nith(9)\n(DIVE?(2)\nDVE?(1)\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "780.08": {
+    "start_time": 780.08,
+    "end_time": 790.27,
+    "text_value": "i= FF\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU\n\ny\nm\ng\n3\n3\nEs\n\nV2 is Irrational (the Proof)\n\nformula | NDjust\n| Vn, m [lemma\nlemma\nYn, p.prime(p) (4(n) +1) | lemma\nx.irr(x) (Sp, q. ) definition\n( NDIVE(4)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung\n\nErlangen Nornberg"
+    },
+    "790.27": {
+    "start_time": 790.27,
+    "end_time": 800.08,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nV2 is Irrational (the Proof\n\nformula\n\nYn, m.(2n\nvn, m4\n\u2018n, p.prime(p)\n/x.irt(x) <> =(Sp, q.\nirr(V2)  >(Sp, 9.V2 = p/q)\n(v2)\n(Ap, q-V2 = p/a)\n[2 =\nip. 4.V2 = p/q\n/2= pla\n\n2#(p)\nprime(2) > #(2q?\n\nE INU) ElangerNomberg\n\n|NDjust\n\n| lemma\nlemma\nlemma\ndefinition\nNDLVE(4)\nNDE.\n=E(6,5)\nAD\u00b0-E(7)\nNDP Ax\nith(9)\n(DIVE?(2)\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "800.08": {
+    "start_time": 800.08,
+    "end_time": 840.62,
+    "text_value": "Ee INU) ElangersNomberg\nV2 is Irrational (the Proof\n\nful\nx\no\n=|\n=\n\nformula | NDjust\n| va, m. | emma\nlemma\nYn, p.prime(p) (( ) | lemma\nx.irr(x) 4 =(Sp, \u00a2. definition\nirr(V2) = 7(p, 9.V2 = p/q)\nv2)\n(Ap, q.V2 = p/a)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "840.62": {
+    "start_time": 840.62,
+    "end_time": 921.25,
+    "text_value": "a\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU\n\ny\nm\ng\n3\n3\nEe\n\nV2 is Irrational (the Proof\n\nformula a |NDjust\n[Va,ms(2n4 7 lemma\nvn, m.4-(n\u2122) lemma\n\nin, p.prime(jepecmemmuen ) | lemma\n\u00a5x.irr(x) + (4p, 4. definition\nirr(V2) \u00a9 -(Sp, 9.V2 = p/a)\n\nirr(V2)\n\n(3p, 4.V2 = p/a)\np,9.V2 = p/q\n/2= pq\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung\n\nErlangen Nornberg"
+    },
+    "921.25": {
+    "start_time": 921.25,
+    "end_time": 950.82,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nFAU\n\nee\nm\ng\n3\n3\nEe\n\nV2 is Irrational (the Proof\n\nformula | NDjust\n| q | Temma\nlemma\nin, p-prime (foyer yee ) | lemma\nix.irr(x) <> a(Sp, q. definition\n2) <> =(Sp, q.V2 = p/a)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung\n\nErlangen Nornberg"
+    },
+    "950.82": {
+    "start_time": 950.82,
+    "end_time": 960.9,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\ny\nm\ng\nA\n3\nEe\n\n= INU) ElangerNomberg\n\nV2 is Irrational (the Proof\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nformula\n\nin, p.prime\\ bepemermyte\nx.ire(x) (Bp, g\n\n(Sp, q.V2 = p/q)\n\nProf. Dr. Michael Kohlhase\n\n| NDjust\n[lemma\nlemma\nlemma\ndefinition\nNDAVE(4)\nE(6,5)\nND?-E(7)\nNDPAx\nith(9)\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "960.9": {
+    "start_time": 960.9,
+    "end_time": 990.08,
+    "text_value": "Ee INU) Enangen Nomen\nV2 is Irrational (the Proof\n\nful\na\no\n=|\n=\n\nformula | NDjust\n[Va,ms(2n4 7 lemma\nvn, m4 lemma\nin, p-prime(epememmuen ) | lemma\nix.irr(x) <> a(Sp, q. definition\n2: (Sp, q.V2 = p/q) NDVE(4)\nv2) NDPAx\n(Ap, q.V2 = p/a) <E(6,5)\nND2-E(7)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "990.08": {
+    "start_time": 990.08,
+    "end_time": 1010.39,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\ny\nm\ng\n3\n3\nEs\n\nV2 is Irrational\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nformula\n\nVn, MA(204 ye\nvn, m4\nin, p.prime\\ bepemermxte\nvx.irr(x) = =(Sp, g.\nirr(V2) = 7(p, 9.V2 = p/q)\nv2)\n(Sp, q.V2 = p/a)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung\n\n1)\n\n= INU) ElangersNomberg\n\n| NDjust\nlemma\nlemma\nlemma\ndefinition\nNDLVE(4)\nND? Ax\nE(6,5)\nND?-E(7)"
+    },
+    "1010.39": {
+    "start_time": 1010.39,
+    "end_time": 1021.33,
+    "text_value": "= INU) ElangersNomberg\n\n: V2 is Irrational\n\nformula | NDjust\n\n1\u00a5n,maland 4. r ins\n\n; Yn, m. lemma\n\n| ) | lemma\n= definition\n\nND}VE(4)\nNDPAx\nE(6,5)\nND?-E(7)\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1021.33": {
+    "start_time": 1021.33,
+    "end_time": 1140.82,
+    "text_value": "al\n\nArtificial Intelligence |\nWS 2024/2025\n\nEe INU) ElangerNomberg\n\nthe Proof continued\n\nlemma\nND) (13, 12)\nVD1WE?(2)\n\u00a3(14, 15)\n|\n\n\u00a3(17, 10)\n\n=E(18, 16)\n\n(p) =E(19,11)\n(2#(p)) | NDVE?(1)\nNDFI(20, 21)\nND13E\u00ae(22)\n\n1(23)\n\nE?(23)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1140.82": {
+    "start_time": 1140.82,
+    "end_time": 1151.72,
+    "text_value": "= INU) ElangersNomberg\n\nSummary (Predicate Logic\n\n> Predicate logic allows to explicitly speak about objects and their properties. It is\nthus a more natural and compact representation language than propositional\nlogic; it also enables us to speak about infinite sets of objects.\n\n> Logic has thousands of years of history. A major current application in Al is\nSemantic Technology.\n\n> First-order predicate logic (PL1) allows universal and existential quantification\n\u2018over objects.\n\n> APL1 interpretation consists of a universe U and a function | mapping\n\nial Intelligence | constant symbols/predicate symbols/ function symbols to\nelements/relations/functions on U.\n\nArti\nWS 2024/2025\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1151.72": {
+    "start_time": 1151.72,
+    "end_time": 1280.04,
+    "text_value": "= INU) ElangerNomberg\n\nTest Calculi: Tableaux and Model Generation\n\n> Idea: A tableau calculus is a test calculus that\n> analyzes a labeled formulae in a tree to determine\n> its branches correspond to valuations (~+ models).\n> Example 1.1.Tableau calculi try to construct models for labele\n\n(PAQ=> QAP)\n(PAQt\n\nial Intelligence |\n\nHerbrand m {P'.Q',R'}\nWS 2024/2025 on (Po LQ4E RGF\n\nated tableaux yield m\n> Algorithm: Fully expand all possible table\niff there are open branches\n\nFAU Micheal chistes Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1280.04": {
+    "start_time": 1280.04,
+    "end_time": 1314.84,
+    "text_value": "= INU) ElangersNomberg\n\nAnalytical Tableaux (Formal Treatment of Jo\n\n> Idea: A test calculus where\n> A labeled formula is analyzed in a tree to determine satistiability,\n> branches correspond to valuations (models)\n\n> Definition 1.2. The propositional tableau calculus Jo has two inf\nper conne (one for each possible label)\n\nwie Ey\nwaney Bea al\n\nUse rules exhaustively as long as they contribute new material (~\u00bb termination)\n\nArtificial Intelligence | > Definition 1.3. We call any tree (| introduces branches) produced by the To\ninference rules from a set \u00a9 of labeled formulae a tableau for\nWS 2024/2025 > Definition 1.4. Call a tableau saturated, iff no rule adds new material and a\n\nbranch closed, iff it ends in 1, else open. A tableau is closed, iff all of its\n\nbranc are.\n\nIn analogy to the | at the end of clo: ches, we sometimes decorate open\nbranches with a 5 symbol.\n\nFAU isaac\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1314.84": {
+    "start_time": 1314.84,
+    "end_time": 1360.47,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nTest Calculi: Tableaux and Model Generation\n\n> Idea: A tableau calculus is a test calculus that\n> analyzes a labeled formulae in a tree to determine satisfiability\n> its branches correspond to valuatioy\n\n(PAQ=> QAP)\n(PAQ)\"\n\nd model {P\u2122, Q\u00b0,R\"}\n\n{PH T. QF, RF}\n> Idea: Open branch ed tableaux yield mod\n> Algorithm: Fully expand all possible t\n\n> Satisfiable, iff there are open brand\n\nFAU Michael chia Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung\n\nFAU\n\nErlangen Nornberg\n\n(no rule can be applied)\n(correspond to mod:"
+    },
+    "1360.47": {
+    "start_time": 1360.47,
+    "end_time": 1370.43,
+    "text_value": "= INU) ElangerNomberg\n\nAnalytical Tableaux continued\n\nTheorem /Derivability). A is a Jo-theorem (}-7,A), iff\nu with AF at the root\n\u00a9 \u00a9 wffo(Vo) derives A in To (0+7,A), iff there i d tableau starting with\nAF and \u00a9\", The tableau with only a branch of A\u00ae and \u00a9\u201d is called initial for\nOr 7A.\n\nil\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1370.43": {
+    "start_time": 1370.43,
+    "end_time": 1642.58,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nFirst-Order Standard Tableaux (7\n\n(proposi\n\n(WX.A)F ce Es new\n\nic/X(A)\u00b0 \u2018\n\n> Problem: The rule 7; displays a case of \u201cdon\u2019t know indeterminism\u201d: to find\na refutation we have to guess a formula C from the (usually infinite) set\ncw ,(E,).\nFor proof search, this means that we have to systematically try all, so 7; is\ninfinitely branching in general\n\nFAU Biches chases\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1642.58": {
+    "start_time": 1642.58,
+    "end_time": 1810.16,
+    "text_value": "= INU) ElangersNomberg\n\nFree variable Tableaux (7;\n\nand generalizes its cut rule To. to:\n\nae a#B o(A) =0(B)\n\nLio\n\nArtificial Intelligence |\n\nWS 2024/2025 > Advantage: No guessing necessary in 7,'V-rule!\nfind suitable substitution (most general unifier) (later)\n\nTi. instantiates the whole tableau by o\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1810.16": {
+    "start_time": 1810.16,
+    "end_time": 1820.94,
+    "text_value": "Ee INU) ElangersNomberg\n\nFirst-Order Standard Tableaux (7\n\n. The standard tableau calculus (7) extends To (proposi\nifier rules:\n\n=, (VX.A)\" ce \u00a3% new\n(e/X}(A))\n\n(VX.A)\" C\u00ab =\n\n(IC/XI(A))\" :\n\n> Problem: The rule 7; displays a case of \u201cdon\u2019t know indeterminism\u201d: to find\na refutation we have to guess a formula C from the (usually infinite) set\n\ncw (E,).\nFor proof search, this means that we have to systematically try all, so 7; Vis\n\nArtificial Intelligence |\ninfinitely branching in general.\nWS 2024/2025\n\nFAU Michal cae aa\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1820.94": {
+    "start_time": 1820.94,
+    "end_time": 2087.46,
+    "text_value": "= INU) ElangersNomberg\n\nFree variable Tableaux (7,\u2019)\n\nxa\n\u00bbX)/X)\u2122\nand generalizes its cut rule 7% to:\n\npe #8 o(A) =o(8)\n\nLio\n\nArtificial Intelligence |\n\nWS 2024/2025 > Advantage: No guessing necessary in 7;'V-rule!\n: find suitable substitution (most general unifier) (later)\n\nTL instantiates the whole tableau by o-\n\nFAU Micheel cbse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2087.46": {
+    "start_time": 2087.46,
+    "end_time": 2131.64,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nTableaux (7\n\nce L& new\ni\u00a2/X\\(A))\n\n> Problem: The rule 7; displays a case of \u201cdon\u2019t know indeterminism\u201d: to find\na refutation we have to guess a formula C from the (usually infinite) set\ncw (Z,).\nFor proof search, this means that we have to systematically try all, so 7; is\ninfinitely branching in general\n\nFAU Micheal chase As\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2131.64": {
+    "start_time": 2131.64,
+    "end_time": 2327.77,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nFree variable Tableaux (7;\n\nand generalizes its cut rule To. to:\n\npe #8 o(A) =o(8)\n\nlio\n\nTL instantiates the whole tableau by o-\n> Advantage: No guessing necessary in 7,\u2019V-rule!\n> New Problem: find suitable substitution (most general unifi\n\nFAU Bicael chia As\n\nProf. Dr. Michael Kohlhase\n\nProfessur flr Wissensreprasentation und -verarbeitung"
+    },
+    "2327.77": {
+    "start_time": 2327.77,
+    "end_time": 2335.9,
+    "text_value": "= INU) ElangerNomberg\n\nau calculus) with the following quantifier rules:\n\nIX.A)\" Ce (WX.A)F ce Es new\n. (fe/x(A))\n> Problem: The rule 7; displays a case of \u201cdon\u2019t know indeterminism\u201d: to find\na refutation we have to guess a formula C from the (usually infinite) set\ncw ,(Z,).\nArtificial Intelligence | For proof search, this means that we have to systematically try all, so 7; is\n\ninfinitely branching in general\n\nWS 2024/2025\n\nFAU Bi sael chiens\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2335.9": {
+    "start_time": 2335.9,
+    "end_time": 2341.09,
+    "text_value": "E, INU) Ehigennnbey tt\n\nFree variable Tableaux (7;\u2019): Derivable Rules\n\n> Definition 1.10. Derivable quantifier rules in 7;f\n\n(BX.A)\" free(VX.A) 4. X*} fe EF new\n(F(X4,...,X*)/X)\"\n\n(ax.a) Y new\n([y/xI(a))\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU ichasl Koh\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2341.09": {
+    "start_time": 2341.09,
+    "end_time": 2438.95,
+    "text_value": "= INU) ElangersNomberg\n\nFree variable Tablea\n\nand generalizes its cut rule To. to:\n\nee a#B o(A) =o(B).\n\nLio\n\nArtificial Intelligence |\n\nWS 2024/2025 > Advantage: No guessing necessary in 7;'V-rule!\n: find suitable substitution (most general unifier) (later)\n\nTL instantiates the whole tableau by o-\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2438.95": {
+    "start_time": 2438.95,
+    "end_time": 2552.34,
+    "text_value": "= INU) ElangersNomberg\n\nTableau Reasons about Blocks\n\n> Example 1.11 (Reasoning about Blocks). Returing to slide 378\n\nCan we prove red(A) from \\/x:block(x) => red(x) and block(A\\\n\n(VX.block(X) =>\nblock\nred(A)\n(block(Y) > red(Y))\"\nblock(\u00a5) | red(A)\"\nL:fA/Y]| 4\n\ncial Intelligence I\nWS 2024/2025\n\nFAU Micheel chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2552.34": {
+    "start_time": 2552.34,
+    "end_time": 2730.08,
+    "text_value": "= INU) ElangersNomberg\n\nTableau Reasons about Blocks\n\n> Example 1.11 (Reasoning about Blocks). Returing to slide 378\nCan we prove red(A) from \\/x.block(x) = red(x) and block(A)?\n\n(VX.block(X) > red(X\nblock(A)\n\nred(A)\n\u2122 . (block(Y) = red(Y))\ncial Intelligence | block(Y)\u00ae | red(A)\"\nWS 2024/2025 Bley)\n\nAU Micheal cbse Ani\n\nProf. Dr. Michael Kohihase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2730.08": {
+    "start_time": 2730.08,
+    "end_time": 2780.39,
+    "text_value": "= INU) ElangersNomberg\n\nFree variable Tableaux (7,'\n\nand generalizes its cut rule To. to:\n\na#B o(A) =o0(B)\n\nLio\n\nArtificial Intelligence |\n\nWS 2024/2025 > Advantage: No guessing necessary in 7,'V-rule!\nfind suitable substitution (most general unifi\n\nT;{A. instantiates the whole tableau by\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2780.39": {
+    "start_time": 2780.39,
+    "end_time": 3200.08,
+    "text_value": "= INU) Elangeromberg\n\nTableau Reasons about Blocks\n\n> Example 1.11 (Reasoning about Blocks). Returing to slide 378\n\nmaeeiee\n\nCan we prove red(A) from Vx.block(x) => red(x) and block(A\n2 (VX.block(X) > red(X)\nred(A)\u201d\nrt 5 (block(Y) => red(Y))*\ncial Intelligence I block(Y)\u2122 | red(A)\"\nWS 2024/2025 FelyAall| 2\n\nAU Micheal chistes Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3200.08": {
+    "start_time": 3200.08,
+    "end_time": 3310.27,
+    "text_value": "= INU) Elangeromberg\n\nification (Definitions\n\n> Definition 1.12. For given terms A and B, unification is the problem of finding\na substitution o, such that o(A) = o(B)\n\n> Notation: We write term pairs as A=\"B e.g. F(X)=\"F(g(Y))\n\n> Definition 1.13. Solutions (e.g. [g(a)/X].[a/Y], [e(e(a))/X), [e(a)/Y], or\n[e(Z)/X],Z/Y)) are called unifiers, U(A=\u2019B) := {a|0(A) = o(B)}\n\n> Idea: Find representatives in U(A=\"B), that generate the set of solutions.\n\n> Definition 1.14. Let o and 0 be substitutions and W C V,, we say that a\nsubstitution o is more general than @ (on W; write o<6[W]), iff there is a\nsubstitution p, such that 6=(p 0 c)[W], where o=p[W], iff o(X) = p(X) for all\n\nArtificial Intelligence |\n\ninition 1.15. o is called a most general unifier (mgu) of A and B, iff it is\nWS 2024/2025 in U(A=\"B) wrt. <[(free(A) U free(B))]\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3310.27": {
+    "start_time": 3310.27,
+    "end_time": 3327.07,
+    "text_value": "= INU) ElangersNomberg\n\nFree variable Tablea\n\nX1,....X*} fe\n+ X4)/X)F\n\nand generalizes its cut rule To.1 to:\nme\npe #8 o(A).=o(B)\n\nLio\nArtificial Intelligence | TfL instantiates the whole tableau by o.\n\nWS 2024/2025 > Advantage: No guessing necessary in 7,\u2019 V-rule!\n: find suitable substitution (m (later)\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3327.07": {
+    "start_time": 3327.07,
+    "end_time": 3582.42,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nification (Definitions\n\n> Definition 1.12. For given terms A and B, unification is the problem of finding\na substitution a, such that o(A) = o(B)\nWe write term pairs as A=\"B e.g. f(X)=\"f(g(Y))\n> Definition 1.13. Solutions (e.g. [g(a)/X],[a/Y], lg(e(a))/X], [e(a)/Y], or\n{e(Z)/X],[Z/Y)]) are called unifiers, U(A='B) := {o|o(A) (B)}\n> Idea: Find representatives in U(A='B), that generate the set of solutions.\njon 1.14. Let and @ be substitutions and W C ),, we say that a\nitution @ is more general than 6 (on W; write o<0[W/), iff there is a\nsubstitution p, such that @=(po.o)[W], where o=p[W), iff o(X) = p(X) for all\n\nion 1.15. o is called a most general unifier (mgu) of A and B, iff it is\nin U(A=\"B) wrt. <|(free(A) U free(B))]\n\nFAU Micheal chasse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3582.42": {
+    "start_time": 3582.42,
+    "end_time": 3752.89,
+    "text_value": "= INU) ElangersNomberg\n\nification Problems Equational Systems\n\n> Idea: Unification is equation solving\n> Definition 1.16. We call a formula A=\u2019B\" \\...  A\u201d=B\" an unification\nproblem iff A\u2019, Bi  wif,(,,,).\n\n> Note: We consider unification problems as sets of equations (/\\ is ACI), and\nequations as two-element multi\n\n> Definition 1.17. A substitution is called a unifier for a unification problem \u20ac\n(and thus D unifiable), iff it is a (simultaneous) unifier for all pairs in E.\n\nArtificial Intelligence |\nWS 2024/2025\n\nFAU Bical chee\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3752.89": {
+    "start_time": 3752.89,
+    "end_time": 3930.66,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n(A/X|(E) AX=\"A\nLemma 1.23. U/ is correct: EF implies U(F) \u00a9 U(E)\n\n>\n> Lemma 1.24. U/ is complete: E1F implies U(E) \u20ac U(F).\n\n> Lemma 1.25. U/ is fluent: the order of derivations does not matter.\n>\n\nCorollary 1.26. el is unitary: i.e. most general unifiers are\nunique up to renaming of introdu riables\n\n> Proof sketch: U is trivially branching.\n\nFAU Bias chia As\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3930.66": {
+    "start_time": 3930.66,
+    "end_time": 3950.08,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Examples\n\n> Example 1.27. Two similar unification problems:\n\n\u00a3(g(X, X), h(a))='F(e(a,Z),A(Z)) | Flel%,X),h(a))~\"F(@(b,Z), M(Z))\n\n(XX \"a(6Z) A Ma)\"W(Z)\n\n8(X,X)='a(a,Z) A h(a)=\"W(Z)\nX='a\\ X='Z A h(a)=\"(Z)\na X=\"b\\ X=\"Z /\\ ha)\u2014\"W(Z)\nXanx\u2014Z $$ uae\nbAX=Z Na\u2014\"Z\nxX'anZ Uelimm\n\u2014\u2014\u2014\u2014\u2014 ABZ Na='Z\nX=\"an Zan a\nbAZ=\"bna='b\nXa'anZ=\"\n\nMGU: [a/X]. [a/Z] 2\" not unifiable\n\nFAU ichasl Kcbbase\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3950.08": {
+    "start_time": 3950.08,
+    "end_time": 3970.74,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n(A/X|(E) \\X=\"A\nLemma 1.23. U/ is correct: Et,F implies U(F) \u00a9 U(E)\n\n>\n> Lemma 1.24. U/ is complete: E1F implies U(E) C U(F).\n\n> Lemma 1.25. U/ is confluent: the order of derivations does not matter.\n>\n\nCorollary 1.26. el is unitary: i.e.\nunique up to renaming of introduced variables.\n\n> Proof sketch: U is trivially branching.\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3970.74": {
+    "start_time": 3970.74,
+    "end_time": 3989.22,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n> Example 1.27. Two similar unification\n\n(g(X,X),(a))-\"Fle(@,2), 2)\nXX) a(2,Z) A M@)\u2014\"MZ)\nX=ah XZ A hay ;\n\nXoaAX-Z\n\nXanaZ\n\nX=\"aAZ=\"a\n\nXa'anZ=\"\n\nProf. Dr. Michael Kohlhase\n\n= INU) ElangersNomberg\n\nproblem:\n\n8(X, X)=\"a(b,Z) A Ma) 2)\nXSbAX=\"Z A Hla\"W(2)\nX=\"bAX='ZNa='Z ie\n\nX=\"bAB'ZNa\"Z\n\nX=\"bAZ=\"bAa=\"b\n\na='b not unifiable\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3989.22": {
+    "start_time": 3989.22,
+    "end_time": 4040.62,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n> Example 1.27. Two similar unification\n\n\u00a3(g(X, X), h(a))='F(e(a,Z), A(Z)) |\n8(X,X)='a(a,Z)  h(a)\u2014\"W(Z)\nX='a\\ X='Z A hla)\n\nXa\"anx=Z\nXaanaZ\nX=\"aAZ=\"a\n\nX=\"aAZ\n\nProf. Dr. Michael Kohlhase\n\nEe INU) ElangerNomberg\n\nproblem:\n\n\u00a3(g(X,X), h(a))='F(g(b, Z), h(Z))\n8(X,X)='e(b,Z) \\Ha)=\"W(Z) ,\n\nX='b\\ X='Z A h(a)='h(Z)\n\u2014\u2014\u2014\u2014u\n\nHe\nX=\"bAX=\"Z Na=\"Z\nelim,\n\nX=\"bAB ZN a\"Z\n\nX=\"bAZ\u2014'bha='b\n\na='b not unifiable\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4040.62": {
+    "start_time": 4040.62,
+    "end_time": 4063.24,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Examples\n\n> Example 1.27. Two similar unification problems:\n\nF(g(X,X), hl F(. Z),W(Z)}\ngenie rei GENES f(g(X, X), h(a))='F(g(b, Z), h(Z))\n\n8(X,X)='g(a, Z) A h(a)='h(Z) TT eee\nUdec 8(X,X)='g(b, Z) \\ h(a)}='h(Z)\n\nX='a\\ X='Z A h(a): ec\n\nX=\"b\\ X=\"Z /\\ hla)=\"h(Z)\n\nX\"anx='Z vce\nX=\"bAX=\"Z NZ\n\nXaanaZ Uelim\n\u2014\u2014\u2014\u2014\u2014 X=\"bAB'ZNa'Z\nX='a\\Z=\"a \u2014\u2014\u2014\u2014\u2014\u2014Lelim\n\u2014\u2014\u2014\u2014\u2014 X=\"bAZ=\"bAa='b\n\nXa'aZ=\"\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4063.24": {
+    "start_time": 4063.24,
+    "end_time": 4081.05,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\nF(AL,..., A\"\n\nA/X A X=\"A\n> Lemma 1.23. U/ is correct: Et-iF implies U(F) \u00a9 U(E).\n> Lemma 1.24. 1/ is complete: F implies U(E) \u00a9 U(F).\n> Lemma 1.25. U/ i ent: the order of derivations does not matter.\n> Corollary 1.26. el on is unitary: ie. most general unifiers are\nunique up to renaming of introduc riables.\n\n> Proof sketch: UU is trivially branching.\n\nFAU Bi chael chiens\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4081.05": {
+    "start_time": 4081.05,
+    "end_time": 4310.16,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n> Example 1.27. Two similar unification\n\naX X),Ma))=\"Fe(2.2), M2)\nEK XP '6(2,Z) AM) \"Z)\nXa X\u2014ZAh(ay\u2014\"Z)\nXo aAXoZ\n\nXaanaZ\n\nX=\"aZ=\"a\n\nXa'anZ=\"\n\nProf. Dr. Michael Kohlhase\n\n= INU) ElangerNomberg\n\nprob!\n\nGEG te LO) AGE eae)\n8(X,X)=\"g(b, Z) A h(a) WM)\nX=\"bA X='Z A ha)\u2014\"W(Z)\n\nXabaxeznee\n\nX=\"bAB'ZNa'Z\n\nX=\"bAZ=\"bAa=\"b\n\na='b not unifiable\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4310.16": {
+    "start_time": 4310.16,
+    "end_time": 4330.08,
+    "text_value": "= INU) ElangerNomberg\n\nUnification Examples\n> Example 1.27. Two similar unification proble\nwp = \u00a3(g(X, X), h(a))= 'f (g(a, Z), A(Z))\n\u201d 8(X,X)=\"(2,Z) A-ma)=\"Z)\nu\n\ndec 8(X,X)=\"g(b,Z) A h(a)=\"h(Z) .\n\n4 X='a\\ X='Z 4 h(a)=\"W(Z)\n| \u2014\u2014\u2014\u2014\u2014 ude X=\"b\\ X='Z A h(a)=\"h(Z)\nX=\"anX='Z. OOOO de\nXS bAXLZ AZ\nXanwz eameeee i\nrar P \u2014\u2014\u2014\u2014\u2014_ 2\nArtificial Intelligence | Xe\"an Za \u2014\u2014\u2014\u2014<\u2014_\n\nX=\"bAZ=\"bAa=\"b\n\nWS 2024/2025 aaa AZ\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4330.08": {
+    "start_time": 4330.08,
+    "end_time": 4355.98,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n= INU) ElangersNomberg\n\n> Example 1.27. Two similar unification problem\n\n\u00a3(a(X, X), h(a))='F(e(a, Z), A(Z))\n\n&(X,X)='a(a,Z) A h(a)=\"W(Z)\nu\n\nX='a\\ X='Z A h(a)=\"H(Z)\n\nXa\"aAX=\"Z Ne\nXaanaZ\nXa\"anZ=\"a\n\nX=\"aNZ-\n\nProf. Dr. Michael Kohlhase\n\nUae\n\nut\n\n\u00a3(g(X,X), h(a))=\"F(g(b, Z), h(Z))\n8(X,X)='a(b, Z) A h(a)='h(Z)\nX='bAX=\"Z 1 ha)=\"h(Z)\n\nude\n\nX=\"bAX=\"Z Na=\"Z\nlim\n\nX=\"bA BZ Na 'Z\n\nX=\"bA\\Z\u2014\"bha='b\n\na='b not unifiable\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4355.98": {
+    "start_time": 4355.98,
+    "end_time": 4427.62,
+    "text_value": "Ee INU) Enangen Nomen\nUnification Examples\n\n> Example 1.27. Two similar unification problem\n\n#(g(X,X), h(a))=\"F(g(a, Z), A(Z)\nBe CS \u00a3(g(X,X), h(a))=\"F(g(b, Z), h(Z))\n#(X,X)-a(a,Z) A h(a)=\"h(Z) \u2014\u2014\u2014\u2014_\u2014\u2014\u2014_\u2014\u2014_u\n\nus\n\n(dec &(X,X)=\"a(b, Z) A h(a)=\"h(Z) .\nUae X=\"bA X=\"Z A Hay=\"W(Z)\n\nX='a\\ X='Z A h(a)=\"W(Z)\n\nZ d\nUelim X=\"bAXS\"Z Aa 'Z\nlim\n\nB\nUclim Xa'bAb'Z Na 'Z\n\nArtificial Intelligence |\nWS 2024/2025\n\nUti X=\"bAZ='bAa='b\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4427.62": {
+    "start_time": 4427.62,
+    "end_time": 4430.08,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n= INU) ElangersNomberg\n\n> Example 1.27. Two similar unification problem\n\n\u00a3(g(X, X), h(a))='F(e(a, Z), (Z))\n\n(X,X)\u2014\"e(a,Z) A h(a)=\"A(Z)\nUdec\n\nX='a\\ X='Z A h(a)=\"h(Z)\nuae\n\nProf. Dr. Michael Kohlhase\n\nProfessur flr Wissensreprasentation\n\n\u00a3(g(X, X), h(a))='F(e(b, Z), h(Z))\n\n6% X)~'atb, Z)A MA MZ)\n\nX=\"b A X=\"Z /\\ ha)\u2014\"h(Z)\n\npi ee\n\nX=\"bAXZN'Z\nJim\n\nX=\"bAB ZN a'Z\n\nX=\"bAZ=\"bAa=\"b\n\na='b not unifiable"
+    },
+    "4430.08": {
+    "start_time": 4430.08,
+    "end_time": 4550.7,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Examples\n\n> Example 1.27. Two similar unification problem\n\n\u00a3(g(X, X), h(a))='F(e(a, Z), (Z)) Flel%,X),H(a))~\"F(@(b,Z), M(Z))\n\n&(X, X)='a(b, Z) \\ h(a)='h(Z)\nX=\"bAX='Z A hla)=\"W(Z)\n\n8(X,X)=\"'a(a,Z) 0 h(a)='W(Z)\n\nX='a\\ X='Z/ h(a)=\"(Z)\n\nxa i\nX=\"bAX=\"Z NZ\n\nxa Jim\n\nX='bAb='Z Na Z\n\nXa\" u\nX=\"bA\\Z='bNa='b\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4550.7": {
+    "start_time": 4550.7,
+    "end_time": 4564.38,
+    "text_value": "= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n(A/X](E) AX=A\n\nLemma 1.23. U/ is correct: EF implies U(F) C U(\u00e9)\n\nLemma 1.24. 1/ is complete: F implies U(E) \u00a9 U(F).\n\n>\n>\n> Lemma 1.25. U/ is confluent: the order of derivations does not matter.\n>\n\nArtificial Intelligence |\n\nWS 2024/2025 unique up to renaming of introdu\n> Proof sketch: UU is trivially branching.\n\nCorollary 1.26. el is unitary: ie. eral uni\n\nFAU Micheel chasse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4564.38": {
+    "start_time": 4564.38,
+    "end_time": 4645.82,
+    "text_value": "= INU) ElangersNomberg\n\nUnification Examples\n\n> Example 1.27. Two similar unification problem:\n\nF(g(X, X), h(a))= 'f(e(a, Z), A(Z))\n\n8(X, X)'e(a,Z) A h(a}='H(Z)\nX='a X='Z A Wla)=\"A(Z)\nee X='bAX=\"Z 1 ha)=\"h(Z)\nX=anXSZNa\"Z oa aoe\nUelim Xa\"bAX=\"ZNa=\"Z\n\nXan 'ZAaZ elim\n\u2014\u2014\u2014$\u2014telim Xa'bA BZ Na='Z\n\nArtificial Intelligence | X='anZ\u2014'ana'a \u2014\u2014\u2014\u2014\u2014\nUtriv XbA ZbNa~'b\nWS 2024/2025 SOE\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4645.82": {
+    "start_time": 4645.82,
+    "end_time": 4716.48,
+    "text_value": "= INU) ElangerNomberg\n\nSolved forms and Most General Unifiers\n\n> Definition 1.18. We call a pair A='B solved in a unification problem \u20ac, iff\n\nX=\"AANE, and X \u00a2 (free(A) U free(\u20ac)). We call an uni\n\nproblem & a solved form, iff all its pairs are solved.\n\n> Lemma 1.19. Solved forms are of the form X1=\"B1 \\... \\ X\"='B\" where the\nX' are distinct and X' \u00a2 free(B/).\n\n> Definition 1.20. Any sub: o = [B1/X}], ...,[B\"/X\"] induces a\nunification pre (X12\"BIA.. n\u2014\"BN),\n\n> Lemma 1.21. if & = X1='B . \\ X\"=\"B\" is a solved form, then \u20ac has the\nunique m x [B\u00b0/x\"].\n\nArtificial Intelligence | Le Proof Cet 7 oA\nthen 6(X!\n\nWS 2024/2025 2. and thus 6=(0 0 c\u00a2)|s\n\nFAU Micheal chia Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4716.48": {
+    "start_time": 4716.48,
+    "end_time": 4740.23,
+    "text_value": "E INU) Enangen Nomberg\nUnification Examples\n\n> Example 1.27. Two similar unification problem:\n\n\u00a3(g(X, X), h(a))='F(e(a,Z), A(Z)) | FlelX,X),H(a))~\"F(@(b,Z), M(Z))\n\n(dec 8(X, X)='e(b,Z) \\ hla)='h(Z)\n\n&(X,X)=\"a(a,Z) A h(a)=\"A(Z)\nu\n\nX='a\\ X='Z A h(a)=\"H(Z)\n\nUde X=\"b A X='Z A Wa)='h(Z)\nXaAXHZ NZ ee\nUelim bAX'ZAa'z\nXan ZAZ epee slim\naan P ee  etin >\nArtificial Intelligence | Xan Zana retin\n\nUtei bAZ='bAa='b\n\nWS 2024/2025 POON\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4740.23": {
+    "start_time": 4740.23,
+    "end_time": 4959.06,
+    "text_value": "= INU) ElangersNomberg\n\nSolved forms and Most General Unifiers\n\n> Definition 1.18. We call a pair A='B solved in a unification problem \u20ac, iff\nX=\"ANE, and X \u00a2 (free(A) U free(\u20ac)). We call an uni\nproblem \u20ac a solved form, iff all its pairs are d.\n> Lemma 1.19. Solved forms are of the form X*\nX' are distinct and X' \u00a2 free(B/).\n> Definition 1.20. Any substitu\nunification problem (x2\n> Lemma 1.21. /fE\nunique most gene\nArtificial Intelligence | CG eae, U(\u00e9)\nthen 0(X'\n\nWS 2024/2025 2. and thus 6=(0 o c\u00a2)|s\n\nFAU Michosl Keble Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4959.06": {
+    "start_time": 4959.06,
+    "end_time": 5242.07,
+    "text_value": "= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\nLemma 1.23. U/ is correct: Et-1F implies U(F) C U(E)\n\nLemma 1.24. U/ is complete: E+uF implies U(E) < U(F).\n\n>\n>\n> Lemma 1.25. U/ is the order of derivations does not matter.\n>\n\nArtificial Intelligence |\nWS 2024/2025\n\nCorollary 1.26. el is unitary: i.e. al unifi\n\nFAU Micbeel cbse Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "5242.07": {
+    "start_time": 5242.07,
+    "end_time": 5300.27,
+    "text_value": "= INU) ElangerNomberg\n\nUnification Examples\n\n> Example 1.27. Two similar unification problem\n\n\u00a3(g(X, X), h(a))='F(e(a, Z), (Z))\n\nUde \u00a3(g(X, X), h(a))='F(e(b, Z), h(Z))\n8(X,X)='a(a, Z) A h(a)=\"A(Z) TU\nU.\n\ndec 8(X,X)=\"g(b,Z) A h(a)=\"h(Z) .\n\nXa'a\\ X='Z A h(a)=\"H(Z)\n\u2014\u2014$ vee X='b\\ X='Z A Wa)=\"h(Z)\n\nXa\"anX='Z ooo de\nX=\"bAX=\"Z A a=\"Z\n\nXaanaZ lim\nx\n\nXa\"bAB ZN a\"Z\n\nArtificial Intelligence |\nWS 2024/2025\n\nX=\"bAZ=\"bAa=\"b\n\na='b not unifiable\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "5300.27": {
+    "start_time": 5300.27,
+    "end_time": 5320.47,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n> Example 1.27. Two similar unification\n\n\u00a3(g(X, X), h(a))='F(e(a, Z), (Z))\n8(X,X)='a(a, Z) A h(a} NZ\nX='a\\ X='Z A Hla)=\"A(Z) \na aGeh\n\nUti\n\nProf. Dr. Michael Kohlhase\n\n= INU) ElangersNomberg\n\nproblem:\n\n\u00a3(g(X, X), h(a))='F(e(b, Z), h(Z))\n\naX X)='6tb ZAM) MZ)\n\nX=\"b A X=\"Z \\ ha)\u2014\"h(Z)\nX='bAX='Z Na='Z \u201c\nX='bA\\ b= 'Z Na Z fam\nX='bAZ='biw b \u201c\n\na='b not unifiable\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "5320.47": {
+    "start_time": 5320.47,
+    "end_time": 5370.62,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nUnification Examples\n\n= INU) ElangerNomberg\n\n> Example 1.27. Two similar unification problem\n\n8(X, X)='e(a,Z) A h(a)='A(Z)\n\nX=!a\\ X='Z\\ h(a)=\"W(Z)\nee\nX\"anx=Z\n2\nUelim\nUtri\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung\n\n\u00a3(g(X, X), h(a))='F(g(b, Z), A(Z))\n8(X,X)=\"a(b,Z) A h(a)=\"h(Z)\n\nX=\"bAX='Z A Wa)=\"h(Z)\nXbA Zaz\n\nX\"bAB'Z Na 'Z\n\nX=\"bAZ='bha~'b\n\na='b not unifiable"
+    },
+    "5370.62": {
+    "start_time": 5370.62,
+    "end_time": 5400.9,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nFAU\n\nUnification Algorith\n\nDefinition 1.22. The inference system // consists of the following rules:\n\nEAF(AL\nAL\n\n[A/X|(E) \\X=\u2019A\n> Lemma 1.23. U/ is correct: EtyF implies U(F) < U(\u00e9)\n> Lemma 1.24. U/ is complete: E1F implies U(E) C U(F).\n> Lemma 1.25. U/ is the order of derivations does not matter.\n> Corollary 1.26. e is unitary: i.e.\nunique up to renaming of introdu\n\n> Proof sketch: U is trivially branching\n\nProf. Dr. Michael Kohihase\n\nProfessur fur Wissensreprasentation und -verarbeitung\n\nErlangen Nornberg"
+    },
+    "5400.9": {
+    "start_time": 5400.9,
+    "end_time": 5427.07,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\n= INU) ElangersNomberg\n\nFree variable Tableaux (7;')\n\nion 1.9. The free variable tableau calculus (7;\u2018) extends To\n\nional tableau calculus) with the quantifier rules:\n\n7 _Y new 7, (WX.A)* free(Vx. KXAN A\n\n(FO... X9/XI(A)\nand generalizes its cut rule To. to:\n\nNM &#B o(A) =0(B)\n\nLio\n\ninstantiates the whole tableau by o-\n> Advantage: No guessing necessary in 7,'V-rule!\n> New Problem: find suitable\n\nFAU Mishosl Kchibase As\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "5427.07": {
+    "start_time": 5427.07,
+    "end_time": 5516.08,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nUnification Algorithm\n\nDefinition 1.22. The inference system // consists of the following rules:\n\n[A/XI(E) AX=A\n> Lemma 1.23. U is correct: El.F implies U(F) < U(E)\n> Lemma 1.24. U/ is complete: E+-F implies U(E) < U(F).\n\n> Lemma 1.25. U i t: the order of derivations does not matter.\n> Corollary 1.26. el is unitary: ie. al unifi\nunique up to renaming of int\n\n> Proof sketch: UU is trivially branching.\n\nFAU Bical chia\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    }
+    }
+    },
+    "54628": {
+    "url": "https://cdn.video.uni-erlangen.de/symlinks/f1dd21d3-43e7-4194-a799-a81cef9cf069.m4v",
+    "extracted_text": {
+    "0.43": {
+    "start_time": 0.43,
+    "end_time": 1020.16,
+    "text_value": "bers\n\nFAU\n\nLet's Talk About Blocks, Baby ...\n\n\u2014e > Question: What do you see here?\n\nan ne\n\ni\n\n|\nArtificial Intelligence |\nWS 2024/2025\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1020.16": {
+    "start_time": 1020.16,
+    "end_time": 1160.16,
+    "text_value": "= INU) ElangerNomberg\n\nLet's Talk About the Wumpus Instead?\n\nPercepts: [Stench, Breeze, Glitter, Bump, Scream]\n\n> > Cell adjacent to Wumpus: Stench (else: None)\n\n> Cell adjacent to Pit: Breeze (else: None).\n\n> Cell that contains gold: Glitter (else: None).\n\n> You walk into a wall: Bump (else: None)\n\nshot by arrow: Scream (else: None).\n> Say, in propositional logic: \u201cCell adjacent to Wumpus: Stench.\u201d\n\n\u00bb Wir Si2\n> Wi2=\n> Wis>\nmo,\n\nArtificial Intelligence |\nWS 2024/2025 > Note: Even when we can describe the problem suitably, for the desired\n\nreasoning, the propositional formulation typically is way too large to write (by\nhand).\n\n> PL1 solution: \u201cVx.Wumpus(x) > (Vy-adj(x, y) = stench(y))\u201d\n\nFAU Micheal cbse Ani\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1160.16": {
+    "start_time": 1160.16,
+    "end_time": 1300.12,
+    "text_value": "= INU) ElangerNomberg\n\nFirst-Order Predicate Logic (PI?\n\n: \u00bb > Coverage: We can talk about (All humans are mortal)\n= > individual things and denote them by variables or constants\n> properties of individuals, (e.g. being human or mortal)\n> relations of individuals, (eg. sibling_of relationship)\n> functions on individuals, (e.g. the father_of function)\nWe can also state the existence of an individual with a certain property, or the\nuniversality of a property.\n> But we cannot state assertions like\n\n> There is a surjective function from the natural numbers into the reals\n\n. > First-Order Predicate Logic has many good properties (complete calculi,\n\nArtificial Intelligence | compactness, unitary, linear unification,...)\n\n> But too weak for formalizing: (at least directly)\n\nWS 2024/2025\n\n> natural numbers, torsion groups, calculus, .\n> generalized quantifiers (most, few,...)\n\nAU ichasl chase\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1300.12": {
+    "start_time": 1300.12,
+    "end_time": 1325.55,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangersNomberg\n\nPL Syntax (Signature and Variables\n\n7 ystem extensively used in\n, philosophy, linguistics, and ence. It combines\nwith the ability to quantify over individuals.\nPI! talks about two kinds of objects: (so we have two kinds of symbols)\n> truth values by reusing PI\u00b0\n> individuals, e.g. numbers, foxes, Pok\u00e9mon,\n> Definition 2.2. A first-order signature consists of\n> connectives: Eo Ta,\n> function constants: =f = {f,g, h 0\n> predicate constants: {p, ar } (k-ary relations among individuals.)\n> (Skolem constants: 3 iieetood) (witness constructors; countably oo)\n> We take E; to be all of these together: E1 == E\u2019 UE? UE\" and define\nx Lo.\n> Definition 2.3. We assume a set of individual variables: V, = {X, Y,Z,\n(countably oo)\n\nProf. Dr. Michael Kohihase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1325.55": {
+    "start_time": 1325.55,
+    "end_time": 1350.23,
+    "text_value": "= INU) ElangersNomberg\n\nax (Formulae\n\n> Definition 2.4. Terms: A \u20ac wf.(E1,V.) (denote individuals)\n> VC wh (Ea,\n> if Fe Xf and A\u2019 \u20ac wh, (1, V,) for i < k, then F(A,\n> Definition 2.5. First-order proposition:\nvalues)\n> ifp\nff (1, V.) and\nor called the universal quantifier.\n> Definition 2.6. We define the connectives F,V, >, + via the abbreviations\nAV B:=-(-A A -B), A= B:=-A VB, A< B) \\(B=A), and\nF . We will use them like the primary conne A and\n> Definition 2.7. We use 3X.A as an abbreviation for 9(VX.7A). 3 is a binding\nWS 2024/2025 operator called the existential quantifier.\n> Definition 2.8. Call formulae without conn or quantifiers atomic else\ncomplex.\n\nArtificial Intelligence |\n\nFAU Bi cael chia\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1350.23": {
+    "start_time": 1350.23,
+    "end_time": 1430.04,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nA\n\n= INU) ElangersNomberg\n\nFree and Bound Variables\n\n> Definition 2.9. We call an occurre of a variable X bound in a formula A.\n\n(otherwise free), iff it occurs in a sub-formula VX.B of A.\nFor a formula A, we will use BVar(A) (and free(A)) for the\n\n)U free(B)\nfree(VX.A) = free(A)\\{X}\n> Definition 2.11. We call a formula A closed or ground, iff free(A) = 0. We call\nd proposition a sentence, and denote the set of all ground term with\nff (%,) and the ntences with cwif o(E,).\n\n> Axiom 2.12. Bound variables can be renamed, i.e. any subtermVX.B of a\nformula A can be replaced by A\u2019 := (VY .B\u2019), where B! arises from B by\nreplacing all X  free(B) with a new variable Y that does not occur in A. We\ncall A\u2019 an alphabetical variant of A ~ and the other way around too.\n\nFAU Michosl chase As\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1430.04": {
+    "start_time": 1430.04,
+    "end_time": 1523.44,
+    "text_value": "= INU) Elangeromberg\n\nSemantics of PL (Models:\n\n> Definition 2.13. We inherit the d: in Do = {T, F} of truth values from PL?\nand assume an arbitrary domain D, # 0) of individuals.(this choice is a parameter\nto the semantics)\nion 2.14. An interpretation Z values to constants, e.g.\n(as in PI?)\n\u2018erpret function symbols as arbitrary functions)\n(interpret predicates as arbitrary relations)\n\n> Definition 2.15. A variable assignment g: V, > D, maps variables into the\ndomain.\n\n> Definition 2.16. A model M = (D,,Z) of Pl\u2019 consists of a domain D, and an\n\nArtificial Intelligence |\nWS 2024/2025 interpret iD\n\nFAU Misbeel chia Ani\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1523.44": {
+    "start_time": 1523.44,
+    "end_time": 1650.08,
+    "text_value": "= INU) ElangersNomberg\n\nSemantics of PI} (Evaluati\n\n\\v > Definition 2.17. Given a model (D,Z), the value function Z,, is recursively\ndefined: (two parts: terms & propositions)\nD. assigns values to terms.\n(X) and\nArtificial Intelligence | i i in). Let y be a variabl nment\ninto D and a \u20ac D, then \u00a2,[a/X] is called the extension of y with [a/X] and is\nWS 2024/2025 defined as {(Y,a) < y|Y 4 X} U {(X,a)}: y,[a/X] coincides with vy off X, and\n\ngives the result a there\n\nFAU Bi cael chiens\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1650.08": {
+    "start_time": 1650.08,
+    "end_time": 1910.82,
+    "text_value": "= INU) ElangersNomberg\n\nSubstitutions on Terms\n\n> Intui If B is a term and X is a variable, then we denote the result of\nsystematically replacing all occurrences of X in a term A by B with B/X.\n\n> Problem: What about [Z/Y],Y/X, is that Y or Z?\n\n> Folklore: [Z/Y],Y/X = Y, but Z/Y = Z of course.\n(Parallel application)\n\n> Definition 2.20. Let wfe(Z, V) be an expr , then we call\no wfe(Z, V) a substitution, iff the support\nsupp(a):={X|(X,A) \u20ac a, X 4 A} of a is finite. We denote the empty\nsubstitution with \u00ab\n\n> Definition 2.21. We can discharge a variable X from a substitution o by\nsetting o_x:=0,[X/X].\n\n> Definition 2.22 (Substitution Application). We define substitution\n\nArtificial Intelligence | application by\n\u00a9 o(c)=cforcEeLt\nWS 2024/2025 > o(X) =A, iff X \u20ac V and (X,A) \u20aco.\n\n> o(f(Ar a(An)),\n\n> of X. v \" eu (G analogous)\n> Example 2.23. [a/x), [f(b)/y], [a/z] instantiates g(x,y, h(z)) to\n\ng(a, f(b); h(a)\n\nFAU ishosl che\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "1910.82": {
+    "start_time": 1910.82,
+    "end_time": 2000.04,
+    "text_value": "= INU) ElangersNomberg\n\nSubstitution Value Lemma for Terms\n\n> Lemma 2.28. Let A and B be terms, then T,,([B/X]A\nv= 9,[Zp(B)/X].\n> Proof: by induction on the depth of A:\nThen A isa variable (say Y), or constant, so we have three cases\n\n1.2.1. then Zp(B/X) =\n(Y) =Zy(A)\n1.3. Aisa constant\n1.3.1, Analogous to the preceding case (Y / X).\nArtificial Intelligence | > on He ores the b: (depth ).\n2. dept\n\nWS 2024/2025 2.1. then A = f(Aj,...,An) and we have\np(B/X) )(Zp(B/X1(A)).\n(Ar), --Z,\n\nEAU by induction hy\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "2000.04": {
+    "start_time": 2000.04,
+    "end_time": 2020.9,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nSubstitution Val\n\nFA\\\n\nU\n\nErlangen Nornberg\n\nLemma for Propositions\n\n> Lemma 2.29. 7,,((B/X)\n\n> Proof: by induction on the number n of connectives and quantifies\n\n1. n=0\n1.1. then A is an atomic propo\nof the substitution value lemma for terms.\nn>OandA=~\u2014BorA=CoD\n2.1. Here we argue like\n. n> 0 and A=WY.C where (WLO\n3.1. then Y.C) =T, iff Ly\na/v (IB/X1(C))\n\n3.3. So Ty(A) B/X}(C)\n\nFAU ie\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation\n\nion, and we can argue\n\ne in the induction\n\nthe induction step of the term lemma as well.\n\ny induction hypothesis.\n(B/X\n\n((B/X](A))\n\nund -verarbeitung"
+    },
+    "2020.9": {
+    "start_time": 2020.9,
+    "end_time": 3600.04,
+    "text_value": "= INU) ElangersNomberg\n\nFirst-Order Natural Deduction in Sequent Formulation\n\n> Rules for connectives from WD!\n\n> Definition 3.2 (New Quantifier Rules). The inference rules of the first-order\n\nsequent calculus \\VD? consist of those from /\\D2 plus the following quanti\nrules TEA X \u00a2 free . THVX.A -\nTHVX.A TB/X\nT+{B/XI(A) THAX.A Ty [e/XI(A)+C c\u20ac E9 new\nArtificial Intelligence | TFaX.A Tre .\n\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3600.04": {
+    "start_time": 3600.04,
+    "end_time": 3640.08,
+    "text_value": "= INU) Elangeromberg\n\nND} Example: V2 is Irrational\n\n> We can do real mathematics with VD4\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n\n1. Assume that v2 is rational.\n\n2. Then there are numbers p and q such that V2 = p/g.\n3. So we know 2q? = p?\n4\n5\n\nBut 2q? has an odd number of prime factors while p? an even number.\nThis is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3640.08": {
+    "start_time": 3640.08,
+    "end_time": 3650.27,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nE INU) ElangerNomberg\n\nFirst-Order Natural Deduction (\\/D?; Gentzen [Gen34])\n\n> Definition 3.1 (New Quantifier Rules). The first-order natural deduction\ncalculus \u2019D* extends \\VD, by the following four rules:\n\nNDI\"\n\nUe/X\\(A)]\nXA : ce E\u00a7 new\ne pe\ncS\n* means that A does not depend on any hypothesis in which X is free.\n\nFAU ichasl chase\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3650.27": {
+    "start_time": 3650.27,
+    "end_time": 3701.29,
+    "text_value": "= INU) ElangerNomberg\n\nND} Example: V2 is Irrational\n\n> We can do real mathematics with VD1\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n\n1. Assume that V2 is rational\n\n2. Then there are numbers p and q such that V2 = p/g.\n3. So we know 2q? = p\n4\n5\n\nBut 2g? has an odd number of prime factors while p? an even number.\n. This is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3701.29": {
+    "start_time": 3701.29,
+    "end_time": 3771.02,
+    "text_value": "Ee INU) Enangen Nomen\nV2 is Irrational (the Proof\n\nful\na\no\n=\n=\n\nformula | NDjust\n| Va, m. lemma\nlemma\n\u00a5n, p.prime(p) ) | lemma\n\u00a5x.irr(x) < (3p, q. definition\nirr(V2) = 7(p, 9.V2 = p/q) ND}VE(4)\nirr(V2) NDPAx\n(Sp, 9.2 = p/q) <E(6,5)\nNDP=E(7)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3771.02": {
+    "start_time": 3771.02,
+    "end_time": 3830.16,
+    "text_value": "Ee INU) ElangersNomberg\nV2 is Irrational (the Proof\n\nZi\nm\ng\n3\n3\nEe\n\nformula | NDjust\n\n| lemma\n\nlemma\n\nin, p.prime(p) ) = (#(n) +1) | lemma\n\u00a5x.irr(x)  3( definition\n2) (Sp, q.V2 = p/q) NDVE(4)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3830.16": {
+    "start_time": 3830.16,
+    "end_time": 3842.34,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nE INU) ElangersNomberg\n\nFirst-Order Natural Deduction (\\/D!; Gentzen Gen34\n\n> Definition 3.1 (New Quantifier Rules). The first-order natural deduction\ncalculus VD extends \\VD) by the following four rule\niX.A\n(BYXI(A)\n\nyy*\n\nUle/X]\"\n\nXA ce Xi new\nND 13e2\nCc\n* means that A does not depend on any hypothesis in which X is free.\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3842.34": {
+    "start_time": 3842.34,
+    "end_time": 3861.48,
+    "text_value": "Ee INU) Enangen Nomen\nV2 is Irrational (the Proof\n\nm\nx\no\n=\n\ni\n\nformula NDjust\n| va, m lemma\nlemma\n\u00a5n, p.prime(p) ) ) | lemma\n\u00a5x.irr(x) + (Sp, 4. definition\nirr(V2)  >(Sp, 9.V2 = p/q) ND}VE(4)\nirr( V2) NDPAx\n(Ap, a.V2 = p/a) <E(6,5)\nND?=E(7)\n\nwonaunsonny\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3861.48": {
+    "start_time": 3861.48,
+    "end_time": 3890.08,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n>\n=\n\nm\nx\nBy\n=|\n\ni\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nV2 is Irrational\n\nformula\n\nVn, m.\n\nn, p.prime(p)\nx.irr(x) (3p, \u00a2\nirr(V2)  7(p, 9.V2 = p/q)\n(v2)\n(Ap, a.V2 = p/a)\np,9.V2 = p/q\nv2=p/q\n2q\n\nProf. Dr. Michael Kohlhase\n\n= INU) ElangersNomberg\n\n| NDjust\n\n| lemma\nlemma\nlemma\ndefinition\nNDAVE(4)\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3890.08": {
+    "start_time": 3890.08,
+    "end_time": 3921.25,
+    "text_value": "Ee INU) ElangersNomberg\n\nE7(2)\n\u00a3(14, 15)\n\n\u00a3(17,10)\n\u00a3(18, 16)\n\n(19, 11)\n\n)) | WDVE2(1)\nFI(20, 21)\n\u00a39(22)\n\nArtificial Intelligence | J\nirr( V2) NDy18(23)\n\nirr(V2)\n\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3921.25": {
+    "start_time": 3921.25,
+    "end_time": 3934.92,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\ny\nm\ng\n3\n3\nEe\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nV2 is Irrational\n\nformula\n\nin, p.prime(p)\n\u00a5x.irr(x) \u00a2\nirr(V2) + (3p, 9.-V2 = p/q)\nirr(V2)\n(Ap, a.V2 = p/a)\n\nProf. Dr. Michael Kohlhase\n\n1)\n\nEe INU) ElangerNomberg\n\n| NDjust\nlemma\nlemma\nlemma\ndefinition\nNDEVE(4)\nNDP Ax\n=E(6,5)\nNDP=E(7)\nND?\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3934.92": {
+    "start_time": 3934.92,
+    "end_time": 3951.76,
+    "text_value": "Ee INU) ElangerNomberg\nND} Example: v2 is Irrational (the Proof)\n\nhyp | formula | NDjust\nr | lemma\nlemma\nlemma\n\nq definition\n\n(Sp, q.V2 = p/q) NDVE(4)\n\nND\u00b0Ax\n\nE(6,5)\nND?-E(7)\nNDE AX\n\nArtificial Intelligence | (9)\n\nws 2024/2025 a eae\n\nwConvansonng\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3951.76": {
+    "start_time": 3951.76,
+    "end_time": 3970.23,
+    "text_value": "= INU) ElangersNomberg\n\nND} Example: V2 is Irrational\n\n> We can do real mathematics with D1\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n\n1. Assume that v2 is rational.\n\n2. Then there are numbers p and q such that V2 = p/g.\n3. So we know 2q? =.p?,\n4\n5\n\nBut 2g? has an odd number of prime factors while p? an even number.\nThis is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "3970.23": {
+    "start_time": 3970.23,
+    "end_time": 3980.04,
+    "text_value": "Artificial Intelligence |\n\nWS 2024/2025\n\nND} Example: V2 is Irrational (the Proof\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nformula\n\nYn, p.prime(p)\nx.irr(x) \u00a2\nirr(V2)\nirr(V2)\n\n(Ap,4.v2\n\n= p/g)\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation\n\n= INU) ElangersNomberg\n\n| NDjust\n[lemma\nlemma\nlemma\ndefinition\nNDIVE(A)\nNDOA\n<E(6,5)\nAD?-E(7)\nNDS Ax\nith(9)\nDVE2(2)"
+    },
+    "3980.04": {
+    "start_time": 3980.04,
+    "end_time": 4000.2,
+    "text_value": "= INU) ElangerNomberg\n\nND} Example: V2 is Irrational\n\n> We can do real mathematics with \\\u2019/D4\n\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n1. Assume that V2 is rational.\n. Then there are numbers p and q such that V2 = p/g.\n\nBut 2g? has an odd number of prime factors while p? an even number.\n. This is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\n2\n3. So we know 2q? = p.\n4\n5\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4000.2": {
+    "start_time": 4000.2,
+    "end_time": 4042.89,
+    "text_value": "= INU) ElangersNomberg\n\nV2 is Irrational\n\nful\na\no\n=|\n=\n\nformula | NDjust\n| | lemma\nlemma\nin, p.prime(p) pn) = (##(n) +1) | lemma\nvx.irr(x) + =(Sp, q. p/q) definition\nirr(V2)  >(Sp, 9.V2 = p/a) NDVE(4)\nirr(V2) NDLAx\n(Ap, q.V2 = p/a) <E(6,5)\nND?=E(7)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nprime(2)\n\nFAU Michasl chase\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4042.89": {
+    "start_time": 4042.89,
+    "end_time": 4110.12,
+    "text_value": "= INU) ElangerNomberg\n\nND} Example: v2 is Irrational\n\n> We can do real mathematics with VD1\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n\n1, Assume that v2 is rational.\n\n2. Then there are numbers p and q such that V2 = p/g.\n3. So we know 2q? = p\u00ae\n4\n5\n\nBut 2g? has an odd number of prime factors while p? an even number.\nThis is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4110.12": {
+    "start_time": 4110.12,
+    "end_time": 4131.05,
+    "text_value": "= INU) ElangerNomberg\n\nV2 is Irrational (the Proof)\n\niu\nx\no\n=)\n=\n\nformula | NDjust\n| lemma\nlemma\nn, p.prime(p) ( ) | lemma\n\u00a5x.irr(x) + (3p, 4. definition\n2) (Sp. 9.vV2 ND!VE(4)\nE(6,5)\n2-E(7)\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4131.05": {
+    "start_time": 4131.05,
+    "end_time": 4155.23,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nYn, p.prime(p)\nx.irr(x)  =(Sp, q.\nirr(V2)  >(Sp, 9.V2\nirr(V2)\n\n(Ap, q.V2 = p/a)\n\n=P/q)\n\n= INU) ElangerNomberg\n\n| NDjust\nTemma\nlemma\nlemma\ndefinition\nNDIVE(4)\n\nNDOAx\n=E(6,5)\nND?=E(7)\nADP Ax\nith(9)\n(DIVE?(2)\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4155.23": {
+    "start_time": 4155.23,
+    "end_time": 4165.47,
+    "text_value": "= INU) Elangeromberg\n\n: V2 is Irrati\n\n> We can do real mathematics with \\VD1\n> Theorem 3.10. V2 is irrational\nProof: We prove the assertion by contradiction\n\n1. Assume that v2 is rational.\n\n2. Then there are numbers p and q such that V2 = p/g.\n3. So we know 2q? = p\u00ae\n4\n5\n\nBut 2g? has an odd number of prime factors while p? an even number.\nThis is a contradiction (since they are equal), so we have proven the\n\nArtificial Intelligence | assertion\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4165.47": {
+    "start_time": 4165.47,
+    "end_time": 4170.16,
+    "text_value": "Ee INU) Enangen Nomberg\nND} Example: V2 is Irrational (the Proof\n\nhyp | formula |_NDjust\n| | Vn, m(2n +1) | lemma\nYn, m.4#-(n\u2122) = m4 lemma\n\u2018n, p.prime(p) ( ) | lemma\n\u00a5x.irr(x) definition\nND}VE(4)\nNDP Ax\n\n<>E(6,5)\n\n#\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4170.16": {
+    "start_time": 4170.16,
+    "end_time": 4190.08,
+    "text_value": "Ee INU) ElangerNomberg\n\nFirst-Order Natural Deduction in Sequent Formulation\n\n> Rules for connectives from JV\n> Definition 3.2 (New Quantifier Rules). The inference rules of the first-order\nsequent calculus MD? consist of those from VD? plus the following qua\nrules:\nTEA X \u00a2 freelF) spay TEVA ps\nTHYX.A TFB/X\nFHIB/XI(A) psy TrAX.A T,[e/XJ(A)EC ce ES new prog\nTrax.A TEC ;\n\nArtificial Intelligence |\nWS 2024/2025\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4190.08": {
+    "start_time": 4190.08,
+    "end_time": 4246.88,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nEe INU) ElangersNomberg\n\nlemma\nND) (13, 12)\nVE2(2)\n\u00a3(14, 15)\n1\n\n\u00a3(17,10)\n\u00a3(18, 16)\n\n=F (19, 11)\nDVE?(1)\nVDFI(20, 21)\n\n\u00a39(22)\n19(23)\nE?(23)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4246.88": {
+    "start_time": 4246.88,
+    "end_time": 4605.27,
+    "text_value": "= INU) ElangersNomberg\n\nNatural Deduction with Equali\n\nith Equality). We extend PI) with a\ntant for equality =< \u00a32 and fix its interpretation to\naes 5 {(x,x)|x \u20ac D,}. We call the extended logic first-order logic with\n\u2018 equality (PL1)\nJ aegy & > We now extend natural deduction as well\n> Definition 3.4. For the calculus of natural deduction with equali DL) we\nadd the following two rules to \\VD? to deal with equality:\n\n' A=B CIA),\nA=A {B/p|C\nwhere C [Al], if the formula C has a subterm A at n pand [B/p|C is the\n\nresult of replacing that subterm with B.\n> In many ways equivalence behaves like equality, we will use the following rules\n\nE\n\nArtificial Intelligence |\nWS 2024/2025 in ND*\n\n> Defi 4 \u00bb/ is derivable and <>E is admis: in AZ\n\nND}\n\nASB CIA],\n\nBele\n\nFAU Michosl Kchlbase As\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4605.27": {
+    "start_time": 4605.27,
+    "end_time": 4735.55,
+    "text_value": "= INU) ElangersNomberg\n\nPositions in Formulae\n\n> Idea: Formulae are (naturally) trees, so we can use tree positions to talk about\nsubformulae\n] > Definition 3.7. A position p is a tuple of natural numbers that in each node of\ncon (tree) specifies into which child to descend. For a expression\ndenote the subexpression at p with A\\,,\nWe will sometimes write a expr\non A at position p.\n\nfrom C by replacing the sube\n> Example 3.9 (Schematically).\n\nArtificial Intelligence | c\nWS 2024/2025\n\nFAU Micheal chase Ani\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4735.55": {
+    "start_time": 4735.55,
+    "end_time": 4861.8,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nNatural Deduction with Equali\n\nion 3.3 (First-Order Logic with Equality). We extend PI} with a\nonstant for equality =< \u00a32 and fix its interpretation to\n{(x,x)|x \u20ac D,}. We call the extended logic first-order logic with\nequality (PL1)\n> We now extend natural deduction as well.\n> Definition 3.4. For the calculus of natural deduction with equality (VD!) we\nadd the following two rules to \\VD! to deal with equality:\n\n; A=B CIA),\nA=A [B/pic\nwhere C [Al], if the formula C has a subterm A at n p and [B/p|C is the\nresult of replacing that subterm with B.\n\n> In many ways equivalence behaves like equality, we will use the following rules\nin VD\"\n\nE\n\n>I is derivable and <>E is admis:\nASB CIA],\n[B/eIc\n\nFAU Biches chiens\n\n= INU) ElangerNomberg\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4861.8": {
+    "start_time": 4861.8,
+    "end_time": 4920.04,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\nEe INU) Enangen Nomen\nV2 is Irrational (the Proof\n\nSl\nm\ng\n3\n3\nEe\n\nformula | NDjust\n| Temma\nlemma\nYn, p.prime(p) ( ) | lemma\n\u2018x.irr(x) + definition\nimr(V2\n\n# |\n1\n2\n3\n4\n5\n6\n7\n8\n9\n\nProf. Dr. Michael Kohlhase\n\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "4920.04": {
+    "start_time": 4920.04,
+    "end_time": 4930.94,
+    "text_value": "Ee INU) ElangerNomberg\n\nlemma\nND (13, 12)\n(2)\n\u00a3(14, 15)\n1\n\n(17,10)\n(18, 16)\n\n) (19, 11)\n(2#(p)) | MDIVE?(1)\n\u2014 . NDSFI(20, 21)\nArtificial Intelligence | \u00a36 (22)\n\n1(vi ND=19(23)\n\nWS 2024/2025 E7(23)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation"
+    },
+    "4930.94": {
+    "start_time": 4930.94,
+    "end_time": 5023.63,
+    "text_value": "Artificial Intelligence |\nWS 2024/2025\n\n= INU) ElangerNomberg\n\nlemma\nNDy 3E(13, 12)\nE7(2)\n\u00a3 (14,15)\n1\n\n\u00a3(17, 10)\n\nE(18, 16)\n\n(19, 11)\n\nND VE2(1)\nNDYFI(20, 21)\n\u00a39(22)\n\nirr(V2) ND-!9(23)\nirt(V2) ND E?(23)\n\nProf. Dr. Michael Kohlhase\nProfessur fur Wissensreprasentation und -verarbeitung"
+    },
+    "5023.63": {
+    "start_time": 5023.63,
+    "end_time": 5041.08,
+    "text_value": "rFAU"
+    }
+    }
+    }
+    }

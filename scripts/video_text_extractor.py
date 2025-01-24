@@ -14,12 +14,16 @@ from utils import download_video, load_cache, save_cache
 load_dotenv(".env.local")
 
 VIDEOS_DIR = os.getenv("VIDEOS_DIR")
+# VIDEOS_DIR = os.getenv("VIDEOS_DIR")
+# print(f"VIDEOS_DIR: {VIDEOS_DIR}")
+
 CACHE_FILE = os.getenv("CACHE_FILE")
 
 
 def setup_video_capture(video_path):
     cap = cv2.VideoCapture(video_path)
     fps = cap.get(cv2.CAP_PROP_FPS)
+    # print(f"Video FPS: {fps}")
     return cap, fps
 
 
@@ -190,9 +194,9 @@ def process_single_frame(
                 exact_frame_change_time,
                 similarity_threshold,
             )
-            print(
-                f"Extracted Text at {exact_frame_change_time}s: {current_frame_extracted_text}"
-            )
+            # print(
+            #     f"Extracted Text at {exact_frame_change_time}s: {current_frame_extracted_text}"
+            # )
     return text_dict, last_frame
 
 
@@ -238,7 +242,7 @@ def process_videos(video_urls):
         if video_info:
             video_url_720p = video_info.get("r720")
             if video_url_720p:
-                video_path = os.path.join(VIDEOS_DIR, video_id)
+                video_path = os.path.join(VIDEOS_DIR, f"{video_id}.mp4")
             if not os.path.exists(video_path):
                 download_video(video_url_720p, video_path)
             extracted_text = extract_text_from_video(video_path)
@@ -261,8 +265,8 @@ def get_fau_clip_info(clip_id: str) -> dict[str, Any]:
 
 if __name__ == "__main__":
     video_urls = [
-        "https://www.fau.tv/clip/id/54628",
+        # "https://www.fau.tv/clip/id/54628",
         "https://www.fau.tv/clip/id/54629",
-        "https://www.fau.tv/clip/id/54630",
+        # "https://www.fau.tv/clip/id/54630",
     ]
     process_videos(video_urls)
