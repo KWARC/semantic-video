@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+import time
 
 
 def load_cache(cache_file):
@@ -20,17 +21,31 @@ def save_cache(cache, cache_file):
     print(f"Saved cache to {cache_file}")
 
 
-def download_video(video_url, video_path):
-    video_extension = ".mp4"  # Assuming you're downloading .mp4 videos
-    video_path_with_extension = f"{video_path}{video_extension}"
 
-    response = requests.get(video_url, stream=True)
-    if response.status_code == 200:
-        with open(video_path_with_extension, "wb") as f:
-            for chunk in response.iter_content(chunk_size=1024):
-                f.write(chunk)
-        print(f"Downloaded video to {video_path_with_extension}")
+
+def download_video(url, file_path):
+    # Ensure the file has the correct extension
+    if not file_path.endswith(".mp4") and not file_path.endswith(".m4v"):
+        file_path = f"{file_path}.mp4"  # Add .mp4 extension by default
+    
+    headers = {}
+    if os.path.exists(file_path):
+        existing_file_size = os.path.getsize(file_path)
+        headers["Range"] = f"bytes={existing_file_size}-"
     else:
-        print(f"Failed to download video: {video_url}")
-    return video_path_with_extension
+        existing_file_size = 0
 
+    response = requests.get(url, stream=True, headers=headers, timeout=30)
+    if response.status_code not in (200, 206):
+        raise Exception(f"Failed to download file. HTTP Status: {response.status_code}")
+
+    total_size = int(response.headers.get("content-length", 0)) + existing_file_size
+    print(f"Downloading {url} to {file_path} ({total_size // (1024 * 1024)} MB)")
+
+    with open(file_path, "ab") as f:
+        for chunk in response.iter_content(chunk_size=1024 * 1024):  # 1 MB chunks
+            if chunk:
+                f.write(chunk)
+
+    print(f"Download completed: {file_path}")
+    return file_path  # Return the final file path

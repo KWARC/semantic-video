@@ -1,0 +1,1444 @@
+Extracted Text at 0.43s: Artificial Intelligence 1
+Winter Semester 2024/25
+
+— Lecture Notes —
+Admin & Overview
+
+Prof. Dr. Michael Kohlhase
+
+Professur fiir Wissensreprasentation und -verarbeitung
+Informatik, FAU Erlangen-Nirnberg
+Michael .Kohlhase@FAU.de
+
+2024-10-15
+Extracted Text at 502.73s: Chapter 1
+Preliminaries
+Extracted Text at 519.73s: 1.1 Administrative Ground Rules
+Extracted Text at 521.29s: Prerequisites for Al-1
+
+> Content Prerequisites: The mandatory courses in CS@FAU; Sem. 1-4, in
+
+particular:
+> Course “Algorithmen und Datenstrukturen”. (Algorithms & Data Structures)
+> Course “Grundlagen der Logik in der Informatik” (GLOIN). (Logic in CS)
+> Course “Berechenbarkeit und Formale Sprachen”. (Theoretical CS)
+Extracted Text at 959.53s: Prerequisites for Al-1
+
+> Content Prerequisites: The mandatory courses in CS@FAU; Sem. 1-4, in
+particular:
+> Course “Algorithmen und Datenstrukturen”. (Algorithms & Data Structures)
+> Course “Grundlagen der Logik in der Informatik” (GLOIN). (Logic in CS)
+> Course “Berechenbarkeit und Formale Sprachen”. (Theoretical CS)
+> Skillset Prerequisite: Coping with mathematical formulation of the structures
+
+> Mathematics is the language of science (in particular computer science)
+> It allows us to be very precise about what we mean. (good for you)
+Extracted Text at 1072.3s: Prerequisites for Al-1
+
+> Content Prerequisites: The mandatory courses in CS@FAU; Sem. 1-4, in
+particular:
+> Course “Algorithmen und Datenstrukturen”. (Algorithms & Data Structures)
+> Course “Grundlagen der Logik in der Informatik” (GLOIN). (Logic in CS)
+> Course “Berechenbarkeit und Formale Sprachen”. (Theoretical CS)
+> Skillset Prerequisite: Coping with mathematical formulation of the structures
+
+> Mathematics is the language of science (in particular computer science)
+> It allows us to be very precise about what we mean. (good for you)
+
+> Intuition: (take them with a kilo of salt)
+> This is what | assume you know! (I have to assume something)
+
+> In most cases, the dependency on these is partial and “in spirit”.
+P If you have not taken these (or do not remember), read up on them as needed!
+Extracted Text at 1100.39s: Prerequisites for Al-1
+
+> Content Prerequisites: The mandatory courses in CS@FAU; Sem. 1-4, in
+particular:
+
+> Course “Algorithmen und Datenstrukturen”. (Algorithms & Data Structures)
+> Course “Grundlagen der Logik in der Informatik” (GLOIN). (Logic in CS)
+> Course “Berechenbarkeit und Formale Sprachen”. (Theoretical CS)
+
+> Skillset Prerequisite: Coping with mathematical formulation of the structures
+
+> Mathematics is the language of science (in particular computer science)
+> It allows us to be very precise about what we mean. (good for you)
+
+> Intuition: (take them with a kilo of salt)
+
+> This is what | assume you know! (I have to assume something)
+> In most cases, the dependency on these is partial and “in spirit”.
+P If you have not taken these (or do not remember), read up on them as needed!
+
+> Real Prerequisites: Motivation, interest, curiosity, hard work. (AI-1 is
+non-trivial)
+
+P You can do this course if you want! (and | hope you are successful)
+Extracted Text at 1135.2s: Assessment, Grades
+
+> Overall (Module) Grade:
+P Grade via the exam (Klausur) ~» 100% of the grade.
+> Up to 10% bonus on-top for an exam with > 50% points. (< 50% ~» no bonus)
+> Bonus points = percentage sum of the best 10 prepquizzes divided by 100.
+Extracted Text at 1323.83s: Assessment, Grades
+
+> Overall (Module) Grade:
+
+P Grade via the exam (Klausur) ~» 100% of the grade.
+> Up to 10% bonus on-top for an exam with > 50% points. (< 50% ~» no bonus)
+> Bonus points = percentage sum of the best 10 prepquizzes divided by 100.
+
+> Exam: 90 minutes exam conducted in presence on paper!  (~ April 1. 2025)
+> Retake Exam: 90 min exam six months later. (~ October 1. 2025)
+
+> AX You have to register for exams in https: //campo.fau.de in the first month
+of classes. (there is a deadine!)
+
+> Note: You can de-register from an exam on https://campo.fau.de up to
+three working days before exam. (do not miss that if you are not prepared)
+Extracted Text at 1519.69s: Preparedness Quizzes
+
+> PrepQuizzes: Every tuesday 16:15 we start the lecture with a 10 min online
+quiz — the PrepQuiz — about the material from the previous week.(starts in week
+
+2)
+> Motivations: We do this to
+
+> keep you prepared and working continuously.
+
+P update the ALeA learner model
+> The prepquiz will be given in the ALeA system
+
+https: //courses.voll-ki.fau.de/quiz-dash/ai-1
+
+You have to be logged into ALeA! (via FAU IDM)
+You can take the prepquiz on your laptop or phone, ...
+
+...in the lecture or at home ...
+
+... via WLAN or 4G Network. (do not overload)
+Prepquizzes will only be available 16:15-16:25!
+
+(primary)
+(fringe benefit)
+
+Ei suest sabrina
+Question 1 of 2 04:42Q@ &
+
+(Minimum Function)
+Let $ an el. Which statements
+about the minimum of S are true?
+
+© Thereisaiways a minan o
+
+@ Essh clement «ofthe set S with = =m
+me$ of the
+
+1@ set Swith x < m for
+m of the
+
+NEXT >
+SUBMIT
+Extracted Text at 1741.33s: This Thursday: Pretest
+
+> A This thursday we will try out the prepquiz infrastructure with a pretest!
+> Presence: bring your laptop or cellphone.
+> Online: you can and should take the pretest as well.
+P Have a recent firefox or chrome (chrome: younger than March 2023)
+> Make sure that you are logged into ALeA (via FAU IDM; see below)
+> Definition 1.1. A pretest is an assessment for evaluating the preparedness of
+learners for further studies.
+> Concretely: This pretest
+> establishes a baseline for the competency expectations in Al-1 and
+P tests the ALeA quiz infrastructure for the prepquizzes.
+> Participation in the pretest is optional; it will not influence grades in any way.
+
+> The pretest covers the prerequisites of Al-1 and some of the material that may
+have been covered in other courses.
+
+> The test will be also used to refine the ALeA learner model, which may make
+learning experience in ALeA better. (see below)
+Extracted Text at 2015.23s: A Special Admin Conditions A
+
+> Some degree programs do not “import” the course Artificial Intelligence 1, and
+thus you may not be able to register for the exam via https://campo. fau.de.
+
+> Just send me an e-mail and come to the exam, (we do the necessary admin)
+> Tell your program coordinator about Al-1/2 so that they remedy this situation
+
+> In “Wirtschafts-Informatik” you can only take Al-1 and Al-2 together in the
+“Wahlpflichtbereich”.
+P credits need to be divisible by five ~ 7.54 7.5 = 15.
+Extracted Text at 2023.28s: This Thursday: Pretest
+
+> A This thursday we will try out the prepquiz infrastructure with a pretest!
+> Presence: bring your laptop or cellphone.
+> Online: you can and should take the pretest as well.
+P Have a recent firefox or chrome (chrome: younger than March 2023)
+> Make sure that you are logged into ALeA (via FAU IDM; see below)
+> Definition 1.1. A pretest is an assessment for evaluating the preparedness of
+learners for further studies.
+> Concretely: This pretest
+> establishes a baseline for the competency expectations in Al-1 and
+P tests the ALeA quiz infrastructure for the prepquizzes.
+> Participation in the pretest is optional; it will not influence grades in any way.
+
+> The pretest covers the prerequisites of Al-1 and some of the material that may
+have been covered in other courses.
+
+> The test will be also used to refine the ALeA learner model, which may make
+learning experience in ALeA better. (see below)
+Extracted Text at 2231.37s: A Special Admin Conditions A
+
+> Some degree programs do not “import” the course Artificial Intelligence 1, and
+thus you may not be able to register for the exam via https: //campo.fau.de.
+
+> Just send me an e-mail and come to the exam, (we do the necessary admin)
+> Tell your program coordinator about Al-1/2 so that they remedy this situation
+
+> In “Wirtschafts-Informatik” you can only take Al-1 and Al-2 together in the
+“Wahlpflichtbereich”.
+P credits need to be divisible by five ~ 7.5+ 7.5 = 15.
+Extracted Text at 2430.16s: 1.2 Getting Most out of Al-1
+Extracted Text at 2447.73s: Al-1 Homework Assignments
+
+> Goal: Homework assignments reinforce what was taught in lectures.
+
+> Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+
+> Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+> AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+Extracted Text at 2517.62s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2690.31s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2746.41s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2836.29s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2865.31s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2896.41s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~+ questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2930.23s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2946.45s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 2995.2s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 3045.47s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 3070.16s: Al-1 Homework Assignments
+
+Goal: Homework assignments reinforce what was taught in lectures.
+Homework Assignments: Small individual problem/programming/proof task
+P but take time to solve (at least read them directly ~» questions)
+Didactic Intuition: Homework assignments give you material to test your
+understanding and show you how to apply it.
+
+AX Homeworks give no points, but without trying you are unlikely to pass the
+exam.
+
+Homeworks will be mainly peer-graded in the ALeA system.
+
+Didactic Motivation: Through peer grading students are able to see mistakes
+in their thinking and can correct any problems in future assignments. By grading
+assignments, students may learn how to complete assignments more accurately
+
+and how to improve their future results. (not just us being lazy)
+Extracted Text at 3131.45s: Al-1 Homework Assignments — Howto
+
+(see below)
+
+> Homework Workflow: in ALeA
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+
+P Peer grading/feedback (and master solutions) via answer classes.
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+Extracted Text at 3146.33s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+> Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+
+> You should only expect other's to grade your submission if you grade their's
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+Extracted Text at 3226.41s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+
+> Submission of solutions via the ALeA system in the week after
+
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+P Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3246.37s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+P Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3261.33s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+
+> Submission of solutions via the ALeA system in the week after
+
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+> Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3276.33s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+P Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3295.27s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+
+P Submission of solutions via the ALeA system in the week after
+
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their’s
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+> Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3326.29s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don't start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+P Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3346.37s: Al-1 Homework Assignments — Howto
+
+> Homework Workflow: in ALeA (see below)
+> Homework assignments will be published on thursdays: see
+https: //courses.voll-ki.fau.de/hw/ai-1
+> Submission of solutions via the ALeA system in the week after
+P Peer grading/feedback (and master solutions) via answer classes.
+
+> Quality Control: TAs and instructors will monitor and supervise peer grading.
+
+> Experiment: Can we motivate enough of you to make peer assessment
+self-sustaining?
+> | am appealing to your sense of community responsibility here ...
+> You should only expect other's to grade your submission if you grade their's
+
+(cf. Kant’s “Moral Imperative’)
+
+> Make no mistake: The grader usually learns at least as much as the gradee.
+
+> Homework/Tutorial Discipline:
+> Start early! (many assignments need more than one evening's work)
+> Don’t start by sitting at a blank screen (talking & study groups help)
+> Humans will be trying to understand the text/code/math when grading it.
+P Go to the tutorials, discuss with your TA! (they are there for you!)
+Extracted Text at 3351.33s: Tutorials for Artificial Intelligence 1
+
+> Approach: Weekly tutorials and homework assignments (first one in week two)
+(you need practice)
+
+> Goal 1: Reinforce what was taught in the lectures.
+> Goal 2: Allow you to ask any question you have in a protected environment.
+Extracted Text at 3390.7s: Tutorials for Artificial Intelligence 1
+
+> Approach: Weekly tutorials and homework assignments (first one in week two)
+> Goal 1: Reinforce what was taught in the lectures. (you need practice)
+> Goal 2: Allow you to ask any question you have in a protected environment.
+
+> Instructor/Lead TA: Florian Rabe (KWARC Postdoc)
+> Room: 11.137 © Handler building, florian. rabe@fau.de
+
+> Tutorials: One each taught by Florian Rabe (lead); Yasmeen Shawat, Hatem
+Mousa, Xinyuan Tu, and Florian Guthmann.
+
+> Life-saving Advice: Go to your tutorial, and prepare for it by having looked at
+the slides and the homework assignments!
+Extracted Text at 3427.5s: Collaboration
+
+Definition 2.1. Collaboration (or cooperation) is the process of groups of
+agents acting together for common, mutual benefit, as opposed to acting in
+competition for selfish benefit. In a collaboration, every agent contributes to the
+common goal and benefits from the contributions of others.
+
+In learning situations, the benefit is “better learning”.
+
+Observation: In collaborative learning, the overall result can be significantly
+better than in competitive learning.
+
+Good Practice: Form study groups. (long- or short-term)
+
+1. AX those learners who work most, learn most!
+2. AX freeloaders — individuals who only watch — learn very little!
+
+P It is OK to collaborate on homework assignments in Al-1! (no bonus points)
+P Choose your study group well! (We will (eventually) help via ALeA)
+Extracted Text at 3675.55s: Do | need to attend the Al-1 s
+
+> Attendance is not mandatory for the Al-1 course. (official version)
+
+> Note: There are two ways of learning: (both are OK, your mileage may vary)
+
+> Approach B: Read a book/papers (here: lecture notes)
+> Approach |: come to the lectures, be involved, interrupt the instructor whenever you
+have a question.
+
+The only advantage of | over B is that books/papers do not answer questions
+
+> Approach S: come to the lectures and sleep does not work!
+> The closer you get to research, the more we need to discuss!
+Extracted Text at 4042.73s: Textbook, Handouts and Information, Forums, Videos
+
+> Textbook: Russel/Norvig: Artificial Intelligence, A modern Approach
+[RusNor:AIMA09].
+
+P basically “broad but somewhat shallow”
+> great to get intuitions on the basics of Al
+Make sure that you read the edition > 3 ~ vastly improved over < 2.
+Extracted Text at 4131.09s: Textbook, Handouts and Information, Forums, Videos
+
+> Textbook: Russel/Norvig: Artificial Intelligence, A modern Approach
+[RusNor:AIMA09].
+P basically “broad but somewhat shallow”
+> great to get intuitions on the basics of Al
+Make sure that you read the edition > 3 ~ vastly improved over < 2.
+> Lecture notes: will be posted at https: //kwarc.info/teaching/AI
+> more detailed than [RusNor:AIMA09] in some areas
+> | mostly prepare them as we go along (semantically preloaded ~» research resource)
+P please e-mail me any errors/shortcomings you notice. (improve for the group)
+Extracted Text at 4193.52s: Textbook, Handouts and Information, Forums, Videos
+
+> Textbook: Russel/Norvig: Artificial Intelligence, A modern Approach
+[RusNor:AIMA09].
+P basically “broad but somewhat shallow”
+P great to get intuitions on the basics of Al
+Make sure that you read the edition > 3 ~ vastly improved over < 2.
+> Lecture notes: will be posted at https: //kwarc.info/teaching/AI
+> more detailed than [RusNor:AIMA09] in some areas
+> | mostly prepare them as we go along (semantically preloaded ~» research resource)
+P please e-mail me any errors/shortcomings you notice. (improve for the group)
+> Course Videos: Al-1 will be streamed/recorded at
+https: //fau.tv/course/id/4047
+> Organized: Video course nuggets are available at
+https: //fau.tv/course/id/1690 (short; organized by topic)
+> Backup: The lectures from WS 2016/17 to SS 2018 have been recorded (in English
+and German), see https://www.fau.tv/search/term. html?q=Kohlhase
+Extracted Text at 4230.12s: Textbook, Handouts and Information, Forums, Videos
+
+> Textbook: Russel/Norvig: Artificial Intelligence, A modern Approach
+[RusNor:AIMA09].
+P basically “broad but somewhat shallow”
+> great to get intuitions on the basics of Al
+Make sure that you read the edition > 3 ~ vastly improved over < 2.
+> Lecture notes: will be posted at https: //kwarc.info/teaching/AI
+> more detailed than [RusNor:AIMA09] in some areas
+> | mostly prepare them as we go along (semantically preloaded ~» research resource)
+P please e-mail me any errors/shortcomings you notice. (improve for the group)
+> Course Videos: Al-1 will be streamed/recorded at
+https: //fau.tv/course/id/4047
+> Organized: Video course nuggets are available at
+https: //fau.tv/course/id/1690 (short; organized by topic)
+> Backup: The lectures from WS 2016/17 to SS 2018 have been recorded (in English
+and German), see https://www.fau.tv/search/term. html?q=Kohlhase
+> Do not let the videos mislead you: Coming to class is highly correlated with
+
+passing the exam!
+Extracted Text at 4245.2s: Textbook, Handouts and Information, Forums, Videos
+
+> Textbook: Russel/Norvig: Artificial Intelligence, A modern Approach
+[RusNor:AIMA09].
+> basically “broad but somewhat shallow”
+> great to get intuitions on the basics of Al
+Make sure that you read the edition > 3 ~ vastly improved over < 2.
+> Lecture notes: will be posted at https: //kwarc.info/teaching/AI
+> more detailed than [RusNor:AIMA09] in some areas
+> | mostly prepare them as we go along (semantically preloaded ~» research resource)
+P please e-mail me any errors/shortcomings you notice. (improve for the group)
+> Course Videos: Al-1 will be streamed/recorded at
+https: //fau.tv/course/id/4047
+> Organized: Video course nuggets are available at
+https: //fau.tv/course/id/1690 (short; organized by topic)
+> Backup: The lectures from WS 2016/17 to SS 2018 have been recorded (in English
+and German), see https://www.fau.tv/search/term. html?q=Kohlhase
+> Do not let the videos mislead you: Coming to class is highly correlated with
+passing the exam!
+> StudOn Forum: https://www.studon.fau.de/crs5832535.html for
+> announcements, homeworks (my view on the forum)
+> questions, discussion among your fellow students (your forum too, use it!)
+Extracted Text at 4255.2s: Practical recommendations on Lecture Videos
+
+> Excellent Guide: [NorKueRob:Icprs18] (German version at
+[NorKueRob:vnas18})
+
+Using lecture Attend lectures.
+recordings: & Take notes.
+
+A guide for students
+
+rQ Q] Be specific.
+
+Catch up.
+
+«» Ask for help.
+
+Don’t cut corners.
+Extracted Text at 4275.74s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.1. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.2. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Extracted Text at 4350.82s: NOT a Resource for : LLMs — Al-tools like ChatGPT EAU
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4370.27s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4390.27s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW)
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4406.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4455.16s: NOT a Resource for : LLMs — Al-tools like ChatGPT EAU
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4471.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4491.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW)
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4520.23s: NOT a Resource for : LLMs — Al-tools like ChatGPT NW)
+
+Definition 3.6. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.7. OpenAl's GPT, Google's Bard, and Meta’s Llama.
+
+Definition 3.8. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.9 (ChatGPT talks about Al-1). (but remains vague)
+
+tell me about the course AI-1 at FAU Erlangen-Niirnberg
+
+AI-1 at FAU Erlangen-Niimberg typically refers to a foundational course in artificial intelligence offered
+by the university. While I don't have the specifics of the course details from the latest curriculum, I can
+provide a general overview of what such a course might include based on common topics covered in
+introductory AI courses.
+
+Generally, an introductory AI course would cover the following topics:
+
+1. Foundations of AI: An overview of what AI is, its history, and its significance in various fields.
+
+2. Problem Solving and Search Algorithms: Techniques for solving problems through algorithms,
+Extracted Text at 4570.16s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.11. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.12. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.13. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.14 (ChatGPT talks about Al-1). (but remains vague)
+
+Example 3.15 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Extracted Text at 4591.33s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.11. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.12. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.13. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.14 (ChatGPT talks about Al-1). (but remains vague)
+
+Example 3.15 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Extracted Text at 4606.37s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.11. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.12. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.13. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+Example 3.14 (ChatGPT talks about Al-1). (but remains vague)
+
+Example 3.15 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Extracted Text at 4771.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4791.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4855.16s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4870.31s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4891.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4955.08s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.16. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+Example 3.17. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+Definition 3.18. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+Example 3.19 (ChatGPT talks about Al-1). (but remains vague)
+Example 3.20 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+Extracted Text at 4975.23s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+P challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 4990.23s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+> Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5006.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+P challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5011.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5020.35s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+P challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5040.08s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5056.29s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+P can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5070.27s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+> Definition 3.23. A chatbot is a software application or web interface that is
+
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+P challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5085.08s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5090.31s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+> hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+P challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5105.2s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl’s GPT, Google's Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5140.23s: NOT a Resource for : LLMs — Al-tools like ChatGPT
+
+> Definition 3.21. A large language model (LLM) is a computational model
+capable of language generation or other natural language processing tasks.
+
+> Example 3.22. OpenAl's GPT, Google’s Bard, and Meta’s Llama.
+
+> Definition 3.23. A chatbot is a software application or web interface that is
+designed to mimic human conversation through text or voice interactions.
+Modern chatbots are usually based on LLMs.
+
+> Example 3.24 (ChatGPT talks about Al-1). (but remains vague)
+
+> Example 3.25 (In the Al-1 exam). ChatGPT scores ca. 50% of the points.
+
+> ChatGPT can almost pass the exam ... (We could award it a Master's degree)
+> But can you? (the Al-1 exams will be in person on paper)
+
+You will only pass the exam, if you can do Al-1 yourself!
+P Intuition: Al tools like GhatGPT, CoPilot, etc. (see also [Shein:iacse24])
+> can help you solve problems, (valuable tools in production situations)
+P hinders learning if used for homeworks/quizzes, etc. (like driving instead of jogging)
+> What (not) to do: (to get most of the brave new Al-supported world)
+
+P try out these tools to get a first-hand intuition what they can/cannot do
+> challenge yourself while learning so that you can also do it (mind over matter!)
+Extracted Text at 5155.23s: 1.4 Al-Supported Learning

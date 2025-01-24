@@ -5,14 +5,13 @@ from rapidfuzz import fuzz, process
 
 load_dotenv(".env.local")
 
-SLIDES_FILE_PATH = os.getenv("SLIDES_FILE_PATH")
 OCR_CACHE_FILE_PATH = os.getenv("OCR_CACHE_FILE_PATH")
 PROCESSED_OUTPUT_FILE_PATH = os.getenv("PROCESSED_OUTPUT_FILE_PATH")
 
-if not all([SLIDES_FILE_PATH, OCR_CACHE_FILE_PATH, PROCESSED_OUTPUT_FILE_PATH]):
+if not all([OCR_CACHE_FILE_PATH, PROCESSED_OUTPUT_FILE_PATH]):
     raise EnvironmentError("Missing required environment variables. Check .env.local.")
 
-with open(SLIDES_FILE_PATH, "r", encoding="utf-8") as slides_file:
+with open(PROCESSED_OUTPUT_FILE_PATH, "r", encoding="utf-8") as slides_file:
     slides = json.load(slides_file)
 
 with open(OCR_CACHE_FILE_PATH, "r", encoding="utf-8") as results_file:
