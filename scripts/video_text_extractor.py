@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any, Dict, Optional
 import cv2
 import pytesseract
 import time
@@ -15,6 +15,7 @@ load_dotenv(".env.local")
 
 VIDEOS_DIR = os.getenv("VIDEOS_DIR")
 CACHE_FILE = os.getenv("CACHE_FILE")
+BASE_URL = os.getenv("BASE_URL", "http://localhost:5000")
 
 
 def setup_video_capture(video_path):
@@ -224,6 +225,14 @@ def update_text_dict(
             "text_value": current_frame_extracted_text,
         }
 
+def get_fau_clip_info(clip_id: str) -> Optional[Dict[str, str]]:
+    if not clip_id:
+        return None
+    url = f'{BASE_URL}/get-clip-info?clipId={clip_id}'  
+    response = requests.get(url)
+    response.raise_for_status()
+    return response.json()
+
 
 def process_videos(video_urls):
     cache = load_cache(CACHE_FILE)
@@ -234,34 +243,25 @@ def process_videos(video_urls):
             continue
         if video_id is None:
             return
-        video_info = get_fau_clip_info(video_id)
-        if video_info:
-            video_url_720p = video_info.get("r720")
-            if video_url_720p:
+        print({video_id})
+        clip_info = get_fau_clip_info(video_id)
+        if clip_info:
+            slides_and_audio_url = clip_info.get("slidesAndAudioLink")
+            if slides_and_audio_url:
                 video_path = os.path.join(VIDEOS_DIR, video_id)
-            if not os.path.exists(video_path):
-                download_video(video_url_720p, video_path)
-            extracted_text = extract_text_from_video(video_path)
-            cache[video_id] = {
-                "url": video_url_720p,
-                "extracted_text": extracted_text,
-            }
-            save_cache(cache, CACHE_FILE)
-
-
-def get_fau_clip_info(clip_id: str) -> dict[str, Any]:
-    if not clip_id:
-        return
-    response = requests.get(
-        f"https://courses.voll-ki.fau.de/api/get-fau-clip-info/{clip_id}"
-    )
-    response.raise_for_status()
-    return response.json()
+                if not os.path.exists(video_path):
+                    download_video(slides_and_audio_url, video_path)
+                extracted_text = extract_text_from_video(video_path)                
+                cache[video_id] = {
+                    "url": slides_and_audio_url,
+                    "extracted_text": extracted_text,
+                }
+                save_cache(cache, CACHE_FILE)
 
 
 if __name__ == "__main__":
     video_urls = [
-        "https://www.fau.tv/clip/id/54628",
+        "https://www.fau.tv/clip/id/54623",
         "https://www.fau.tv/clip/id/54629",
         "https://www.fau.tv/clip/id/54630",
     ]
