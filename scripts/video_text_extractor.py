@@ -18,7 +18,7 @@ from utils import (
 
 load_dotenv(".env.local")
 
-VIDEOS_DIR = os.getenv("VIDEOS_DIR")
+VIDEO_DOWNLOAD_DIR = os.getenv("VIDEO_DOWNLOAD_DIR")
 CACHE_FILE = os.getenv("CACHE_FILE")
 
 
@@ -257,8 +257,8 @@ def process_videos(clip_ids):
             print(f"No valid link found for clip ID {video_id}. Skipping.")
             continue
 
-        temp_video_path = os.path.join(VIDEOS_DIR, f"{video_id}_tmp.m4v")
-        final_video_path = os.path.join(VIDEOS_DIR, f"{video_id}.m4v")
+        temp_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{video_id}_tmp.m4v")
+        final_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{video_id}.m4v")
 
         if not os.path.exists(final_video_path):
             print(f"Downloading video for clip ID: {video_id}")

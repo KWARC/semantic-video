@@ -53,7 +53,12 @@ def extract_clip_ids(file_path, course_name):
         data = json.load(file)
 
     if course_name in data:
-        clip_ids = [entry["clipId"] for entry in data[course_name]]
+        # Include only non-empty clipIds
+        clip_ids = [
+            entry["clipId"]
+            for entry in data[course_name]
+            if "clipId" in entry and entry["clipId"].strip()
+        ]
         return clip_ids
     else:
         return []
