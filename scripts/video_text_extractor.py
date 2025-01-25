@@ -1,4 +1,3 @@
-from typing import Dict, Optional
 import cv2
 import pytesseract
 import time
@@ -7,58 +6,20 @@ import datetime
 import os
 from rapidfuzz import fuzz
 from dotenv import load_dotenv
-import requests
-from utils import download_video, load_cache, save_cache
-import re
+from utils import (
+    download_video,
+    load_cache,
+    save_cache,
+    get_clip_info,
+    extract_clip_ids,
+    verify_video_integrity,
+)
 
 
 load_dotenv(".env.local")
 
 VIDEOS_DIR = os.getenv("VIDEOS_DIR")
 CACHE_FILE = os.getenv("CACHE_FILE")
-
-
-def extract_download_links(content):
-    regex = r'<a href="([^"]+/get/file[^"]*\?[^"]*download=1[^"]*)"[^\>]*>([^<]*)<\/a>'
-    matches = re.findall(regex, content)
-    links = [{"url": match[0], "label": match[1].strip()} for match in matches]
-    return links
-
-
-def find_slides_and_audio_link(links):
-    for link in links:
-        if link["label"].startswith("Folien & Audio") or link["label"].startswith(
-            "Slides & Audio"
-        ):
-            return link["url"]
-    if len(links) > 2:
-        print(
-            f"""// There are multiple video versions. Eg "Slides & video", "Slides only" etc.
-         // Hope that the second link is always "Slides & Audio": {links[1]['url']}"""
-        )
-        return links[1]["url"]
-    return None
-
-
-def get_clip_info(clip_id):
-    try:
-        clip_url = f"https://www.fau.tv/clip/id/{clip_id}"
-        response = requests.get(clip_url)
-        response.raise_for_status()
-        clip_page_content = response.text
-
-        links = extract_download_links(clip_page_content)
-        if not links:
-            raise Exception("No download links found")
-
-        slides_and_audio_link = find_slides_and_audio_link(links)
-        if not slides_and_audio_link:
-            raise Exception("No download links found")
-
-        return slides_and_audio_link
-
-    except requests.exceptions.RequestException as e:
-        raise Exception({"error": f"Failed to fetch clip data: {str(e)}"})
 
 
 def setup_video_capture(video_path):
@@ -166,7 +127,7 @@ def extract_text_from_video(video_path):
     end_time = time.time()
     total_time = end_time - start_time
     # only for debugging purpose (donot remove )
-    save_results(video_name, text_dict, total_time, processing_datetime)
+    # save_results(video_name, text_dict, total_time, processing_datetime)
     print(f"Total processing time: {total_time:.2f} seconds")
 
     return text_dict
@@ -279,38 +240,58 @@ def process_videos(clip_ids):
     cache = load_cache(CACHE_FILE)
     for video_id in clip_ids:
         if video_id in cache:
-            print(f"Skipping {video_id}, already cached.")
-            continue
-        if video_id is None:
-            return
-        print({video_id})
+            if (
+                "extracted_text" in cache[video_id]
+                and cache[video_id]["extracted_text"]
+            ):
+                print(f"Skipping {video_id}, already cached and processed.")
+                continue
+            else:
+                print(f"Text extraction pending for {video_id}. Proceeding to extract.")
+        else:
+            print(f"Processing clip ID: {video_id} (not in cache).")
+
         slides_and_audio_url = get_clip_info(video_id)
-        if slides_and_audio_url:
-            video_path = os.path.join(VIDEOS_DIR, f"{video_id}.m4v")
-            if not os.path.exists(video_path):
-                download_video(slides_and_audio_url, video_path)
-            extracted_text = extract_text_from_video(video_path)
-            cache[video_id] = {
-                "url": slides_and_audio_url,
-                "extracted_text": extracted_text,
-            }
-            save_cache(cache, CACHE_FILE)
 
+        if not slides_and_audio_url:
+            print(f"No valid link found for clip ID {video_id}. Skipping.")
+            continue
 
-def extract_clip_ids(file_path, course_name):
-    with open(file_path, "r") as file:
-        data = json.load(file)
+        temp_video_path = os.path.join(VIDEOS_DIR, f"{video_id}_tmp.m4v")
+        final_video_path = os.path.join(VIDEOS_DIR, f"{video_id}.m4v")
 
-    if course_name in data:
-        clip_ids = [entry["clipId"] for entry in data[course_name]]
-        return clip_ids
-    else:
-        return []
+        if not os.path.exists(final_video_path):
+            print(f"Downloading video for clip ID: {video_id}")
+            download_video(slides_and_audio_url, temp_video_path)
+
+            if verify_video_integrity(temp_video_path):
+                os.rename(temp_video_path, final_video_path)
+                print(f"Successfully downloaded and verified clip ID {video_id}.")
+            else:
+                print(f"Failed to verify download for clip ID {video_id}. Skipping.")
+                continue
+        else:
+            print(
+                f"Video for clip ID {video_id} already downloaded. Skipping download."
+            )
+
+        print(f"Processing video for text extraction: {final_video_path}")
+        extracted_text = extract_text_from_video(final_video_path)
+
+        print(f"Extracted text for clip ID {video_id}: {extracted_text}")
+
+        cache[video_id] = {
+            "url": slides_and_audio_url,
+            "extracted_text": extracted_text,
+        }
+        save_cache(cache, CACHE_FILE)
+
+        print(f"Finished processing clip ID {video_id}. Moving to the next clip.\n")
 
 
 if __name__ == "__main__":
     clip_ids = extract_clip_ids(
         os.getenv("CURRENT_SEM_JSON"), os.getenv("DEFAULT_COURSE_ID")
     )
-    # print(clip_ids)
+    print(clip_ids)
     process_videos(clip_ids)

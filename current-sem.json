@@ -1,0 +1,238 @@
+{
+  "ai-1": [
+    {
+      "timestamp_ms": 1729010419342,
+      "sectionName": "Learning Resources for AI-1",
+      "clipId": "54514"
+    },
+    {
+      "timestamp_ms": 1729155705441,
+      "sectionName": "Artificial Intelligence is here today!",
+      "clipId": "54609"
+    },
+    {
+      "timestamp_ms": 1729614746207,
+      "sectionName": "AI Topics Covered",
+      "clipId": "54610"
+    },
+    {
+      "timestamp_ms": 1729762087462,
+      "sectionName": "Introduction to Logic Programming and ProLog",
+      "clipId": "54611"
+    },
+    {
+      "timestamp_ms": 1730225690783,
+      "sectionName": "Recap: Complexity Analysis in AI?",
+      "clipId": "54612"
+    },
+    {
+      "timestamp_ms": 1730372400000,
+      "sectionName": "Classifying Environments",
+      "clipId": "54613"
+    },
+    {
+      "timestamp_ms": 1730804400000,
+      "sectionName": "Representing the Environment in Agents",
+      "clipId": "54614"
+    },
+    {
+      "timestamp_ms": 1730986463374,
+      "sectionName": "Breadth-First Search Strategies",
+      "clipId": "54615"
+    },
+    {
+      "timestamp_ms": 1731431781444,
+      "sectionName": "A-Star Search",
+      "clipId": "54616"
+    },
+    {
+      "timestamp_ms": 1731582560027,
+      "sectionName": "Introduction",
+      "clipId": "54617"
+    },
+    {
+      "timestamp_ms": 1732037240507,
+      "sectionName": "Alpha-Beta Search",
+      "clipId": "54618"
+    },
+    {
+      "timestamp_ms": 1732179494831,
+      "sectionName": "CSP: Towards a Formal Definition",
+      "clipId": "54619"
+    },
+    {
+      "timestamp_ms": 1732640943311,
+      "sectionName": "Constraint Propagation/Inference",
+      "clipId": "54620"
+    },
+    {
+      "timestamp_ms": 1732797865953,
+      "sectionName": "Decomposition: Constraint Graphs, and Three Simple Cases",
+      "clipId": "54621"
+    },
+    {
+      "timestamp_ms": 1733223600000,
+      "sectionName": "Introduction: Inference with Structured State Representations",
+      "clipId": "54622"
+    },
+    {
+      "timestamp_ms": 1733389741323,
+      "sectionName": "Inference in Propositional Logics",
+      "clipId": "54623"
+    },
+    {
+      "timestamp_ms": 1733828400000,
+      "sectionName": "Predicate Logic Without Quantifiers",
+      "clipId": "54624"
+    },
+    {
+      "timestamp_ms": 1733998769706,
+      "sectionName": "Soundness and Termination of Tableaux",
+      "clipId": "54625"
+    },
+    {
+      "timestamp_ms": 1734433200000,
+      "sectionName": "The Davis-Putnam (Logemann-Loveland) Procedure",
+      "clipId": "54626"
+    },
+    {
+      "timestamp_ms": 1734606000000,
+      "sectionName": "First-Order Substitutions",
+      "clipId": "54627"
+    },
+    {
+      "timestamp_ms": 1736273677347,
+      "sectionName": "First-Order Natural Deduction",
+      "clipId": "54628"
+    },
+    {
+      "timestamp_ms": 1736422756848,
+      "sectionName": "First-Order Unification",
+      "clipId": "54629"
+    },
+    {
+      "timestamp_ms": 1736852400000,
+      "sectionName": "Logic Programming as Resolution Theorem Proving",
+      "clipId": "54630"
+    }
+  ],
+  "iwgs-1": [
+    {
+      "timestamp_ms": 1729159200000,
+      "sectionName": "Goals, Culture, & Outline of the Course",
+      "clipId": ""
+    },
+    {
+      "timestamp_ms": 1729764000000,
+      "sectionName": "JupyterLab, a Python Web IDE for IWGS",
+      "clipId": "54572"
+    },
+    {
+      "timestamp_ms": 1730372400000,
+      "sectionName": "Python Control Structures",
+      "clipId": "54573"
+    },
+    {
+      "timestamp_ms": 1730977200000,
+      "sectionName": "Input and Output",
+      "clipId": "54574"
+    },
+    {
+      "timestamp_ms": 1731582000000,
+      "sectionName": "Representing and Manipulating Numbers",
+      "clipId": "54575"
+    },
+    {
+      "timestamp_ms": 1732186800000,
+      "sectionName": "Characters and their Encodings: ASCII and UniCode",
+      "clipId": "54576"
+    },
+    {
+      "timestamp_ms": 1732705200000,
+      "sectionName": "More on Functions in Python",
+      "clipId": "54577"
+    },
+    {
+      "timestamp_ms": 1733396400000,
+      "sectionName": "Measuring Sizes of Documents/Units of Information",
+      "clipId": "54578"
+    },
+    {
+      "timestamp_ms": 1734001200000,
+      "sectionName": "Documents as Trees",
+      "clipId": "54579"
+    },
+    {
+      "timestamp_ms": 1734627665497,
+      "sectionName": "XPath: Specifying XML Subtrees",
+      "clipId": "54580"
+    },
+    {
+      "timestamp_ms": 1736420400000,
+      "sectionName": "Recap: HTML Forms Data Transmission",
+      "clipId": "54581"
+    }
+  ],
+  "lbs": [
+    {
+      "timestamp_ms": 1729072800000,
+      "sectionName": "Natural Language and its Meaning",
+      "clipId": "54935"
+    },
+    {
+      "timestamp_ms": 1729688447571,
+      "sectionName": "Epistemology: The Philosphy of Science",
+      "clipId": "55062"
+    },
+    {
+      "timestamp_ms": 1730286000000,
+      "sectionName": "Computational Semantics as a Natural Science",
+      "clipId": "55275"
+    },
+    {
+      "timestamp_ms": 1730890800000,
+      "sectionName": "Testing Truth Conditions via Inference",
+      "clipId": "55358"
+    },
+    {
+      "timestamp_ms": 1731409200000,
+      "sectionName": "The Computational Role of Ambiguities",
+      "clipId": "55475"
+    },
+    {
+      "timestamp_ms": 1732014000000,
+      "sectionName": "Adding Equality to PLNQ for Fragment 1",
+      "clipId": "55558"
+    },
+    {
+      "timestamp_ms": 1732713376087,
+      "sectionName": "Dealing with Functions in Logic and Language",
+      "clipId": "55630"
+    },
+    {
+      "timestamp_ms": 1733338043872,
+      "sectionName": "A Logical System for Fragment 3",
+      "clipId": "55710"
+    },
+    {
+      "timestamp_ms": 1733914800000,
+      "sectionName": "Fragment 4",
+      "clipId": "55770"
+    },
+    {
+      "timestamp_ms": 1734519600000,
+      "sectionName": "Davidsonian Semantics: Treating Verb Modifiers",
+      "clipId": "55832"
+    },
+    {
+      "timestamp_ms": 1736336840157,
+      "sectionName": "Discourse Representation Theory",
+      "clipId": "55900"
+    },
+    {
+      "timestamp_ms": 1736970931175,
+      "sectionName": "Semantics for Modal Logics",
+      "clipId": "55971"
+    }
+  ]
+}

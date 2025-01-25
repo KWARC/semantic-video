@@ -1,0 +1,7 @@
+# Info File for Data/Videos Directory
+
+This folder (data/videos) is intended to store video files (.m4v) that are downloaded for further processing by the script `video_text_extractor.py`.
+
+Once you run the `video_text_extractor.py` script, the video files will be saved here.
+
+

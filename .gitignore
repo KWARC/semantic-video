@@ -1,10 +1,13 @@
 __pycache__/
 *.pyc
-/data/
+
 # Ignore virtual environment folder
 venv/
-env
-.env.local
-# Ignore results file if you don't want to track it in version control
-Results.json
 
+.env.local
+
+# Ignore everything in the data folder
+data/*
+!data/videos/
+data/videos/*
+!data/videos/info.txt
