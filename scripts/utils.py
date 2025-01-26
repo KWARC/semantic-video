@@ -5,10 +5,7 @@ import re
 import cv2
 
 
-def verify_video_integrity(
-    video_path, full_validation=False
-):  # full_validation=False to speed up the process
-
+def verify_video_integrity(video_path, full_validation=True):
     try:
         cap = cv2.VideoCapture(video_path)
         if not cap.isOpened():
@@ -25,17 +22,34 @@ def verify_video_integrity(
 
         if full_validation:
             print(f"Performing full validation for video: {video_path}")
+
+            fps = cap.get(cv2.CAP_PROP_FPS)
+            total_frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+
+            print(f"Video FPS: {fps}")
+            print(f"Expected frame count: {total_frame_count}")
+
             frame_count = 0
             cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
+
             while True:
                 ret, _ = cap.read()
                 if not ret:
                     break
                 frame_count += 1
 
-            if frame_count == 0:
-                print(f"No frames found in video during full validation: {video_path}")
-                cap.release()
+                # Track progress
+                progress = (frame_count / total_frame_count) * 100
+                print(f"Verification progress: {progress:.2f}%")
+
+            cap.release()
+
+            print(f"Actual frame count: {frame_count}")
+
+            if frame_count < total_frame_count:
+                print(
+                    f"Frame mismatch: expected {total_frame_count}, got {frame_count}. Video might be corrupted."
+                )
                 return False
 
             print(f"Full validation passed. Total frames: {frame_count}")
@@ -53,7 +67,6 @@ def extract_clip_ids(file_path, course_name):
         data = json.load(file)
 
     if course_name in data:
-        # Include only non-empty clipIds
         clip_ids = [
             entry["clipId"]
             for entry in data[course_name]
