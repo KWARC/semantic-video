@@ -2,28 +2,20 @@ import os
 import json
 import requests
 from typing import List, Dict
-from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-
-load_dotenv(".env.local")
-
-API_BASE_URL = os.getenv("API_BASE_URL")
-DEFAULT_COURSE_ID = os.getenv("DEFAULT_COURSE_ID", "ai-1")
-OUTPUT_DIR = os.getenv("OUTPUT_DIR")
-
-if not all([API_BASE_URL, DEFAULT_COURSE_ID, OUTPUT_DIR]):
-    raise EnvironmentError("Missing required environment variables in .env.local.")
+from datetime import datetime, timedelta
+from config import COURSE_API_BASE_URL, COURSE_ID, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS
 
 
 def fetch_section_info(course_id: str) -> List[Dict]:
-    url = f"{API_BASE_URL}/get-section-info/{course_id}"
+    url = f"{COURSE_API_BASE_URL}/get-section-info/{course_id}"
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
 
 
 def fetch_slides(course_id: str, section_id: str) -> List[Dict]:
-    url = f"{API_BASE_URL}/get-slides/{course_id}/{section_id}"
+    url = f"{COURSE_API_BASE_URL}/get-slides/{course_id}/{section_id}"
     response = requests.get(url)
     response.raise_for_status()
     return response.json().get(section_id, [])
@@ -103,20 +95,37 @@ def process_slides(input_file: str, output_file: str):
     print(f"Processed slides have been saved to {output_file}")
 
 
-def main():
-    course_id = DEFAULT_COURSE_ID
+def is_cache_valid(file_path: str) -> bool:
+    if not os.path.exists(file_path):
+        return False
+    file_mod_time = datetime.fromtimestamp(os.path.getmtime(file_path))
+    return datetime.now() - file_mod_time < timedelta(days=SLIDES_EXPIRY_DAYS)
 
-    original_slides_file = os.path.join(OUTPUT_DIR, f"{course_id}_slides.json")
+
+def main():
+    course_id = COURSE_ID
+
+    original_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_slides.json")
     processed_slides_file = os.path.join(
-        OUTPUT_DIR, f"{course_id}_processed_slides.json"
+        SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
     )
 
-    try:
-        data = load_from_disk(original_slides_file)
-        print(f"Loaded original slides for course {course_id} from disk.")
-    except FileNotFoundError:
+    if is_cache_valid(original_slides_file):
+        try:
+            data = load_from_disk(original_slides_file)
+            print(f"Loaded original slides for course {course_id} from disk.")
+        except FileNotFoundError:
+            print(
+                f"Original slides for course {course_id} not found locally. Fetching from API..."
+            )
+            data = get_all_slides(course_id)
+            save_to_disk(original_slides_file, data)
+            print(
+                f"Original slides for course {course_id} saved locally at {original_slides_file}."
+            )
+    else:
         print(
-            f"Original slides for course {course_id} not found locally. Fetching from API..."
+            f"Cache expired or original slides for course {course_id} not found locally. Fetching from API..."
         )
         data = get_all_slides(course_id)
         save_to_disk(original_slides_file, data)

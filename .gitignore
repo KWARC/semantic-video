@@ -1,14 +1,23 @@
 __pycache__/
 *.pyc
 
-# Ignore virtual environment folder
+.DS_Store
 venv/
 
 .env.local
 extracted_text_log.txt
-# Ignore everything in the data folder
+
 data/*
+
 !data/videos/
+!data/cache/
+!data/slides/
+
 data/videos/*
 !data/videos/info.txt
 
+data/cache/*
+!data/cache/.gitkeep
+
+data/slides/*
+!data/slides/.gitkeep

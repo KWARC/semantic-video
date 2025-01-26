@@ -44,7 +44,7 @@ Activate the virtual environment:
 - Create a .env.local file in the root directory of your project and add the following lines:
   
 VIDEOS_DIR=./data/videos            #Replace directory name with the actual directory where video files are stored
-CACHE_FILE=./data/cache/cache_file.json  # File path for the cache JSON file(adjust file name accordingly)
+OCR_EXTRACTED_FILE_PATH=./data/cache/extracted_contents.json  # File path for the cache JSON file(adjust file name accordingly)
 
 
 ### 5. Run the script

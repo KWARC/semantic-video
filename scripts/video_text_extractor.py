@@ -5,7 +5,6 @@ import json
 import datetime
 import os
 from rapidfuzz import fuzz
-from dotenv import load_dotenv
 from utils import (
     download_video,
     load_cache,
@@ -14,12 +13,7 @@ from utils import (
     extract_clip_ids,
     verify_video_integrity,
 )
-
-
-load_dotenv(".env.local")
-
-VIDEO_DOWNLOAD_DIR = os.getenv("VIDEO_DOWNLOAD_DIR")
-CACHE_FILE = os.getenv("CACHE_FILE")
+from config import OCR_EXTRACTED_FILE_PATH, VIDEO_DOWNLOAD_DIR, FRAME_PROCESSING_SLEEP_TIME
 
 
 def setup_video_capture(video_path):
@@ -137,6 +131,7 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
     next_check_time = 0
     text_dict = {}
     video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
+    sleep_time = float(FRAME_PROCESSING_SLEEP_TIME)
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -155,6 +150,12 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
                 similarity_threshold,
             )
             next_check_time += interval_seconds
+            time.sleep(sleep_time)  # Add delay between frame processing
+
+            # Display progress
+            progress = (current_time / video_duration) * 100
+            print(f"Processing progress: {progress:.2f}%")
+
     if text_dict:
         last_key = max(text_dict.keys())
         text_dict[last_key]["end_time"] = video_duration
@@ -222,7 +223,7 @@ def update_text_dict(
         last_key = max(text_dict.keys()) if text_dict else exact_frame_change_time
 
         text_dict[last_key]["end_time"] = exact_frame_change_time
-        text_dict[last_key]["text_value"] = current_frame_extracted_text
+        text_dict[last_key]["ocr_slide_content"] = current_frame_extracted_text
 
     else:
         if text_dict:
@@ -232,66 +233,61 @@ def update_text_dict(
         text_dict[exact_frame_change_time] = {
             "start_time": exact_frame_change_time,
             "end_time": exact_frame_change_time,
-            "text_value": current_frame_extracted_text,
+            "ocr_slide_content": current_frame_extracted_text,
         }
 
 
 def process_videos(clip_ids):
-    cache = load_cache(CACHE_FILE)
-    for video_id in clip_ids:
-        if video_id in cache:
-            if (
-                "extracted_text" in cache[video_id]
-                and cache[video_id]["extracted_text"]
-            ):
-                print(f"Skipping {video_id}, already cached and processed.")
+    cache = load_cache(OCR_EXTRACTED_FILE_PATH)
+    for clip_id in clip_ids:
+        if clip_id in cache:
+            if "extracted_content" in cache[clip_id] and cache[clip_id]["extracted_content"]:
+                print(f"Skipping {clip_id}, already cached and processed.")
                 continue
             else:
-                print(f"Text extraction pending for {video_id}. Proceeding to extract.")
+                print(f"Text extraction pending for {clip_id}. Proceeding to extract.")
         else:
-            print(f"Processing clip ID: {video_id} (not in cache).")
+            print(f"Processing clip ID: {clip_id} (not in cache).")
 
-        slides_and_audio_url = get_clip_info(video_id)
+        slides_and_audio_url = get_clip_info(clip_id)
 
         if not slides_and_audio_url:
-            print(f"No valid link found for clip ID {video_id}. Skipping.")
+            print(f"No valid link found for clip ID {clip_id}. Skipping.")
             continue
 
-        temp_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{video_id}_tmp.m4v")
-        final_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{video_id}.m4v")
+        temp_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{clip_id}_tmp.m4v")
+        final_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{clip_id}.m4v")
 
         if not os.path.exists(final_video_path):
-            print(f"Downloading video for clip ID: {video_id}")
+            print(f"Downloading video for clip ID: {clip_id}")
             download_video(slides_and_audio_url, temp_video_path)
 
             if verify_video_integrity(temp_video_path):
                 os.rename(temp_video_path, final_video_path)
-                print(f"Successfully downloaded and verified clip ID {video_id}.")
+                print(f"Successfully downloaded and verified clip ID {clip_id}.")
             else:
-                print(f"Failed to verify download for clip ID {video_id}. Skipping.")
+                print(f"Failed to verify download for clip ID {clip_id}. Skipping.")
                 continue
         else:
-            print(
-                f"Video for clip ID {video_id} already downloaded. Skipping download."
-            )
+            print(f"Video for clip ID {clip_id} already downloaded. Skipping download.")
 
         print(f"Processing video for text extraction: {final_video_path}")
-        extracted_text = extract_text_from_video(final_video_path)
+        extracted_content = extract_text_from_video(final_video_path)
 
-        print(f"Extracted text for clip ID {video_id}: {extracted_text}")
+        # print(f"Extracted text for clip ID {clip_id}: {extracted_content}")
 
-        cache[video_id] = {
+        cache[clip_id] = {
             "url": slides_and_audio_url,
-            "extracted_text": extracted_text,
+            "extracted_content": extracted_content,
         }
-        save_cache(cache, CACHE_FILE)
+        save_cache(cache, OCR_EXTRACTED_FILE_PATH)
 
-        print(f"Finished processing clip ID {video_id}. Moving to the next clip.\n")
+        print(f"Finished processing clip ID {clip_id}. Moving to the next clip.\n")
 
 
 if __name__ == "__main__":
     clip_ids = extract_clip_ids(
-        os.getenv("CURRENT_SEM_JSON"), os.getenv("DEFAULT_COURSE_ID")
+        os.getenv("CURRENT_SEM_JSON","current-sem.json"), os.getenv("COURSE_ID", "ai-1")
     )
     print(clip_ids)
     process_videos(clip_ids)
