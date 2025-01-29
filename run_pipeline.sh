@@ -1,17 +1,24 @@
-# Load environment variables from .env.local
-export $(grep -v '^#' /path/to/.env.local | xargs)
+#!/bin/bash
 
-# Activate virtual environment if needed
-# source venv/bin/activate
+# Set the full path to the project directory
+PROJECT_DIR="/srv/semantic-video"
 
-# Run the scripts sequentially
-echo "Starting slide_fetcher..."
-python3 /path/to/scripts/slide_fetcher.py || { echo "slide_fetcher failed!"; exit 1; }
+# Set the full path to the Python virtual environment
+VENV_DIR="$PROJECT_DIR/venv"
 
-echo "Starting video_text_extractor..."
-python3 /path/to/scripts/video_text_extractor.py || { echo "video_text_extractor failed!"; exit 1; }
+# Set the full path to the Python script
+SLIDE_FETCHER_SCRIPT="$PROJECT_DIR/scripts/slide_fetcher.py"
+SLIDE_MATCHER_SCRIPT="$PROJECT_DIR/scripts/slide_matcher.py"
+VIDEO_TEXT_EXTRACTOR_SCRIPT="$PROJECT_DIR/scripts/video_text_extractor.py"
 
-echo "Starting slide_matcher..."
-python3 /path/to/scripts/slide_matcher.py || { echo "slide_matcher failed!"; exit 1; }
+# Change to the project directory
+cd "$PROJECT_DIR" || exit
 
-echo "All scripts executed successfully."
+# Activate the virtual environment
+source "$VENV_DIR/bin/activate"
+
+"$VENV_DIR/bin/python" "$SLIDE_FETCHER_SCRIPT" && echo "$SLIDE_FETCHER_SCRIPT executed successfully!" || { echo "Error executing $SLIDE_FETCHER_SCRIPT"; exit 1; }
+"$VENV_DIR/bin/python" "$SLIDE_MATCHER_SCRIPT" && echo "$SLIDE_MATCHER_SCRIPT executed successfully!" || { echo "Error executing $SLIDE_MATCHER_SCRIPT"; exit 1; }
+"$VENV_DIR/bin/python" "$VIDEO_TEXT_EXTRACTOR_SCRIPT" && echo "$VIDEO_TEXT_EXTRACTOR_SCRIPT executed successfully!" || { echo "Error executing $VIDEO_TEXT_EXTRACTOR_SCRIPT"; exit 1; }
+
+echo "All scripts ran successfully!"
