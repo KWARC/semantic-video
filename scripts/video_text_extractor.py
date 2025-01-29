@@ -13,7 +13,7 @@ from utils import (
     extract_clip_ids,
     verify_video_integrity,
 )
-from config import OCR_EXTRACTED_FILE_PATH, VIDEO_DOWNLOAD_DIR, FRAME_PROCESSING_SLEEP_TIME
+from config import OCR_EXTRACTED_FILE_PATH, VIDEO_DOWNLOAD_DIR, FRAME_PROCESSING_SLEEP_TIME, COURSE_IDS
 
 
 def setup_video_capture(video_path):
@@ -102,33 +102,50 @@ def is_text_extension_of_last_slide(
     return similarity > similarity_threshold
 
 
-def extract_text_from_video(video_path):
+def save_partial_results(course_id, clip_id, extracted_content):
+    results_file = f"data/cache/{course_id}_extracted_content.json"
+    if os.path.exists(results_file):
+        with open(results_file, "r") as f:
+            existing_data = json.load(f)
+    else:
+        existing_data = {}
+
+    if clip_id not in existing_data:
+        existing_data[clip_id] = {"extracted_content": {}}
+
+    existing_extracted_content = existing_data[clip_id]["extracted_content"]
+    existing_extracted_content.update(extracted_content)
+    with open(results_file, "w") as f:
+        json.dump(existing_data, f, indent=4)
+
+
+
+def extract_text_from_video(video_path, course_id, clip_id, start_time=0):
     cap, fps = setup_video_capture(video_path)
     video_name, processing_datetime = get_video_metadata(video_path)
     text_dict = {}
     interval_seconds = 10
-    start_time = time.time()
     last_frame = None
     similarity_threshold = 60
 
+    # Inform the user and seek the video to the correct position if start_time is provided
+    if start_time > 0:
+        print(f"Seeking video to start time: {start_time} seconds...")
+        cap.set(cv2.CAP_PROP_POS_MSEC, start_time * 1000)
+
     text_dict = process_video_frames(
-        cap, fps, interval_seconds, last_frame, similarity_threshold
+        cap, fps, interval_seconds, last_frame, similarity_threshold, course_id, clip_id, start_time
     )
 
     cap.release()
     cv2.destroyAllWindows()
 
-    end_time = time.time()
-    total_time = end_time - start_time
-    # only for debugging purpose (donot remove )
-    # save_results(video_name, text_dict, total_time, processing_datetime)
-    print(f"Total processing time: {total_time:.2f} seconds")
-
     return text_dict
 
 
-def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_threshold):
-    next_check_time = 0
+
+def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_threshold, course_id, clip_id, start_time):
+    next_check_time = start_time
     text_dict = {}
     video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
     sleep_time = float(FRAME_PROCESSING_SLEEP_TIME)
@@ -151,6 +168,9 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
             )
             next_check_time += interval_seconds
             time.sleep(sleep_time)  # Add delay between frame processing
+
+            # Save partial results
+            save_partial_results(course_id, clip_id, text_dict)
 
             # Display progress
             progress = (current_time / video_duration) * 100
@@ -237,17 +257,37 @@ def update_text_dict(
         }
 
 
-def process_videos(clip_ids):
-    cache = load_cache(OCR_EXTRACTED_FILE_PATH)
+def process_videos(clip_ids, course_id):
+    video_dir = os.path.join(VIDEO_DOWNLOAD_DIR, course_id)
+    os.makedirs(video_dir, exist_ok=True)
+
     for clip_id in clip_ids:
+        results_file = f"data/cache/{course_id}_extracted_content.json"
+        if os.path.exists(results_file):
+            with open(results_file, "r") as f:
+                cache = json.load(f)
+        else:
+            cache = {}
+
         if clip_id in cache:
             if "extracted_content" in cache[clip_id] and cache[clip_id]["extracted_content"]:
-                print(f"Skipping {clip_id}, already cached and processed.")
-                continue
+                last_entry = max(cache[clip_id]["extracted_content"].keys(), key=float)
+                video_path = os.path.join(video_dir, f"{clip_id}.m4v")
+                cap, fps = setup_video_capture(video_path)
+                video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
+                cap.release()
+                if cache[clip_id]["extracted_content"][last_entry]["end_time"] == video_duration:
+                    print(f"Skipping {clip_id}, already cached and processed.")
+                    continue
+                else:
+                    print(f"Resuming text extraction for {clip_id} from {last_entry} seconds.")
+                    start_time = float(last_entry)
             else:
                 print(f"Text extraction pending for {clip_id}. Proceeding to extract.")
+                start_time = 0
         else:
             print(f"Processing clip ID: {clip_id} (not in cache).")
+            start_time = 0
 
         slides_and_audio_url = get_clip_info(clip_id)
 
@@ -255,8 +295,8 @@ def process_videos(clip_ids):
             print(f"No valid link found for clip ID {clip_id}. Skipping.")
             continue
 
-        temp_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{clip_id}_tmp.m4v")
-        final_video_path = os.path.join(VIDEO_DOWNLOAD_DIR, f"{clip_id}.m4v")
+        temp_video_path = os.path.join(video_dir, f"{clip_id}_tmp.m4v")
+        final_video_path = os.path.join(video_dir, f"{clip_id}.m4v")
 
         if not os.path.exists(final_video_path):
             print(f"Downloading video for clip ID: {clip_id}")
@@ -272,22 +312,21 @@ def process_videos(clip_ids):
             print(f"Video for clip ID {clip_id} already downloaded. Skipping download.")
 
         print(f"Processing video for text extraction: {final_video_path}")
-        extracted_content = extract_text_from_video(final_video_path)
-
-        # print(f"Extracted text for clip ID {clip_id}: {extracted_content}")
+        extracted_content = extract_text_from_video(final_video_path, course_id, clip_id, start_time)
 
         cache[clip_id] = {
             "url": slides_and_audio_url,
             "extracted_content": extracted_content,
         }
-        save_cache(cache, OCR_EXTRACTED_FILE_PATH)
+        save_partial_results(course_id, clip_id, extracted_content)
 
         print(f"Finished processing clip ID {clip_id}. Moving to the next clip.\n")
 
 
 if __name__ == "__main__":
-    clip_ids = extract_clip_ids(
-        os.getenv("CURRENT_SEM_JSON","current-sem.json"), os.getenv("COURSE_ID", "ai-1")
-    )
-    print(clip_ids)
-    process_videos(clip_ids)
+    course_ids = COURSE_IDS.split(",")
+    for course_id in course_ids:
+        clip_ids = extract_clip_ids(os.getenv("CURRENT_SEM_JSON", "current-sem.json"), course_id)
+        print(f"Processing course: {course_id}")
+        print(clip_ids)
+        process_videos(clip_ids, course_id)

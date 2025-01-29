@@ -43,9 +43,9 @@ Activate the virtual environment:
 
 - Create a .env.local file in the root directory of your project and add the following lines:
   
-VIDEOS_DIR=./data/videos            #Replace directory name with the actual directory where video files are stored
-OCR_EXTRACTED_FILE_PATH=./data/cache/extracted_contents.json  # File path for the cache JSON file(adjust file name accordingly)
-
+VIDEOS_DIR=./data/videos/{course_id}            # Replace {course_id} with the actual course ID
+OCR_EXTRACTED_FILE_PATH=./data/cache/{course_id}_extracted_contents.json  # File path for the cache JSON file (adjust file name accordingly)
+PROCESSED_SLIDES_FILE_PATH=./data/slides/{course_id}_processed_slides.json  # File path for the processed slides JSON file (adjust file name accordingly)
 
 ### 5. Run the script
 

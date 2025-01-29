@@ -4,7 +4,7 @@ import requests
 from typing import List, Dict
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from config import COURSE_API_BASE_URL, COURSE_ID, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS
+from config import COURSE_API_BASE_URL, COURSE_ID, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS, COURSE_IDS
 
 
 def fetch_section_info(course_id: str) -> List[Dict]:
@@ -103,40 +103,30 @@ def is_cache_valid(file_path: str) -> bool:
 
 
 def main():
-    course_id = COURSE_ID
+    course_ids = COURSE_IDS.split(",")
 
-    original_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_slides.json")
-    processed_slides_file = os.path.join(
-        SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
-    )
+    for course_id in course_ids:
+        original_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_slides.json")
+        processed_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json")
 
-    if is_cache_valid(original_slides_file):
-        try:
-            data = load_from_disk(original_slides_file)
-            print(f"Loaded original slides for course {course_id} from disk.")
-        except FileNotFoundError:
-            print(
-                f"Original slides for course {course_id} not found locally. Fetching from API..."
-            )
+        if is_cache_valid(original_slides_file):
+            try:
+                data = load_from_disk(original_slides_file)
+                print(f"Loaded original slides for course {course_id} from disk.")
+            except FileNotFoundError:
+                print(f"Original slides for course {course_id} not found locally. Fetching from API...")
+                data = get_all_slides(course_id)
+                save_to_disk(original_slides_file, data)
+                print(f"Original slides for course {course_id} saved locally at {original_slides_file}.")
+        else:
+            print(f"Cache expired or original slides for course {course_id} not found locally. Fetching from API...")
             data = get_all_slides(course_id)
             save_to_disk(original_slides_file, data)
-            print(
-                f"Original slides for course {course_id} saved locally at {original_slides_file}."
-            )
-    else:
-        print(
-            f"Cache expired or original slides for course {course_id} not found locally. Fetching from API..."
-        )
-        data = get_all_slides(course_id)
-        save_to_disk(original_slides_file, data)
-        print(
-            f"Original slides for course {course_id} saved locally at {original_slides_file}."
-        )
+            print(f"Original slides for course {course_id} saved locally at {original_slides_file}.")
 
-    print("Processing slides to clean and simplify data...")
-    process_slides(original_slides_file, processed_slides_file)
-    print(f"Processed slides saved at {processed_slides_file}.")
-
+        print(f"Processing slides for course {course_id} to clean and simplify data...")
+        process_slides(original_slides_file, processed_slides_file)
+        print(f"Processed slides for course {course_id} saved at {processed_slides_file}.")
 
 if __name__ == "__main__":
     main()
