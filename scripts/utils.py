@@ -40,7 +40,8 @@ def verify_video_integrity(video_path, full_validation=True):
 
                 # Track progress
                 progress = (frame_count / total_frame_count) * 100
-                print(f"Verification progress: {progress:.2f}%")
+                if frame_count % 1000 == 0:
+                    print(f"Verification progress: {progress:.2f}%")
 
             cap.release()
 
