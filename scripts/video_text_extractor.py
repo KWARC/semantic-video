@@ -167,7 +167,8 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
                 similarity_threshold,
             )
             next_check_time += interval_seconds
-            time.sleep(sleep_time)  # Add delay between frame processing
+            if sleep_time > 0:
+                time.sleep(sleep_time)  # Add delay between frame processing
 
             # Save partial results
             save_partial_results(course_id, clip_id, text_dict)
@@ -300,7 +301,13 @@ def process_videos(clip_ids, course_id):
 
         if not os.path.exists(final_video_path):
             print(f"Downloading video for clip ID: {clip_id}")
-            download_video(slides_and_audio_url, temp_video_path)
+            for try_idx in range(10):
+                try:
+                    download_video(slides_and_audio_url, temp_video_path)
+                    break
+                except:
+                    print('failed:' + clip_id)
+                    time.sleep(2*try_idx*try_idx)
 
             if verify_video_integrity(temp_video_path):
                 os.rename(temp_video_path, final_video_path)
