@@ -1,17 +1,22 @@
 import json
 import os
-from dotenv import load_dotenv
 from rapidfuzz import fuzz, process
-from config import OCR_EXTRACTED_FILE_PATH, PROCESSED_SLIDES_FILE_PATH, COURSE_IDS
+from config import OCR_EXTRACTED_FILE_PATH, SLIDES_OUTPUT_DIR, COURSE_IDS
 
-if not all([OCR_EXTRACTED_FILE_PATH, PROCESSED_SLIDES_FILE_PATH]):
+if not all([OCR_EXTRACTED_FILE_PATH, SLIDES_OUTPUT_DIR]):
     raise EnvironmentError("Missing required environment variables. Check .env.local.")
 
-course_ids = COURSE_IDS.split(",")
+for course_id in COURSE_IDS:
+    processed_slides_file_path = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json")
+    ocr_extracted_file_path = os.path.join(OCR_EXTRACTED_FILE_PATH, f"{course_id}_extracted_content.json")
 
-for course_id in course_ids:
-    processed_slides_file_path = f"{PROCESSED_SLIDES_FILE_PATH}".replace("{course_id}", course_id)
-    ocr_extracted_file_path = f"{OCR_EXTRACTED_FILE_PATH}".replace("{course_id}", course_id)
+    if not os.path.exists(processed_slides_file_path):
+        print(f"Processed slides file not found: {processed_slides_file_path}")
+        continue
+
+    if not os.path.exists(ocr_extracted_file_path):
+        print(f"OCR extracted file not found: {ocr_extracted_file_path}")
+        continue
 
     with open(processed_slides_file_path, "r", encoding="utf-8") as slides_file:
         slides = json.load(slides_file)
@@ -21,7 +26,7 @@ for course_id in course_ids:
 
     text_data = []
     for video_id, video_data in results.items():
-        if "extracted_content" in video_data:  # Check if extracted_content exists
+        if "extracted_content" in video_data:
             for timestamp, text_entry in video_data["extracted_content"].items():
                 text_data.append(
                     {
