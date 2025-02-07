@@ -302,7 +302,6 @@ def process_videos(clip_ids, course_id):
             if "extracted_content" in cache[clip_id] and cache[clip_id]["extracted_content"]:
                 last_entry = max(cache[clip_id]["extracted_content"].keys(), key=float)
                 video_path = os.path.join(video_dir, f"{clip_id}.m4v")
-                print("I ma here!!!")
                 cap, fps = setup_video_capture(video_path)
                 video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
                 cap.release()
