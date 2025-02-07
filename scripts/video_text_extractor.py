@@ -331,8 +331,7 @@ def process_videos(clip_ids, course_id):
 
 
 if __name__ == "__main__":
-    course_ids = COURSE_IDS.split(",")
-    for course_id in course_ids:
+    for course_id in COURSE_IDS:
         clip_ids = extract_clip_ids(os.getenv("CURRENT_SEM_JSON", "current-sem.json"), course_id)
         print(f"Processing course: {course_id}")
         print(clip_ids)
