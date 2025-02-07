@@ -4,7 +4,7 @@ import requests
 from typing import List, Dict
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from config import COURSE_API_BASE_URL, COURSE_ID, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS, COURSE_IDS
+from config import COURSE_API_BASE_URL, COURSE_IDS, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS, COURSE_IDS
 
 
 def fetch_section_info(course_id: str) -> List[Dict]:
@@ -103,9 +103,7 @@ def is_cache_valid(file_path: str) -> bool:
 
 
 def main():
-    course_ids = COURSE_IDS.split(",")
-
-    for course_id in course_ids:
+    for course_id in COURSE_IDS:
         original_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_slides.json")
         processed_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json")
 
