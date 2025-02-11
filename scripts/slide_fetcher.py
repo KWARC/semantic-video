@@ -1,10 +1,17 @@
 import os
 import json
 import requests
+import re
 from typing import List, Dict
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
-from config import COURSE_API_BASE_URL, COURSE_IDS, SLIDES_OUTPUT_DIR, SLIDES_EXPIRY_DAYS, COURSE_IDS
+from config import (
+    COURSE_API_BASE_URL,
+    COURSE_IDS,
+    SLIDES_OUTPUT_DIR,
+    SLIDES_EXPIRY_DAYS,
+    COURSE_IDS,
+)
 
 
 def fetch_section_info(course_id: str) -> List[Dict]:
@@ -21,23 +28,66 @@ def fetch_slides(course_id: str, section_id: str) -> List[Dict]:
     return response.json().get(section_id, [])
 
 
-def process_section(course_id: str, section: Dict) -> Dict:
-    """Processes a section to include only FRAME-type slides."""
+def clean_text(text: str) -> str:
+    text = re.sub(r"\s+", " ", text.strip())
+    return text
+
+
+def remove_last_line_if_frame(slide_content: str) -> str:
+    lines = slide_content.strip().split("\n")
+
+    if lines and (
+        re.search(r"\d{4}-\d{2}-\d{2}", lines[-1])
+        or re.search(r"Michael\s*Kohlhase", lines[-1])
+    ):
+        lines = lines[:-1]
+
+    return "\n".join(lines)
+
+
+def process_section(
+    course_id: str, section: Dict, slide_index_tracker: Dict[str, int]
+) -> List[Dict]:
+    """Processes a section recursively to assign slide indices and extract relevant fields."""
     slides = fetch_slides(course_id, section["id"])
-    frame_slides = [slide for slide in slides if slide["slideType"] == "FRAME"]
 
-    children = [
-        process_section(course_id, child) for child in section.get("children", [])
-    ]
+    if section["id"] not in slide_index_tracker:
+        slide_index_tracker[section["id"]] = 0
 
-    return {"sectionId": section["id"], "slides": frame_slides, "children": children}
+    processed_slides = []
+    for slide in slides:
+        slide_index_tracker[section["id"]] += 1
+        raw_slide_content = html_to_text(slide.get("slideContent", ""))
+
+        if slide.get("slideType", "") == "FRAME":
+            cleaned_slide_content = remove_last_line_if_frame(raw_slide_content)
+        cleaned_slide_content = clean_text(raw_slide_content)
+
+        processed_slides.append(
+            {
+                "sectionId": section["id"],
+                "slideIndex": slide_index_tracker[section["id"]],
+                "slideContent": cleaned_slide_content,
+                "slideType": slide.get("slideType", ""),
+                "title": section.get("title", ""),
+                "archive": slide.get("archive", ""),
+                "filepath": slide.get("filepath", ""),
+            }
+        )
+
+    for child_section in section.get("children", []):
+        processed_slides.extend(
+            process_section(course_id, child_section, slide_index_tracker)
+        )
+
+    return processed_slides
 
 
 def get_all_slides(course_id: str) -> Dict:
     sections = fetch_section_info(course_id)
     return {
         "courseId": course_id,
-        "sections": [process_section(course_id, section) for section in sections],
+        "sections": sections,
     }
 
 
@@ -62,32 +112,16 @@ def html_to_text(html_content):
 
 
 def process_slides(input_file: str, output_file: str):
-    """Processes slides by cleaning fields and converting HTML to text."""
     with open(input_file, "r", encoding="utf-8") as file:
         data = json.load(file)
 
-    def process_section(section):
-        """Processes a section recursively to extract relevant fields from slides."""
-        processed_slides = []
-        if "slides" in section:
-            for slide in section["slides"]:
-                processed_slides.append(
-                    {
-                        "slideContent": html_to_text(slide.get("slideContent", "")),
-                        "sectionId": slide.get("sectionId", ""),
-                        "archive": slide.get("archive", ""),
-                        "filepath": slide.get("filepath", ""),
-                    }
-                )
-        # Recursively process children
-        if "children" in section:
-            for child in section["children"]:
-                processed_slides.extend(process_section(child))
-        return processed_slides
+    slide_index_tracker = {section["id"]: 0 for section in data.get("sections", [])}
 
     processed_data = []
     for section in data.get("sections", []):
-        processed_data.extend(process_section(section))
+        processed_data.extend(
+            process_section(data["courseId"], section, slide_index_tracker)
+        )
 
     with open(output_file, "w", encoding="utf-8") as file:
         json.dump(processed_data, file, ensure_ascii=False, indent=4)
@@ -104,27 +138,42 @@ def is_cache_valid(file_path: str) -> bool:
 
 def main():
     for course_id in COURSE_IDS:
-        original_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_slides.json")
-        processed_slides_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json")
+        original_slides_file = os.path.join(
+            SLIDES_OUTPUT_DIR, f"{course_id}_slides.json"
+        )
+        processed_slides_file = os.path.join(
+            SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
+        )
 
         if is_cache_valid(original_slides_file):
             try:
                 data = load_from_disk(original_slides_file)
                 print(f"Loaded original slides for course {course_id} from disk.")
             except FileNotFoundError:
-                print(f"Original slides for course {course_id} not found locally. Fetching from API...")
+                print(
+                    f"Original slides for course {course_id} not found locally. Fetching from API..."
+                )
                 data = get_all_slides(course_id)
                 save_to_disk(original_slides_file, data)
-                print(f"Original slides for course {course_id} saved locally at {original_slides_file}.")
+                print(
+                    f"Original slides for course {course_id} saved locally at {original_slides_file}."
+                )
         else:
-            print(f"Cache expired or original slides for course {course_id} not found locally. Fetching from API...")
+            print(
+                f"Cache expired or original slides for course {course_id} not found locally. Fetching from API..."
+            )
             data = get_all_slides(course_id)
             save_to_disk(original_slides_file, data)
-            print(f"Original slides for course {course_id} saved locally at {original_slides_file}.")
+            print(
+                f"Original slides for course {course_id} saved locally at {original_slides_file}."
+            )
 
         print(f"Processing slides for course {course_id} to clean and simplify data...")
         process_slides(original_slides_file, processed_slides_file)
-        print(f"Processed slides for course {course_id} saved at {processed_slides_file}.")
+        print(
+            f"Processed slides for course {course_id} saved at {processed_slides_file}."
+        )
+
 
 if __name__ == "__main__":
     main()

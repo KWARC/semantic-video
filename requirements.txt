@@ -4,4 +4,3 @@ pytesseract
 rapidfuzz
 python-dotenv
 BeautifulSoup4
-flask

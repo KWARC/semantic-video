@@ -5,6 +5,11 @@ import re
 import cv2
 
 
+def clean_text(text: str) -> str:
+    text = re.sub(r"[\u201c\u201d\u2022\u00bb\u2014\u2013]", "", text)
+    text = re.sub(r"\s+", " ", text.strip())
+    return text
+
 def verify_video_integrity(video_path, full_validation=True):
     try:
         cap = cv2.VideoCapture(video_path)
