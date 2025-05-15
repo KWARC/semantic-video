@@ -31,14 +31,12 @@ def match_and_update_extracted_content(course_id):
         return
 
     with open(processed_slides_file_path, "r", encoding="utf-8") as slides_file:
-        slides = json.load(slides_file)
+        all_slides = json.load(slides_file)
 
     with open(ocr_extracted_file_path, "r", encoding="utf-8") as results_file:
         results = json.load(results_file)
 
-    frame_slides = [slide for slide in slides if slide.get("slideType") == "FRAME"]
-
-    for slide in frame_slides:
+    for slide in all_slides:
         slide["cleaned_slide_content"] = clean_text(slide.get("slideContent", ""))
 
     for video_id, video_data in results.items():
@@ -48,28 +46,29 @@ def match_and_update_extracted_content(course_id):
 
                 if len(ocr_text) >= 100:
                     text_entry["sectionId"] = ""
-                    text_entry["title"] = ""
-                    text_entry["slideIndex"] = None
-                    text_entry["thumbnail"] = ""
+                    text_entry["sectionUri"] = ""
+                    text_entry["slideUri"] =""
                     text_entry["slideContent"] = ""
+                    text_entry["slideHtml"] = ""
 
                     best_match = process.extractOne(
                         ocr_text,
-                        [slide["cleaned_slide_content"] for slide in frame_slides],
+                        [slide["cleaned_slide_content"] for slide in all_slides],
                         scorer=fuzz.token_set_ratio,
                     )
 
                     if best_match and best_match[1] > 70:
                         matched_slide = next(
                             slide
-                            for slide in frame_slides
+                            for slide in all_slides
                             if slide["cleaned_slide_content"] == best_match[0]
                         )
 
                         text_entry["sectionId"] = matched_slide["sectionId"]
+                        text_entry["sectionUri"] = matched_slide["sectionUri"]
+                        text_entry["slideUri"] = matched_slide["slideUri"]
                         text_entry["slideContent"] = matched_slide["slideContent"]
-                        text_entry["title"] = matched_slide["title"]
-                        text_entry["slideIndex"] = matched_slide["slideIndex"]
+                        text_entry["slideHtml"] = matched_slide["html"]
 
     with open(updated_extracted_file_path, "w", encoding="utf-8") as output_file:
         json.dump(results, output_file, indent=4, ensure_ascii=False)
