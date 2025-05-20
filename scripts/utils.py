@@ -1,5 +1,6 @@
 import os
 import json
+from typing import List
 import requests
 import re
 import cv2
@@ -68,19 +69,22 @@ def verify_video_integrity(video_path, full_validation=True):
         return False
 
 
-def extract_clip_ids(file_path, course_name):
-    with open(file_path, "r") as file:
-        data = json.load(file)
+def extract_clip_ids(file_paths: List[str], course_name: str) -> List[str]:
+    clip_ids = []
 
-    if course_name in data:
-        clip_ids = [
-            entry["clipId"]
-            for entry in data[course_name]
-            if "clipId" in entry and entry["clipId"].strip()
-        ]
-        return clip_ids
-    else:
-        return []
+    for file_path in file_paths:
+        with open(file_path, "r") as file:
+            data = json.load(file)
+            
+        if course_name in data:
+            clip_ids.extend(
+                entry["clipId"]
+                for entry in data[course_name]
+                if "clipId" in entry and entry["clipId"].strip()
+            )
+
+    return clip_ids
+
 
 
 def load_cache(cache_file):
