@@ -52,6 +52,7 @@ def get_frame_slides_by_section(toc_elems: List[Dict], course_id: str) -> Dict[s
         if elem.get("type") == "Section":
             sec_id = elem["id"]
             sec_uri = elem.get("uri", "")
+            sec_title=elem.get("title","")
             slide_elements = fetch_slides(course_id,sec_id)
             frame_slides = [
                 slide["slide"]
@@ -60,6 +61,7 @@ def get_frame_slides_by_section(toc_elems: List[Dict], course_id: str) -> Dict[s
             ]
             by_section[sec_id] = {
                 "section_uri": sec_uri,
+                "section_title":sec_title,
                 "slides": frame_slides
             }
         if "children" in elem and isinstance(elem["children"], list):
@@ -112,7 +114,7 @@ def html_to_text(html_content):
     soup = BeautifulSoup(html_content, "html.parser")
     return soup.get_text()
 
-def process_section(section_id: str,section_uri:str, slides: List[Dict]) -> List[Dict]:
+def process_section(section_id: str,section_uri:str,section_title:str, slides: List[Dict]) -> List[Dict]:
     processed_slides = []
     for slide in slides:
         raw_slide_content = html_to_text(slide.get("html", ""))
@@ -121,6 +123,7 @@ def process_section(section_id: str,section_uri:str, slides: List[Dict]) -> List
         processed_slides.append({
             "sectionId": section_id,
             "sectionUri":section_uri,
+            "sectionTitle":section_title,
             "slideUri": slide.get("uri", ""),
             "slideContent": cleaned_slide_content,
             "html": slide.get("html", ""),
@@ -134,8 +137,9 @@ def process_slides(input_file: str, output_file: str):
     processed_data = []
     for section_id, section_info in slides_by_section.items():
         section_uri = section_info.get("section_uri", "")
+        section_title=section_info.get("section_title","")
         slides = section_info.get("slides", [])
-        processed_data.extend(process_section(section_id,section_uri,slides))
+        processed_data.extend(process_section(section_id,section_uri,section_title,slides))
     with open(output_file, "w", encoding="utf-8") as file:
         json.dump(processed_data, file, ensure_ascii=False, indent=4)
 

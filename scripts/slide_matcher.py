@@ -47,6 +47,7 @@ def match_and_update_extracted_content(course_id):
                 if len(ocr_text) >= 100:
                     text_entry["sectionId"] = ""
                     text_entry["sectionUri"] = ""
+                    text_entry["sectionTitle"] = ""
                     text_entry["slideUri"] =""
                     text_entry["slideContent"] = ""
                     text_entry["slideHtml"] = ""
@@ -66,6 +67,7 @@ def match_and_update_extracted_content(course_id):
 
                         text_entry["sectionId"] = matched_slide["sectionId"]
                         text_entry["sectionUri"] = matched_slide["sectionUri"]
+                        text_entry["sectionTitle"] = matched_slide["sectionTitle"]
                         text_entry["slideUri"] = matched_slide["slideUri"]
                         text_entry["slideContent"] = matched_slide["slideContent"]
                         text_entry["slideHtml"] = matched_slide["html"]
