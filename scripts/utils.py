@@ -69,22 +69,23 @@ def verify_video_integrity(video_path, full_validation=True):
         return False
 
 
-def extract_clip_ids(file_paths: List[str], course_name: str) -> List[str]:
-    clip_ids = []
-
-    for file_path in file_paths:
+def extract_clip_ids(file_path: str, course_name: str) -> List[str]:
+    try:
         with open(file_path, "r") as file:
             data = json.load(file)
-            
-        if course_name in data:
-            clip_ids.extend(
-                entry["clipId"]
-                for entry in data[course_name]
-                if "clipId" in entry and entry["clipId"].strip()
-            )
-
-    return clip_ids
-
+    except (FileNotFoundError, json.JSONDecodeError):
+        return []
+    course_data = data.get(course_name)
+    if not course_data:
+        return []
+    clips = course_data.get("clips")
+    if not isinstance(clips, list):
+        return []
+    return [
+        clip["clip_id"].strip()
+        for clip in clips
+        if isinstance(clip.get("clip_id"), str) and clip["clip_id"].strip()
+    ]
 
 
 def load_cache(cache_file):
