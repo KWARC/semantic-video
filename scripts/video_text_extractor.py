@@ -333,12 +333,10 @@ def process_videos(clip_ids, course_id):
 
 
 if __name__ == "__main__":
-    clip_file_paths = [
-    os.getenv("CURRENT_SEM_JSON", "current-sem.json"),
-    os.getenv("WS24_25_JSON", "WS24-25-final.json")
-]
-
+    all_courses_clips_path = os.path.join(
+    OCR_EXTRACTED_FILE_PATH, "all_courses_clips.json"
+    )
     for course_id in COURSE_IDS:
-        clip_ids = extract_clip_ids(clip_file_paths, course_id)
+        clip_ids = extract_clip_ids(all_courses_clips_path, course_id)
         print(f"Processing course: {course_id} with {len(clip_ids)} clips")
         process_videos(clip_ids, course_id)
