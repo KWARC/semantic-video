@@ -29,7 +29,7 @@ def fetch_slides(course_id: str, section_id: str) -> List[Dict]:
     url = f"{COURSE_API_BASE_URL}/get-slides?courseId={course_id}&sectionIds={encoded_section_id}"
     response = requests.get(url)
     response.raise_for_status()
-    return response.json().get(section_id, [])
+    return response.json().get(section_id, {}).get("slides", [])
 
 def fetch_toc(course_id:str)->List[Dict]:
     notes_uri=COURSE_NOTES_URIS.get(course_id)
@@ -54,11 +54,14 @@ def get_frame_slides_by_section(toc_elems: List[Dict], course_id: str) -> Dict[s
             sec_uri = elem.get("uri", "")
             sec_title=elem.get("title","")
             slide_elements = fetch_slides(course_id,sec_id)
-            frame_slides = [
-                slide["slide"]
-                for slide in slide_elements
-                if slide.get("slideType") == "FRAME" and "slide" in slide
-            ]
+            frame_slides = []
+            for slide in slide_elements:
+                if not isinstance(slide, dict):
+                    print(f"[Warning] Skipping non-dict slide in section {sec_id}: {slide}")
+                    continue
+                if slide.get("slideType") == "FRAME" and "slide" in slide:
+                    frame_slides.append(slide["slide"])
+
             by_section[sec_id] = {
                 "section_uri": sec_uri,
                 "section_title":sec_title,
