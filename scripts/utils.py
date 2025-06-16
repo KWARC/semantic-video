@@ -69,25 +69,19 @@ def verify_video_integrity(video_path, full_validation=True):
         return False
 
 
-def extract_clip_ids(file_paths, course_name):
-    """Extract clip IDs from either files or URLs."""
+def extract_clip_ids(file_paths: List[str], course_name: str) -> List[str]:
     clip_ids = []
 
     for file_path in file_paths:
-        if file_path.startswith("http://") or file_path.startswith("https://"):
-            # It's a URL
-            response = requests.get(file_path)
-            response.raise_for_status()
-            data = response.json()
-        else:
-            # It's a local file
-            with open(file_path, "r") as file:
-                data = json.load(file)
-
+        with open(file_path, "r") as file:
+            data = json.load(file)
+            
         if course_name in data:
-            for entry in data[course_name]:
-                if "clipId" in entry and entry["clipId"].strip():
-                    clip_ids.append(entry["clipId"])
+            clip_ids.extend(
+                entry["clipId"]
+                for entry in data[course_name]
+                if "clipId" in entry and entry["clipId"].strip()
+            )
 
     return clip_ids
 

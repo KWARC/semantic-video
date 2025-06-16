@@ -1,13 +1,16 @@
 import json
 import os
 
+from config import CURRENT_SEM_JSON
 
-CURRENT_SEM_FILE = os.getenv("CURRENT_SEM_JSON")
+
+# CURRENT_SEM_FILE = os.getenv("CURRENT_SEM_JSON", "current-sem.json")
 EXTRACTED_CONTENT_DIR = "data/slides"  
 
 # Load current-sem.json
-with open(CURRENT_SEM_FILE, 'r') as f:
+with open(CURRENT_SEM_JSON, 'r') as f:
     current_sem = json.load(f)
+    print(f"Loaded {len(current_sem)} courses from {CURRENT_SEM_JSON}")
 
 # Loop through all courses inside current-sem.json
 for course_id, course_entries in current_sem.items():
@@ -49,7 +52,7 @@ for course_id, course_entries in current_sem.items():
         }
 
 
-with open(CURRENT_SEM_FILE, 'w', encoding='utf-8') as f:
+with open(CURRENT_SEM_JSON, 'w', encoding='utf-8') as f:
     json.dump(current_sem, f, indent=2)
 
-print(f"current-sem.json successfully updated!")
+print(f"{CURRENT_SEM_JSON} successfully updated!")
