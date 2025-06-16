@@ -334,7 +334,7 @@ def process_videos(clip_ids, course_id):
 
 if __name__ == "__main__":
     clip_file_paths = [
-    os.getenv("CURRENT_SEM_JSON", "current-sem.json")
+    os.getenv("CURRENT_SEM_JSON")
     # os.getenv("WS24_25_JSON", "WS24-25-final.json")
 ]
 

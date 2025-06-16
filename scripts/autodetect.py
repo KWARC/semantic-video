@@ -2,7 +2,7 @@ import json
 import os
 
 
-CURRENT_SEM_FILE = "current-sem.json"
+CURRENT_SEM_FILE = os.getenv("CURRENT_SEM_JSON")
 EXTRACTED_CONTENT_DIR = "data/slides"  
 
 # Load current-sem.json
