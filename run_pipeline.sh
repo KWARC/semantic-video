@@ -22,5 +22,5 @@ source "$VENV_DIR/Scripts/activate"
 "$VENV_DIR/Scripts/python" "$SLIDE_FETCHER_SCRIPT" && echo "$SLIDE_FETCHER_SCRIPT executed successfully!" || { echo "Error executing $SLIDE_FETCHER_SCRIPT"; exit 1; }
 "$VENV_DIR/Scripts/python" "$VIDEO_TEXT_EXTRACTOR_SCRIPT" && echo "$VIDEO_TEXT_EXTRACTOR_SCRIPT executed successfully!" || { echo "Error executing $VIDEO_TEXT_EXTRACTOR_SCRIPT"; exit 1; }
 "$VENV_DIR/Scripts/python" "$SLIDE_MATCHER_SCRIPT" && echo "$SLIDE_MATCHER_SCRIPT executed successfully!" || { echo "Error executing $SLIDE_MATCHER_SCRIPT"; exit 1; }
-"$VENV_DIR/Scripts/python" "$AUTODETECT_SCRIPT" || { echo "Error in autodetect"; exit 1; }
+"$VENV_DIR/Scripts/python" "$AUTODETECT_SCRIPT" && echo "$AUTODETECT_SCRIPT executed successfully!" || { echo "Error in autodetect"; exit 1; }
 echo "All scripts ran successfully!"

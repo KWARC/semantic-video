@@ -43,7 +43,7 @@ for course_id, course_entries in current_sem.items():
 
         # Directly update the entry with autoDetected
         entry['autoDetected'] = {
-            "clipId": "",
+            "clipId": clip_id,
             "sectionUri": last_valid_sectionUri,
             "slideUri": last_valid_slideUri
         }
