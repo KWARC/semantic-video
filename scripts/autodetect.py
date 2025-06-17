@@ -1,9 +1,15 @@
 import json
 import os
 from config import CURRENT_SEM_JSON
+from datetime import datetime
+
+def load_all_clips():
+    with open("data/cache/all_courses_clips.json", "r") as f:
+        return json.load(f)
 
 def update_current_sem():
-    EXTRACTED_CONTENT_DIR = "data/slides"  
+    EXTRACTED_CONTENT_DIR = "data/slides"
+    TIME_WINDOW_MS = 12 * 60 * 60 * 1000  # 12 hours in milliseconds
 
    
     with open(CURRENT_SEM_JSON, 'r') as f:
@@ -11,11 +17,22 @@ def update_current_sem():
         print(f"Loaded {len(current_sem)} courses from {CURRENT_SEM_JSON}")
 
    
+    all_clips = load_all_clips()
+
+    
+    clip_timestamp_map = {}
+    for course_id, course_clips in all_clips.items():
+        timestamps = []
+        for clip in course_clips["clips"]:
+            recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d")
+            recording_ts = int(recording_dt.timestamp() * 1000)
+            timestamps.append((recording_ts, clip["clip_id"]))
+        clip_timestamp_map[course_id] = timestamps
+
     for course_id, course_entries in current_sem.items():
-        print(f"Processing course: {course_id}")
+        print(f"\nProcessing course: {course_id}")
 
         extracted_file_path = os.path.join(EXTRACTED_CONTENT_DIR, f"{course_id}_updated_extracted_content.json")
-
         if not os.path.exists(extracted_file_path):
             print(f"WARNING: Extracted file not found for course {course_id}. Skipping this course.")
             continue
@@ -23,34 +40,55 @@ def update_current_sem():
         with open(extracted_file_path, 'r', encoding='utf-8') as ef:
             extracted_content = json.load(ef)
 
-        for entry in course_entries:
-            clip_id = entry['clipId']
-            timestamp_ms = entry['timestamp_ms']
+        matched_count = 0
+        course_clips = clip_timestamp_map.get(course_id, [])
 
+        for entry in course_entries:
+            raw_ts = entry['timestamp_ms']
+            timestamp_ms = raw_ts if raw_ts > 1e12 else raw_ts * 1000
+
+           
+            matched_clip_id = None
+            closest_diff = TIME_WINDOW_MS + 1
+
+            for recorded_ts, clip_id in course_clips:
+                diff = abs(recorded_ts - timestamp_ms)
+                if diff <= TIME_WINDOW_MS and diff < closest_diff:
+                    if clip_id in extracted_content:
+                        matched_clip_id = clip_id
+                        closest_diff = diff
+
+            if not matched_clip_id:
+                print(f"WARNING: No clip matched within ±12 hours for timestamp {timestamp_ms} in course {course_id}")
+                continue
+
+          
+            clip_data = extracted_content[matched_clip_id]['extracted_content']
             last_valid_sectionUri = ""
             last_valid_slideUri = ""
 
-          
-            if clip_id in extracted_content:
-                clip_data = extracted_content[clip_id]['extracted_content']
-                for timestamp in sorted(clip_data.keys(), key=lambda x: float(x)):
-                    sectionUri = clip_data[timestamp].get('sectionUri', '')
-                    slideUri = clip_data[timestamp].get('slideUri', '')
-                    if sectionUri:
-                        last_valid_sectionUri = sectionUri
-                        last_valid_slideUri = slideUri
+            for ts in sorted(clip_data.keys(), key=lambda x: float(x)):
+                sectionUri = clip_data[ts].get('sectionUri', '')
+                slideUri = clip_data[ts].get('slideUri', '')
+                if sectionUri:
+                    last_valid_sectionUri = sectionUri
+                    last_valid_slideUri = slideUri
 
-          
             entry['autoDetected'] = {
-                "clipId": clip_id,
+                "clipId": matched_clip_id,
                 "sectionUri": last_valid_sectionUri,
                 "slideUri": last_valid_slideUri
             }
 
+            matched_count += 1
+
+        print(f"Updated {matched_count}/{len(course_entries)} entries for {course_id}")
+
+    
     with open(CURRENT_SEM_JSON, 'w', encoding='utf-8') as f:
         json.dump(current_sem, f, indent=2)
 
-    print(f"{CURRENT_SEM_JSON} successfully updated!")
+    print(f"\n{CURRENT_SEM_JSON} successfully updated!")
 
 def main():
     update_current_sem()
