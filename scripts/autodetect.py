@@ -11,12 +11,10 @@ def update_current_sem():
     EXTRACTED_CONTENT_DIR = "data/slides"
     TIME_WINDOW_MS = 12 * 60 * 60 * 1000  # 12 hours in milliseconds
 
-   
     with open(CURRENT_SEM_JSON, 'r') as f:
         current_sem = json.load(f)
         print(f"Loaded {len(current_sem)} courses from {CURRENT_SEM_JSON}")
 
-   
     all_clips = load_all_clips()
 
     
@@ -46,7 +44,6 @@ def update_current_sem():
         for entry in course_entries:
             raw_ts = entry['timestamp_ms']
             timestamp_ms = raw_ts if raw_ts > 1e12 else raw_ts * 1000
-
            
             matched_clip_id = None
             closest_diff = TIME_WINDOW_MS + 1
@@ -59,14 +56,12 @@ def update_current_sem():
                         closest_diff = diff
 
             if not matched_clip_id:
-                print(f"WARNING: No clip matched within ±12 hours for timestamp {timestamp_ms} in course {course_id}")
                 continue
 
-          
             clip_data = extracted_content[matched_clip_id]['extracted_content']
             last_valid_sectionUri = ""
             last_valid_slideUri = ""
-
+          
             for ts in sorted(clip_data.keys(), key=lambda x: float(x)):
                 sectionUri = clip_data[ts].get('sectionUri', '')
                 slideUri = clip_data[ts].get('slideUri', '')
@@ -84,7 +79,6 @@ def update_current_sem():
 
         print(f"Updated {matched_count}/{len(course_entries)} entries for {course_id}")
 
-    
     with open(CURRENT_SEM_JSON, 'w', encoding='utf-8') as f:
         json.dump(current_sem, f, indent=2)
 
