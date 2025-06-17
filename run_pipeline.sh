@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the full path to the project directory
-PROJECT_DIR="G:\semantic-video"
+PROJECT_DIR="/srv/semantic-video"
 
 # Set the full path to the Python virtual environment
 VENV_DIR="$PROJECT_DIR/venv"
@@ -11,7 +11,7 @@ FAU_CLIP_EXTRACTOR="$PROJECT_DIR/scripts/fau_clip_extractor.py"
 SLIDE_FETCHER_SCRIPT="$PROJECT_DIR/scripts/slide_fetcher.py"
 VIDEO_TEXT_EXTRACTOR_SCRIPT="$PROJECT_DIR/scripts/video_text_extractor.py"
 SLIDE_MATCHER_SCRIPT="$PROJECT_DIR/scripts/slide_matcher.py"
-AUTODETECT_SCRIPT="$PROJECT_DIR/scripts/autodetect.py"
+AUTODETECT_SCRIPT="$PROJECT_DIR/scripts/auto_detect.py"
 
 
 # Change to the project directory
