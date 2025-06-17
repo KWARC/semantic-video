@@ -13,6 +13,7 @@ RESULTS_FILE_PATH = os.getenv("RESULTS_FILE_PATH", "data/results/ocr_results.jso
 SLIDES_EXPIRY_DAYS = int(os.getenv("SLIDES_EXPIRY_DAYS", 1))
 SLIDES_OUTPUT_DIR = os.getenv("SLIDES_OUTPUT_DIR", "data/slides/")
 VIDEO_DOWNLOAD_DIR = os.getenv("VIDEO_DOWNLOAD_DIR", "data/videos/")
+ALL_COURSES_CLIPS_JSON = os.getenv("ALL_COURSES_CLIPS_JSON", "data/cache/all_courses_clips.json")
 
 os.makedirs(OCR_EXTRACTED_FILE_PATH, exist_ok=True)
 os.makedirs(VIDEO_DOWNLOAD_DIR, exist_ok=True)

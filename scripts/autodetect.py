@@ -1,14 +1,14 @@
 import json
 import os
-from config import CURRENT_SEM_JSON
+from config import CURRENT_SEM_JSON,ALL_COURSES_CLIPS_JSON, SLIDES_OUTPUT_DIR
 from datetime import datetime
 
 def load_all_clips():
-    with open("data/cache/all_courses_clips.json", "r") as f:
+    with open(ALL_COURSES_CLIPS_JSON, "r") as f:
         return json.load(f)
 
 def update_current_sem():
-    EXTRACTED_CONTENT_DIR = "data/slides"
+    EXTRACTED_CONTENT_DIR = SLIDES_OUTPUT_DIR
     TIME_WINDOW_MS = 12 * 60 * 60 * 1000  # 12 hours in milliseconds
 
     with open(CURRENT_SEM_JSON, 'r') as f:
