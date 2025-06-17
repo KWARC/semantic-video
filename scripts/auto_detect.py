@@ -8,7 +8,6 @@ def load_all_clips():
         return json.load(f)
 
 def update_current_sem():
-    EXTRACTED_CONTENT_DIR = SLIDES_OUTPUT_DIR
     TIME_WINDOW_MS = 12 * 60 * 60 * 1000  # 12 hours in milliseconds
 
     with open(CURRENT_SEM_JSON, 'r') as f:
@@ -30,7 +29,7 @@ def update_current_sem():
     for course_id, course_entries in current_sem.items():
         print(f"\nProcessing course: {course_id}")
 
-        extracted_file_path = os.path.join(EXTRACTED_CONTENT_DIR, f"{course_id}_updated_extracted_content.json")
+        extracted_file_path = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_updated_extracted_content.json")
         if not os.path.exists(extracted_file_path):
             print(f"WARNING: Extracted file not found for course {course_id}. Skipping this course.")
             continue
@@ -40,6 +39,8 @@ def update_current_sem():
 
         matched_count = 0
         course_clips = clip_timestamp_map.get(course_id, [])
+        if course_id in {"ai-1", "ai-2"}:
+            course_clips = course_clips[1:]
 
         for entry in course_entries:
             raw_ts = entry['timestamp_ms']
