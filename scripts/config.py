@@ -1,3 +1,4 @@
+import json
 import os
 from dotenv import load_dotenv
 
@@ -5,7 +6,9 @@ load_dotenv(".env.local")
 
 COURSE_API_BASE_URL = os.getenv("COURSE_API_BASE_URL")
 NEXT_PUBLIC_FLAMS_URL=os.getenv("NEXT_PUBLIC_FLAMS_URL")
+FAU_TV_BASE_URL = os.getenv("FAU_TV_BASE_URL")
 COURSE_IDS = os.getenv("COURSE_IDS", "").split(",")
+FAU_TV_COURSE_IDS = json.loads(os.getenv("FAU_TV_COURSE_IDS", "{}"))
 CURRENT_SEM_JSON = os.getenv("CURRENT_SEM_JSON", "current-sem.json")
 FRAME_PROCESSING_SLEEP_TIME = float(os.getenv("FRAME_PROCESSING_SLEEP_TIME", "0.1"))
 OCR_EXTRACTED_FILE_PATH = os.getenv("OCR_EXTRACTED_FILE_PATH", "data/cache/")
