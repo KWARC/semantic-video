@@ -294,6 +294,8 @@ def process_videos(clip_ids, course_id):
                 print(f"Successfully downloaded and verified clip ID {clip_id}.")
             else:
                 print(f"Failed to verify download for clip ID {clip_id}. Skipping.")
+                if os.path.exists(temp_video_path):
+                    os.remove(temp_video_path)
                 continue
         else:
             print(f"Video for clip ID {clip_id} already downloaded. Skipping download.")
