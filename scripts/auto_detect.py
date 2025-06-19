@@ -1,14 +1,14 @@
 import json
 import os
 from config import CURRENT_SEM_JSON,ALL_COURSES_CLIPS_JSON, SLIDES_OUTPUT_DIR
-from datetime import datetime
+from datetime import datetime, timezone
 
 def load_all_clips():
     with open(ALL_COURSES_CLIPS_JSON, "r") as f:
         return json.load(f)
 
 def update_current_sem():
-    TIME_WINDOW_MS = 12 * 60 * 60 * 1000  # 12 hours in milliseconds
+    TIME_WINDOW_MS = 24 * 60 * 60 * 1000  # 24 hours in milliseconds
 
     with open(CURRENT_SEM_JSON, 'r') as f:
         current_sem = json.load(f)
@@ -21,7 +21,7 @@ def update_current_sem():
     for course_id, course_clips in all_clips.items():
         timestamps = []
         for clip in course_clips["clips"]:
-            recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d")
+            recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
             recording_ts = int(recording_dt.timestamp() * 1000)
             timestamps.append((recording_ts, clip["clip_id"]))
         clip_timestamp_map[course_id] = timestamps
@@ -50,9 +50,10 @@ def update_current_sem():
             closest_diff = TIME_WINDOW_MS + 1
 
             for recorded_ts, clip_id in course_clips:
-                diff = abs(recorded_ts - timestamp_ms)
-                if diff <= TIME_WINDOW_MS and diff < closest_diff:
-                    if clip_id in extracted_content:
+                diff = timestamp_ms - recorded_ts
+
+                if 0 <= diff <= TIME_WINDOW_MS:
+                    if clip_id in extracted_content and diff < closest_diff:
                         matched_clip_id = clip_id
                         closest_diff = diff
 
