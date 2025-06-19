@@ -114,9 +114,10 @@ def save_partial_results(course_id, clip_id, extracted_content):
         existing_data[clip_id] = {"extracted_content": {}}
 
     existing_extracted_content = existing_data[clip_id]["extracted_content"]
-    existing_extracted_content.update(extracted_content)
+    new_extracted = {str(k): v for k, v in extracted_content.items()}
+    existing_extracted_content.update(new_extracted)
     with open(results_file, "w") as f:
-        json.dump(existing_data, f, indent=4)
+        json.dump(existing_data, f, indent=4, ensure_ascii=False)
 
 
 
@@ -175,7 +176,7 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
 
             # Display progress
             progress = (current_time / video_duration) * 100
-            # print(f"Processing progress: {progress:.2f}%")
+            print(f"Processing progress: {progress:.2f}%")
 
     if text_dict:
         last_key = max(text_dict.keys())
@@ -308,11 +309,14 @@ def process_videos(clip_ids, course_id):
                 video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
                 cap.release()
                 if cache[clip_id]["extracted_content"][last_entry]["end_time"] == video_duration:
-                    print(f"Skipping {clip_id}, already cached and processed.")
+                    print(f"Skipping {clip_id}, already cached and fully processed.")
                     continue
                 else:
-                    print(f"Resuming text extraction for {clip_id} from {last_entry} seconds.")
-                    start_time = float(last_entry)
+                    print(f"Incomplete extraction detected for {clip_id}. Restarting from beginning.")
+                    del cache[clip_id] 
+                    with open(results_file, "w") as f:
+                         json.dump(cache, f, indent=4) 
+                    start_time = 0
             else:
                 print(f"Text extraction pending for {clip_id}. Proceeding to extract.")
                 start_time = 0
@@ -325,10 +329,6 @@ def process_videos(clip_ids, course_id):
         print(f"Processing video for text extraction: {final_video_path}")
         extracted_content = extract_text_from_video(final_video_path, course_id, clip_id, start_time)
 
-        cache[clip_id] = {
-            "url": slides_and_audio_url,
-            "extracted_content": extracted_content,
-        }
         save_partial_results(course_id, clip_id, extracted_content)
 
         print(f"Finished processing clip ID {clip_id}. Moving to the next clip.\n")

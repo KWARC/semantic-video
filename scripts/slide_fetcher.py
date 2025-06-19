@@ -17,13 +17,6 @@ from config import (
 
 COURSE_NOTES_URIS: Dict[str, str] = {}
 
-def fetch_section_info(course_id: str) -> List[Dict]:
-    url = f"{COURSE_API_BASE_URL}/get-section-info/{course_id}"
-    response = requests.get(url)
-    response.raise_for_status()
-    return response.json()
-
-
 def fetch_slides(course_id: str, section_id: str) -> List[Dict]:
     encoded_section_id = quote(section_id, safe='')
     url = f"{COURSE_API_BASE_URL}/get-slides?courseId={course_id}&sectionIds={encoded_section_id}"
