@@ -3,8 +3,10 @@ import json
 from collections import defaultdict
 from config import COURSE_IDS, SLIDES_OUTPUT_DIR
 
+
 def compute_time_per_slide_and_section(course_id):
-    input_file = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_updated_extracted_content.json")
+    input_file = os.path.join(
+        SLIDES_OUTPUT_DIR, f"{course_id}_updated_extracted_content.json")
     if not os.path.exists(input_file):
         print(f"[WARN] File not found: {input_file}")
         return
@@ -14,30 +16,33 @@ def compute_time_per_slide_and_section(course_id):
 
     slide_durations = defaultdict(float)
     section_durations = defaultdict(float)
+    section_slide_durations = defaultdict(
+        lambda: {"duration": 0.0, "slides": defaultdict(float)})
 
     for clip_id, clip_data in content.items():
         entries = clip_data.get("extracted_content", {})
-        for ts, entry in entries.items():
-            start = entry.get("start_time")
-            end = entry.get("end_time")
-            slide = entry.get("slideUri")
-            section = entry.get("sectionUri")
+    for ts, entry in entries.items():
+        start = entry.get("start_time")
+        end = entry.get("end_time")
+        slide = entry.get("slideUri")
+        section = entry.get("sectionUri")
 
-            if start is None or end is None or not slide:
-                continue
+        if start is None or end is None:
+            continue
 
-            duration = float(end) - float(start)
-            slide_durations[slide] += duration
-            if section:
-                section_durations[section] += duration
+        duration = float(end) - float(start)
+        entry["duration"] = round(duration, 2)
 
-    print(f"\n== Time per Slide for course {course_id} ==")
-    for slide, total_time in sorted(slide_durations.items(), key=lambda x: -x[1]):
-        print(f"{slide}: {total_time:.2f} seconds")
+        slide_durations[slide] += duration
+        if section:
+            section_durations[section] += duration
+            section_slide_durations[section]["duration"] += duration
+            section_slide_durations[section]["slides"][slide] += duration
 
-    print(f"\n== Time per Section for course {course_id} ==")
-    for section, total_time in sorted(section_durations.items(), key=lambda x: -x[1]):
-        print(f"{section}: {total_time:.2f} seconds")
+    with open(input_file, "w", encoding="utf-8") as f:
+        json.dump(content, f, indent=2)
+    print(f"[INFO] Updated {input_file} with duration fields.")
+
 
 def main():
     for course_id in COURSE_IDS:
@@ -45,4 +50,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
