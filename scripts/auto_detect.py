@@ -52,10 +52,8 @@ def check_section_completed(clip_data: dict, current_slide: dict, clip_id: str =
         next_data = clip_data[timestamp_str]
 
         if any(k in next_data for k in ("sectionId", "sectionUri", "slideUri")):
-            print(f"[clipId={clip_id}] Found next slide at {timestamp_str} → sectionCompleted = False")
             return False
 
-    print(f"{clip_id}- True")
     return True
 
 def update_current_sem():
