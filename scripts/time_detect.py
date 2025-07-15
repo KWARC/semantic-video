@@ -21,23 +21,23 @@ def compute_time_per_slide_and_section(course_id):
 
     for clip_id, clip_data in content.items():
         entries = clip_data.get("extracted_content", {})
-    for ts, entry in entries.items():
-        start = entry.get("start_time")
-        end = entry.get("end_time")
-        slide = entry.get("slideUri")
-        section = entry.get("sectionUri")
+        for ts, entry in entries.items():
+            start = entry.get("start_time")
+            end = entry.get("end_time")
+            slide = entry.get("slideUri")
+            section = entry.get("sectionUri")
 
-        if start is None or end is None:
-            continue
+            if start is None or end is None:
+                continue
 
-        duration = float(end) - float(start)
-        entry["duration"] = round(duration, 2)
+            duration = float(end) - float(start)
+            entry["duration"] = round(duration, 2)
 
-        slide_durations[slide] += duration
-        if section:
-            section_durations[section] += duration
-            section_slide_durations[section]["duration"] += duration
-            section_slide_durations[section]["slides"][slide] += duration
+            slide_durations[slide] += duration
+            if section:
+                section_durations[section] += duration
+                section_slide_durations[section]["duration"] += duration
+                section_slide_durations[section]["slides"][slide] += duration
 
     with open(input_file, "w", encoding="utf-8") as f:
         json.dump(content, f, indent=2)
