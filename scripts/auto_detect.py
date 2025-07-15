@@ -6,6 +6,55 @@ from datetime import datetime, timezone
 def load_all_clips():
     with open(ALL_COURSES_CLIPS_JSON, "r") as f:
         return json.load(f)
+    
+def get_latest_valid_slide(clip_data: dict, min_duration: float = 59.0):
+    valid_slides = []
+    seen_slide_uris = set()
+
+    sorted_timestamps = sorted(clip_data.keys(), key=lambda x: float(x))
+
+    for ts in sorted_timestamps:
+        data = clip_data[ts]
+
+        section_uri = data.get("sectionUri", "")
+        slide_uri = data.get("slideUri", "")
+
+        if not section_uri or not slide_uri:
+            continue
+        if slide_uri in seen_slide_uris:
+            continue
+
+        start_time = float(data.get("start_time", ts))
+        end_time = float(data.get("end_time", start_time))
+        duration = end_time - start_time
+
+        if duration < min_duration:
+            continue
+
+        valid_slides.append({
+            "sectionUri": section_uri,
+            "slideUri": slide_uri,
+            "start_time": start_time,
+            "end_time": end_time
+        })
+        seen_slide_uris.add(slide_uri)
+
+    return valid_slides[-1] if valid_slides else None
+
+def check_section_completed(clip_data: dict, current_slide: dict, clip_id: str = None) -> bool:
+    current_end_time = current_slide["end_time"]
+
+    sorted_keys = sorted((float(k), k) for k in clip_data.keys())
+    for timestamp_float, timestamp_str in sorted_keys:
+        if timestamp_float < current_end_time:
+            continue
+
+        next_data = clip_data[timestamp_str]
+
+        if any(k in next_data for k in ("sectionId", "sectionUri", "slideUri")):
+            return False
+
+    return True
 
 def update_current_sem():
     TIME_WINDOW_MS = 24 * 60 * 60 * 1000  # 24 hours in milliseconds
@@ -61,21 +110,17 @@ def update_current_sem():
                 continue
 
             clip_data = extracted_content[matched_clip_id]['extracted_content']
-            last_valid_sectionUri = ""
-            last_valid_slideUri = ""
-          
-            for ts in sorted(clip_data.keys(), key=lambda x: float(x)):
-                sectionUri = clip_data[ts].get('sectionUri', '')
-                slideUri = clip_data[ts].get('slideUri', '')
-                if sectionUri:
-                    last_valid_sectionUri = sectionUri
-                    last_valid_slideUri = slideUri
+            latest_slide = get_latest_valid_slide(clip_data, min_duration=59.0)
+            if latest_slide:
+                section_completed = check_section_completed(clip_data, latest_slide,matched_clip_id)
+                print({section_completed})
+                entry['autoDetected'] = {
+                    "clipId": matched_clip_id,
+                    "sectionUri": latest_slide["sectionUri"],
+                    "slideUri": latest_slide["slideUri"],
+                    "sectionCompleted": section_completed
+                }
 
-            entry['autoDetected'] = {
-                "clipId": matched_clip_id,
-                "sectionUri": last_valid_sectionUri,
-                "slideUri": last_valid_slideUri
-            }
 
             matched_count += 1
 
