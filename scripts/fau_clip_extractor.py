@@ -49,17 +49,27 @@ def fetch_clips(fau_id):
 
 def main():
     all_data = {}
-    for course_id, fau_course_id in COURSE_MAP.items():
-        print(f"Extracting clip from course {course_id}")
-
-        if not fau_course_id or fau_course_id in {"_", "not available", "NA"}:
-            print(f"Skipping course '{course_id}' — Invalid or missing FAU ID.")
+    for course_id in COURSE_IDS:
+        semester_map = FAU_TV_COURSE_IDS.get(course_id, {})
+        if not isinstance(semester_map, dict):
+            print(f"[WARN] Skipping {course_id}: not semesterized")
             continue
-        clips = fetch_clips(fau_course_id)
-        all_data[course_id] = {
-            "fau_course_id": fau_course_id,
-            "clips": clips
-        } 
+
+        for semester_label, fau_course_id in semester_map.items():
+            if not fau_course_id or fau_course_id in {"_", "not available", "NA"}:
+                print(f"Skipping {course_id} ({semester_label}) — Invalid FAU ID.")
+                continue
+
+            print(f"Extracting clip from course {course_id} ({semester_label})")
+
+            clips = fetch_clips(fau_course_id)
+
+        # save as: all_data["ai-1"]["WS24-25"] = {...}
+            all_data.setdefault(course_id, {})[semester_label] = {
+                "fau_course_id": fau_course_id,
+                "clips": clips
+             }
+
     clips_directory = os.path.dirname(all_courses_clips_path)
     if clips_directory: 
         os.makedirs(clips_directory, exist_ok=True)

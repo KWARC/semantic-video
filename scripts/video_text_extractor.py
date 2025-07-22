@@ -102,8 +102,8 @@ def is_text_extension_of_last_slide(
     return similarity > similarity_threshold
 
 
-def save_partial_results(course_id, clip_id, extracted_content):
-    results_file = f"data/cache/{course_id}_extracted_content.json"
+def save_partial_results(course_id,semester_key,clip_id, extracted_content):
+    results_file = f"data/cache/{course_id}_{semester_key}_extracted_content.json"
     if os.path.exists(results_file):
         with open(results_file, "r") as f:
             existing_data = json.load(f)
@@ -172,7 +172,7 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
                 time.sleep(sleep_time)  # Add delay between frame processing
 
             # Save partial results
-            save_partial_results(course_id, clip_id, text_dict)
+            save_partial_results(course_id,semester_key, clip_id, text_dict)
 
             # Display progress
             progress = (current_time / video_duration) * 100
@@ -259,14 +259,14 @@ def update_text_dict(
         }
 
 
-def process_videos(clip_ids, course_id):
+def process_videos(clip_ids, course_id, semester_key):
     video_dir = os.path.join(VIDEO_DOWNLOAD_DIR, course_id)
     os.makedirs(video_dir, exist_ok=True)
 
     for clip_id in clip_ids:
-        results_file = f"data/cache/{course_id}_extracted_content.json"
+        results_file = f"data/cache/{course_id}_{semester_key}_extracted_content.json"
         if os.path.exists(results_file):
-            with open(results_file, "r") as f:
+            with open(results_file, "r", encoding='utf-8') as f:
                 cache = json.load(f)
         else:
             cache = {}
@@ -329,7 +329,7 @@ def process_videos(clip_ids, course_id):
         print(f"Processing video for text extraction: {final_video_path}")
         extracted_content = extract_text_from_video(final_video_path, course_id, clip_id, start_time)
 
-        save_partial_results(course_id, clip_id, extracted_content)
+        save_partial_results(course_id,semester_key, clip_id, extracted_content)
 
         print(f"Finished processing clip ID {clip_id}. Moving to the next clip.\n")
 
@@ -338,7 +338,12 @@ if __name__ == "__main__":
     all_courses_clips_path = os.path.join(
     OCR_EXTRACTED_FILE_PATH, "all_courses_clips.json"
     )
+    with open(all_courses_clips_path, "r", encoding="utf-8") as f:
+        all_data = json.load(f)
     for course_id in COURSE_IDS:
-        clip_ids = extract_clip_ids(all_courses_clips_path, course_id)
-        print(f"Processing course: {course_id} with {len(clip_ids)} clips")
-        process_videos(clip_ids, course_id)
+        course_info = all_data.get(course_id, {})
+        for semester_key in course_info:
+            clips = course_info[semester_key].get("clips", [])
+            clip_ids = [clip["clip_id"] for clip in clips]
+            print(f"Processing course: {course_id} ({semester_key}) with {len(clip_ids)} clips")
+            process_videos(clip_ids, course_id,semester_key)
