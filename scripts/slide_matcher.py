@@ -13,7 +13,7 @@ def clean_text(text: str) -> str:
 
 def match_and_update_extracted_content(course_id,semester_key):
     processed_slides_file_path = os.path.join(
-        SLIDES_OUTPUT_DIR, f"{course_id}_{semester_key}_processed_slides.json"
+        SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
     )
     ocr_extracted_file_path = os.path.join(
         OCR_EXTRACTED_FILE_PATH, f"{course_id}_{semester_key}_extracted_content.json"
