@@ -2,7 +2,7 @@ import json
 import os
 import re
 from rapidfuzz import fuzz, process
-from config import OCR_EXTRACTED_FILE_PATH, SLIDES_OUTPUT_DIR, COURSE_IDS
+from config import OCR_EXTRACTED_FILE_PATH, SLIDES_OUTPUT_DIR, COURSE_IDS, ALL_COURSES_CLIPS_JSON
 
 
 def clean_text(text: str) -> str:
@@ -11,15 +11,15 @@ def clean_text(text: str) -> str:
     return text
 
 
-def match_and_update_extracted_content(course_id):
+def match_and_update_extracted_content(course_id,semester_key):
     processed_slides_file_path = os.path.join(
-        SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
+        SLIDES_OUTPUT_DIR, f"{course_id}_{semester_key}_processed_slides.json"
     )
     ocr_extracted_file_path = os.path.join(
-        OCR_EXTRACTED_FILE_PATH, f"{course_id}_extracted_content.json"
+        OCR_EXTRACTED_FILE_PATH, f"{course_id}_{semester_key}_extracted_content.json"
     )
     updated_extracted_file_path = os.path.join(
-        SLIDES_OUTPUT_DIR, f"{course_id}_updated_extracted_content.json"
+        SLIDES_OUTPUT_DIR, f"{course_id}_{semester_key}_updated_extracted_content.json"
     )
 
     if not os.path.exists(processed_slides_file_path):
@@ -81,8 +81,13 @@ def match_and_update_extracted_content(course_id):
 
 
 def main():
+    with open(ALL_COURSES_CLIPS_JSON, "r", encoding="utf-8") as f:
+        all_data = json.load(f)
+
     for course_id in COURSE_IDS:
-        match_and_update_extracted_content(course_id)
+        course_info = all_data.get(course_id, {})
+        for semester_key in course_info:
+            match_and_update_extracted_content(course_id, semester_key)
 
 
 if __name__ == "__main__":

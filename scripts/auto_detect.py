@@ -18,66 +18,78 @@ def update_current_sem():
 
     
     clip_timestamp_map = {}
-    for course_id, course_clips in all_clips.items():
+    for course_id, semester_map in all_clips.items():
         timestamps = []
-        for clip in course_clips["clips"]:
-            recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
-            recording_ts = int(recording_dt.timestamp() * 1000)
-            timestamps.append((recording_ts, clip["clip_id"]))
+        for semester_label, course_clips in semester_map.items():
+            for clip in course_clips.get("clips", []):
+                recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                recording_ts = int(recording_dt.timestamp() * 1000)
+                timestamps.append((recording_ts, clip["clip_id"]))
         clip_timestamp_map[course_id] = timestamps
 
     for course_id, course_entries in current_sem.items():
         print(f"\nProcessing course: {course_id}")
 
-        extracted_file_path = os.path.join(SLIDES_OUTPUT_DIR, f"{course_id}_updated_extracted_content.json")
-        if not os.path.exists(extracted_file_path):
-            print(f"WARNING: Extracted file not found for course {course_id}. Skipping this course.")
+        if course_id not in all_clips:
+            print(f"Skipping {course_id}, not found in all_clips.")
             continue
 
-        with open(extracted_file_path, 'r', encoding='utf-8') as ef:
-            extracted_content = json.load(ef)
+        for semester_key in all_clips[course_id]:
+            print(f"  Semester: {semester_key}")
 
-        matched_count = 0
-        course_clips = clip_timestamp_map.get(course_id, [])
-        if course_id in {"ai-1", "ai-2"}:
-            course_clips = course_clips[1:]
+            extracted_file_path = os.path.join(
+                SLIDES_OUTPUT_DIR,
+                f"{course_id}_{semester_key}_updated_extracted_content.json"
+             )
 
-        for entry in course_entries:
-            raw_ts = entry['timestamp_ms']
-            timestamp_ms = raw_ts if raw_ts > 1e12 else raw_ts * 1000
-           
-            matched_clip_id = None
-            closest_diff = TIME_WINDOW_MS + 1
-
-            for recorded_ts, clip_id in course_clips:
-                diff = timestamp_ms - recorded_ts
-
-                if 0 <= diff <= TIME_WINDOW_MS:
-                    if clip_id in extracted_content and diff < closest_diff:
-                        matched_clip_id = clip_id
-                        closest_diff = diff
-
-            if not matched_clip_id:
+            if not os.path.exists(extracted_file_path):
+                print(f"  WARNING: {extracted_file_path} not found. Skipping.")
                 continue
 
-            clip_data = extracted_content[matched_clip_id]['extracted_content']
-            last_valid_sectionUri = ""
-            last_valid_slideUri = ""
+            with open(extracted_file_path, 'r', encoding='utf-8') as ef:
+                extracted_content = json.load(ef)
+
+            matched_count = 0
+            course_clips = clip_timestamp_map.get(course_id, [])
+            if course_id in {"ai-1", "ai-2"}:
+                course_clips = course_clips[1:]
+
+            for entry in course_entries:
+                raw_ts = entry['timestamp_ms']
+                timestamp_ms = raw_ts if raw_ts > 1e12 else raw_ts * 1000
+           
+                matched_clip_id = None
+                closest_diff = TIME_WINDOW_MS + 1
+
+                for recorded_ts, clip_id in course_clips:
+                    diff = timestamp_ms - recorded_ts
+
+                    if 0 <= diff <= TIME_WINDOW_MS:
+                        if clip_id in extracted_content and diff < closest_diff:
+                            matched_clip_id = clip_id
+                            closest_diff = diff
+
+                if not matched_clip_id:
+                    continue
+
+                clip_data = extracted_content[matched_clip_id]['extracted_content']
+                last_valid_sectionUri = ""
+                last_valid_slideUri = ""
           
-            for ts in sorted(clip_data.keys(), key=lambda x: float(x)):
-                sectionUri = clip_data[ts].get('sectionUri', '')
-                slideUri = clip_data[ts].get('slideUri', '')
-                if sectionUri:
-                    last_valid_sectionUri = sectionUri
-                    last_valid_slideUri = slideUri
+                for ts in sorted(clip_data.keys(), key=lambda x: float(x)):
+                    sectionUri = clip_data[ts].get('sectionUri', '')
+                    slideUri = clip_data[ts].get('slideUri', '')
+                    if sectionUri:
+                        last_valid_sectionUri = sectionUri
+                        last_valid_slideUri = slideUri
 
-            entry['autoDetected'] = {
-                "clipId": matched_clip_id,
-                "sectionUri": last_valid_sectionUri,
-                "slideUri": last_valid_slideUri
-            }
+                entry['autoDetected'] = {
+                    "clipId": matched_clip_id,
+                    "sectionUri": last_valid_sectionUri,
+                    "slideUri": last_valid_slideUri
+                }
 
-            matched_count += 1
+                matched_count += 1
 
         print(f"Updated {matched_count}/{len(course_entries)} entries for {course_id}")
 
