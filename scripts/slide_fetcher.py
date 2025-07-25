@@ -4,7 +4,6 @@ import requests
 import re
 from typing import Any, List, Dict, TypedDict
 from urllib.parse import quote
-from config import OCR_EXTRACTED_FILE_PATH
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from config import (
@@ -14,7 +13,6 @@ from config import (
     SLIDES_OUTPUT_DIR,
     SLIDES_EXPIRY_DAYS,
     COURSE_IDS,
-    ALL_COURSES_CLIPS_JSON
 )
 
 COURSE_NOTES_URIS: Dict[str, str] = {}
@@ -177,18 +175,12 @@ def get_course_notes_uris() -> Dict[str, str]:
 def main():
     global COURSE_NOTES_URIS
     COURSE_NOTES_URIS = get_course_notes_uris()
-    with open(ALL_COURSES_CLIPS_JSON, "r", encoding="utf-8") as f:
-        all_data = json.load(f)
-
-
     for course_id in COURSE_IDS:
-        course_info = all_data.get(course_id, {})
-        for semester_key in course_info:
-            original_slides_file = os.path.join(
-            SLIDES_OUTPUT_DIR, f"{course_id}_{semester_key}_slides.json"
+        original_slides_file = os.path.join(
+            SLIDES_OUTPUT_DIR, f"{course_id}_slides.json"
         )
         processed_slides_file = os.path.join(
-            SLIDES_OUTPUT_DIR, f"{course_id}_{semester_key}_processed_slides.json"
+            SLIDES_OUTPUT_DIR, f"{course_id}_processed_slides.json"
         )
 
         if is_cache_valid(original_slides_file):
