@@ -17,35 +17,52 @@ all_courses_clips_path = os.path.join(
     OCR_EXTRACTED_FILE_PATH, "all_courses_clips.json"
 )
 
-def fetch_clips(fau_id):
-    url = f"{FAU_TV_BASE_URL}/course/id/{fau_id}"
-    r = requests.get(url)
+
+def fetch_clips_details(fau_id):
+
+    course_url = f"{FAU_TV_BASE_URL}/course/id/{fau_id}"
+    r = requests.get(course_url)
+    r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
-    
-    out = []
-    for div in soup.select("#clips-list .target"):
-        anchors = div.find_all("a", href=True)
+    clips_detail = []
+
+    course_url_name = None  
+    for li in soup.select("li[data-tooltip]"):
+
+        clip_info_cells = li.find_all("div", recursive=False)
+        date_span = clip_info_cells[4].find("span")  
+        recording_date = date_span.get_text(strip=True) if date_span else ""
+
+
+        form = li.find("form", action=True)
+        if not form:
+            continue
+        lecture_url = form["action"]
+
+        if course_url_name is None:
+            course_slug_match = re.search(r"/series/([^/]+)/", lecture_url)
+            course_url_name = course_slug_match.group(1) if course_slug_match else None
+
+        clip_page = requests.get(lecture_url).text
+        clip_soup = BeautifulSoup(clip_page, "html.parser")
+        clip_title_div = clip_soup.find("div", id="clip-title")
         clip_id = None
-        for a in anchors:
-            match = re.search(r"/clip/id/([a-zA-Z0-9]+)", a["href"])
+        if clip_title_div:
+            match = re.search(r"ID:(\d+)", clip_title_div.get_text())
             if match:
                 clip_id = match.group(1)
-                break  
-            else:
-                print("Invalid clip href! ",a["href"])
 
-        if not clip_id:
-            continue  
-        clip_info_row = div.find("div", recursive=False)
-        clip_info_cells = clip_info_row.find_all("div", recursive=False)
-        if len(clip_info_cells) >= 5:
-            recording_date = clip_info_cells[4].get_text(strip=True)
-        else:
-            recording_date = ""
-        out.append({"clip_id": clip_id, "recording_date": recording_date})
 
-    return out
+        clips_detail.append({
+            "recording_date": recording_date,
+            "clip_id": clip_id,
+            "lecture_url": lecture_url
+        })
 
+    return {
+        "course_url_name": course_url_name,
+        "clips_detail": clips_detail
+    }
 
 def main():
     all_data = {}
@@ -62,12 +79,15 @@ def main():
 
             print(f"Extracting clip from course {course_id} ({semester_label})")
 
-            clips = fetch_clips(fau_course_id)
+            clips_data = fetch_clips_details(fau_course_id)
+            course_url_name = clips_data["course_url_name"]
+            clips_detail = clips_data["clips_detail"]
 
         # save as: all_data["ai-1"]["WS24-25"] = {...}
             all_data.setdefault(course_id, {})[semester_label] = {
                 "fau_course_id": fau_course_id,
-                "clips": clips
+                "fau_course_url_name":course_url_name,
+                "clips": clips_detail
              }
 
     clips_directory = os.path.dirname(all_courses_clips_path)
