@@ -4,7 +4,7 @@ from typing import List
 import requests
 import re
 import cv2
-
+from config import FAU_TV_OEMBED_BASE_URL,FAU_TV_BASE_URL
 
 def clean_text(text: str) -> str:
     text = re.sub(r"[\u201c\u201d\u2022\u00bb\u2014\u2013]", "", text)
@@ -142,54 +142,19 @@ def download_video(url, file_path):
     return file_path
 
 
-def extract_download_links(content):
-    regex = r'<a href="([^"]+/get/file[^"]*\?[^"]*download=1[^"]*)"[^\>]*>([^<]*)<\/a>'
-    matches = re.findall(regex, content)
-    links = [{"url": match[0], "label": match[1].strip()} for match in matches]
-    return links
-
-
-def find_slides_and_audio_link(links):
-    for link in links:
-        if link["label"].startswith("Folien & Audio") or link["label"].startswith(
-            "Slides & Audio"
-        ):
-            return link["url"]
-    if len(links) > 2:
-        print(
-            f"""// There are multiple video versions. Eg "Slides & video", "Slides only" etc.
-         // Hope that the second link is always "Slides & Audio": {links[1]['url']}"""
-        )
-        return links[1]["url"]
-    return None
-
-
 def get_clip_info(clip_id):
     try:
-        clip_url = f"https://www.fau.tv/clip/id/{clip_id}"
+        clip_url = f"{FAU_TV_OEMBED_BASE_URL}?url={FAU_TV_BASE_URL}/clip/id/{clip_id}&format=json"
         response = requests.get(clip_url)
         response.raise_for_status()
+        data = response.json()
+        for key in ["file"]:
+            if key in data and data[key]:
+                return data[key]
 
-        clip_page_content = response.text
-        links = extract_download_links(clip_page_content)
-
-        if not links:
-            print(
-                f"Video link not found for clip ID: {clip_id}. Continuing with the next link."
-            )
-            return None
-
-        slides_and_audio_link = find_slides_and_audio_link(links)
-        if not slides_and_audio_link:
-            print(
-                f"No slides and audio link found for clip ID: {clip_id}. Continuing with the next link."
-            )
-            return None
-
-        return slides_and_audio_link
+        print(f"No video/audio link found for clip ID: {clip_id}")
+        return None
 
     except requests.exceptions.RequestException as e:
-        print(
-            f"Failed to fetch clip data for clip ID: {clip_id}. Error: {str(e)}. Continuing with the next link."
-        )
+        print(f"Failed to fetch clip data for clip ID: {clip_id}. Error: {str(e)}")
         return None
