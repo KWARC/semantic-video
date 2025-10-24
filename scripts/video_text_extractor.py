@@ -260,7 +260,7 @@ def update_text_dict(
 
 
 def process_videos(clip_ids, course_id, semester_key):
-    video_dir = os.path.join(VIDEO_DOWNLOAD_DIR, course_id)
+    video_dir = os.path.join(VIDEO_DOWNLOAD_DIR, course_id, semester_key)
     os.makedirs(video_dir, exist_ok=True)
 
     for clip_id in clip_ids:
