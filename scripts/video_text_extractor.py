@@ -279,8 +279,11 @@ def process_videos(clip_ids, course_id, semester_key):
 
         temp_video_path = os.path.join(video_dir, f"{clip_id}_tmp.m4v")
         final_video_path = os.path.join(video_dir, f"{clip_id}.m4v")
-
+        
         if not os.path.exists(final_video_path):
+            if(course_id=="ai-2"):
+                print("Course ai-2 , skipping download")
+                continue
             print(f"Downloading video for clip ID: {clip_id}")
             for try_idx in range(10):
                 try:
