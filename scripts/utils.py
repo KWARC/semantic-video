@@ -148,7 +148,7 @@ def get_clip_info(clip_id):
         response = requests.get(clip_url)
         response.raise_for_status()
         data = response.json()
-        for key in ["file"]:
+        for key in ["presentation_url", "file"]:
             if key in data and data[key]:
                 return data[key]
 
