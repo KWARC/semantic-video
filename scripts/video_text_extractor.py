@@ -300,7 +300,7 @@ def process_videos(clip_ids, course_id, semester_key):
                 continue
         else:
             print(f"Video for clip ID {clip_id} already downloaded. Skipping download.")
-
+        clip_id = str(clip_id)
         if clip_id in cache:
             if "extracted_content" in cache[clip_id] and cache[clip_id]["extracted_content"]:
                 last_entry = max(cache[clip_id]["extracted_content"].keys(), key=float)
