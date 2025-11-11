@@ -14,7 +14,19 @@ from utils import (
     verify_video_integrity,
 )
 from config import OCR_EXTRACTED_FILE_PATH, VIDEO_DOWNLOAD_DIR, FRAME_PROCESSING_SLEEP_TIME, COURSE_IDS
+import time
 
+MAX_REQUESTS_PER_MINUTE = 10
+MIN_INTERVAL = 60 / MAX_REQUESTS_PER_MINUTE
+_last_request_time = 0
+
+def throttle():
+    global _last_request_time
+    now = time.time()
+    elapsed = now - _last_request_time
+    if elapsed < MIN_INTERVAL:
+        time.sleep(MIN_INTERVAL - elapsed)
+    _last_request_time = time.time()
 
 def setup_video_capture(video_path):
     cap = cv2.VideoCapture(video_path)
@@ -270,7 +282,7 @@ def process_videos(clip_ids, course_id, semester_key):
                 cache = json.load(f)
         else:
             cache = {}
-        
+        throttle()
         slides_and_audio_url = get_clip_info(clip_id)
 
         if not slides_and_audio_url:
