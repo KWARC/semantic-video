@@ -22,7 +22,15 @@ def update_current_sem():
         timestamps = []
         for semester_label, course_clips in semester_map.items():
             for clip in course_clips.get("clips", []):
-                recording_dt = datetime.strptime(clip["recording_date"], "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                recording_date_str = clip.get("recording_date")
+                if not recording_date_str:
+                    print(f"Skipping clip {clip.get('clip_id', 'unknown')} (no recording_date) in {course_id}")
+                    continue
+                try:
+                    recording_dt = datetime.strptime(recording_date_str, "%Y-%m-%d").replace(tzinfo=timezone.utc)
+                except ValueError:
+                    print(f"Skipping clip {clip.get('clip_id', 'unknown')} (invalid date: {recording_date_str}) in {course_id}")
+                    continue
                 recording_ts = int(recording_dt.timestamp() * 1000)
                 timestamps.append((recording_ts, clip["clip_id"]))
         clip_timestamp_map[course_id] = timestamps
@@ -60,16 +68,28 @@ def update_current_sem():
            
                 matched_clip_id = None
                 closest_diff = TIME_WINDOW_MS + 1
-
+                nearest_diff = float("inf")
+                nearest_clip_id = None
+                nearest_signed_diff = None
                 for recorded_ts, clip_id in course_clips:
                     diff = timestamp_ms - recorded_ts
+                    abs_diff = abs(diff)
+                    if abs_diff < nearest_diff:
+                            nearest_diff = abs_diff
+                            nearest_clip_id = clip_id
+                            nearest_signed_diff=diff
 
                     if 0 <= diff <= TIME_WINDOW_MS:
-                        if clip_id in extracted_content and diff < closest_diff:
-                            matched_clip_id = clip_id
+                        print("        ✅ Within 24h window! Clip Id:",clip_id)
+                        if str(clip_id) in extracted_content and diff < closest_diff:
+                            matched_clip_id = str(clip_id)
                             closest_diff = diff
 
-                if not matched_clip_id:
+                if matched_clip_id:
+                    print(f"✅ Matched clip {matched_clip_id} (Δ={closest_diff / (1000*60*60):.2f}h)")
+                else:
+                    direction = "after" if nearest_signed_diff > 0 else "before"
+                    print(f"❌ No match (closest clip={nearest_clip_id}, Δ={nearest_diff / (1000*60*60):.2f}h {direction})")                
                     continue
 
                 clip_data = extracted_content[matched_clip_id]['extracted_content']
