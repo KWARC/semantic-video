@@ -27,7 +27,7 @@ def fetch_clips(fau_id):
         json_data = response.json()
 
         for clip in json_data.get("data", []):
-            iso_recording_date = clip.get("time_taken") or clip.get("uploaded_date") or ""
+            iso_recording_date = clip.get("recording_date") or clip.get("uploaded_date") or ""
             if iso_recording_date:
                 try:
                     dt = datetime.fromisoformat(iso_recording_date.replace("Z", "+00:00"))
