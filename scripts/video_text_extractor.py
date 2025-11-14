@@ -114,7 +114,7 @@ def is_text_extension_of_last_slide(
     return similarity > similarity_threshold
 
 
-def save_partial_results(course_id,semester_key,clip_id, extracted_content):
+def save_partial_results(course_id,semester_key,clip_id, extracted_content,video_duration=None):
     results_file = f"data/cache/{course_id}_{semester_key}_extracted_content.json"
     if os.path.exists(results_file):
         with open(results_file, "r") as f:
@@ -124,6 +124,9 @@ def save_partial_results(course_id,semester_key,clip_id, extracted_content):
 
     if clip_id not in existing_data:
         existing_data[clip_id] = {"extracted_content": {}}
+    if video_duration is not None:
+        if ("duration" not in existing_data[clip_id] or abs(float(existing_data[clip_id]["duration"]) - float(video_duration)) > 0.001):
+            existing_data[clip_id]["duration"] = float(video_duration)
 
     existing_extracted_content = existing_data[clip_id]["extracted_content"]
     new_extracted = {str(k): v for k, v in extracted_content.items()}
@@ -184,7 +187,7 @@ def process_video_frames(cap, fps, interval_seconds, last_frame, similarity_thre
                 time.sleep(sleep_time)  # Add delay between frame processing
 
             # Save partial results
-            save_partial_results(course_id,semester_key, clip_id, text_dict)
+            save_partial_results(course_id,semester_key, clip_id, text_dict,video_duration)
 
             # Display progress
             progress = (current_time / video_duration) * 100
@@ -271,17 +274,39 @@ def update_text_dict(
         }
 
 
+def is_fully_extracted(cache, clip_id):
+    if clip_id not in cache:
+        return False
+    content = cache[clip_id].get("extracted_content", {})
+    if not content:
+        return False
+    cached_duration = cache[clip_id].get("duration")
+    if not cached_duration:
+        return False
+    last_entry = max(content.keys(), key=float)
+    last_end_time = content[last_entry].get("end_time")
+    return abs(last_end_time - cached_duration) < 0.5
+
 def process_videos(clip_ids, course_id, semester_key):
     video_dir = os.path.join(VIDEO_DOWNLOAD_DIR, course_id, semester_key)
     os.makedirs(video_dir, exist_ok=True)
 
+    results_file = f"data/cache/{course_id}_{semester_key}_extracted_content.json"
+    if os.path.exists(results_file):
+        with open(results_file, "r", encoding='utf-8') as f:
+            cache = json.load(f)
+    else:
+        cache = {}
+
     for clip_id in clip_ids:
-        results_file = f"data/cache/{course_id}_{semester_key}_extracted_content.json"
-        if os.path.exists(results_file):
-            with open(results_file, "r", encoding='utf-8') as f:
-                cache = json.load(f)
-        else:
-            cache = {}
+        clip_id = str(clip_id)
+        if is_fully_extracted(cache, clip_id):
+            print(f"✔ {clip_id} already fully extracted. Skipping.")
+            final_video_path = os.path.join(video_dir, f"{clip_id}.m4v")
+            if os.path.exists(final_video_path):
+                os.remove(final_video_path)
+            continue
+
         throttle()
         slides_and_audio_url = get_clip_info(clip_id)
 
@@ -315,37 +340,20 @@ def process_videos(clip_ids, course_id, semester_key):
                 continue
         else:
             print(f"Video for clip ID {clip_id} already downloaded. Skipping download.")
-        clip_id = str(clip_id)
-        if clip_id in cache:
-            if "extracted_content" in cache[clip_id] and cache[clip_id]["extracted_content"]:
-                last_entry = max(cache[clip_id]["extracted_content"].keys(), key=float)
-                video_path = os.path.join(video_dir, f"{clip_id}.m4v")
-                cap, fps = setup_video_capture(video_path)
-                video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
-                cap.release()
-                if cache[clip_id]["extracted_content"][last_entry]["end_time"] == video_duration:
-                    print(f"Skipping {clip_id}, already cached and fully processed.")
-                    continue
-                else:
-                    print(f"Incomplete extraction detected for {clip_id}. Restarting from beginning.")
-                    del cache[clip_id] 
-                    with open(results_file, "w") as f:
-                         json.dump(cache, f, indent=4) 
-                    start_time = 0
-            else:
-                print(f"Text extraction pending for {clip_id}. Proceeding to extract.")
-                start_time = 0
-        else:
-            print(f"Processing clip ID: {clip_id} (not in cache).")
-            start_time = 0
-
-        
+        cap, fps = setup_video_capture(final_video_path)
+        video_duration = cap.get(cv2.CAP_PROP_FRAME_COUNT) / fps
+        cap.release()
 
         print(f"Processing video for text extraction: {final_video_path}")
-        extracted_content = extract_text_from_video(final_video_path, course_id, clip_id, start_time)
+        extracted_content = extract_text_from_video(final_video_path, course_id, clip_id, 0)
 
-        save_partial_results(course_id,semester_key, clip_id, extracted_content)
-
+        save_partial_results(course_id,semester_key, clip_id, extracted_content,video_duration)
+        with open(results_file, "r", encoding='utf-8') as f:
+            cache = json.load(f)
+        if is_fully_extracted(cache, clip_id):
+            print(f"✔ {clip_id} fully extracted. Deleting video file.")
+            if os.path.exists(final_video_path):
+                os.remove(final_video_path)
         print(f"Finished processing clip ID {clip_id}. Moving to the next clip.\n")
 
 
