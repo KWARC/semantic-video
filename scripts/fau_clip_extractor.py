@@ -1,10 +1,8 @@
 from datetime import datetime
 import os
 import json
-import re
 import requests
-from bs4 import BeautifulSoup
-from config import COURSE_IDS, FAU_TV_BASE_URL, FAU_TV_COURSE_IDS, OCR_EXTRACTED_FILE_PATH
+from config import COURSE_IDS, FAU_TV_API_BASE_URL, FAU_TV_COURSE_IDS, OCR_EXTRACTED_FILE_PATH
 
 
 COURSE_MAP = {
@@ -17,35 +15,36 @@ all_courses_clips_path = os.path.join(
     OCR_EXTRACTED_FILE_PATH, "all_courses_clips.json"
 )
 
+
+
 def fetch_clips(fau_id):
-    url = f"{FAU_TV_BASE_URL}/course/id/{fau_id}"
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text, "html.parser")
-    
-    out = []
-    for div in soup.select("#clips-list .target"):
-        anchors = div.find_all("a", href=True)
-        clip_id = None
-        for a in anchors:
-            match = re.search(r"/clip/id/([a-zA-Z0-9]+)", a["href"])
-            if match:
-                clip_id = match.group(1)
-                break  
+    api_url = f"{FAU_TV_API_BASE_URL}/{fau_id}/clips"
+    clips_detail = []
+
+    while api_url:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        json_data = response.json()
+
+        for clip in json_data.get("data", []):
+            iso_recording_date = clip.get("recording_date") or clip.get("uploaded_date") or ""
+            if iso_recording_date:
+                try:
+                    dt = datetime.fromisoformat(iso_recording_date.replace("Z", "+00:00"))
+                    recording_date = dt.strftime("%Y-%m-%d")
+                except ValueError:
+                    recording_date = iso_recording_date  
             else:
-                print("Invalid clip href! ",a["href"])
+                recording_date = ""
 
-        if not clip_id:
-            continue  
-        clip_info_row = div.find("div", recursive=False)
-        clip_info_cells = clip_info_row.find_all("div", recursive=False)
-        if len(clip_info_cells) >= 5:
-            recording_date = clip_info_cells[4].get_text(strip=True)
-        else:
-            recording_date = ""
-        out.append({"clip_id": clip_id, "recording_date": recording_date})
+            clips_detail.append({
+                "clip_id": clip.get("id"),
+                "recording_date": recording_date
+            })
 
-    return out
+        api_url = json_data.get("links", {}).get("next")
 
+    return clips_detail
 
 def main():
     all_data = {}
