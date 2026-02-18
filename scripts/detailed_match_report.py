@@ -201,15 +201,7 @@ def analyze_file(file_path):
 
 
 def main():
-    """
-    Auto-detect all _updated_extracted_content.json files and generate detailed reports.
-    """
-    print(f"{'='*70}")
     print(f"Auto-detecting and analyzing all updated_extracted_content files")
-    print(f"Section-by-section breakdown included")
-    print(f"Match % is TIME-based (seconds matched / total seconds)")
-    print(f"{'='*70}\n")
-
     slides_dir = Path(SLIDES_OUTPUT_DIR)
     files = sorted(slides_dir.glob("*_updated_extracted_content.json"))
 
@@ -257,9 +249,7 @@ def main():
     with open(comprehensive_file, "w", encoding="utf-8") as f:
         json.dump(all_reports, f, indent=2, ensure_ascii=False)
 
-    print(f"\n{'='*70}")
     print(f"✓ Analysis complete!")
-    print(f"{'='*70}")
     print(f"Total analyzed: {len(all_reports)} subject-semester combinations\n")
 
     if all_reports:
@@ -280,9 +270,6 @@ def main():
         print(f"\nReports saved:")
         print(f"  - Individual: data/slides/{{subject}}_{{semester}}_detailed_match_report.json")
         print(f"  - Comprehensive: {comprehensive_file}")
-
-    print(f"{'='*70}")
-
 
 if __name__ == "__main__":
     main()
