@@ -13,6 +13,7 @@ VIDEO_TEXT_EXTRACTOR_SCRIPT="$PROJECT_DIR/scripts/video_text_extractor.py"
 SLIDE_MATCHER_SCRIPT="$PROJECT_DIR/scripts/slide_matcher.py"
 AUTODETECT_SCRIPT="$PROJECT_DIR/scripts/auto_detect.py"
 TIME_DETECT_SCRIPT="$PROJECT_DIR/scripts/time_detect.py"
+DETAILED_MATCH_REPORT_SCRIPT="$PROJECT_DIR/scripts/detailed_match_report.py"
 
 # Change to the project directory
 cd "$PROJECT_DIR" || exit
@@ -27,4 +28,5 @@ source "$VENV_DIR/bin/activate"
 "$VENV_DIR/bin/python" "$SLIDE_MATCHER_SCRIPT" && echo "$SLIDE_MATCHER_SCRIPT executed successfully!" || { echo "Error executing $SLIDE_MATCHER_SCRIPT"; exit 1; }
 "$VENV_DIR/bin/python" "$AUTODETECT_SCRIPT" && echo "$AUTODETECT_SCRIPT executed successfully!" || { echo "Error in autodetect"; exit 1; }
 "$VENV_DIR/bin/python" "$TIME_DETECT_SCRIPT" && echo "$TIME_DETECT_SCRIPT executed successfully!" || { echo "Error in autodetect"; exit 1; }
+"$VENV_DIR/bin/python" "$DETAILED_MATCH_REPORT_SCRIPT" && echo "$DETAILED_MATCH_REPORT_SCRIPT executed successfully!" || { echo "Error executing $DETAILED_MATCH_REPORT_SCRIPT"; exit 1; }
 echo "All scripts ran successfully!"
