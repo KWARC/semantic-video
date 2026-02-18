@@ -59,6 +59,20 @@ The script processes frames at 10-second intervals by default. You can change th
 
 - interval_frames = int(fps \* 10) # Change 10 to your desired interval (in seconds)
 
+### Matching algorithm configuration (optional)
+
+The slide matcher uses an enhanced algorithm for higher accuracy. You can tune it via environment variables in `.env.local`:
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `MATCH_MIN_OCR_LENGTH` | 50 | Minimum OCR text length (chars) to attempt matching |
+| `MATCH_LOW_THRESHOLD` | 55 | Minimum similarity score to accept a match |
+| `MATCH_SHORT_SLIDE_THRESHOLD` | 85 | Higher threshold for slides with <100 chars |
+| `MATCH_SEQUENTIAL_WINDOW` | 15 | Slides ±N from last match get priority (videos show slides in order) |
+| `MATCH_SEQUENTIAL_BOOST` | 5 | Extra score points when match is in expected sequential range |
+
+For higher accuracy, try lowering `MATCH_LOW_THRESHOLD` (e.g. 50) if you get many unmatched entries, or raising it if you get wrong matches.
+
 
 ## License
 
