@@ -1,14 +1,3 @@
-"""
-Enhanced slide matcher for semantic video.
-
-Improvements over basic token_set_ratio matching:
-- OCR-specific text normalization (character substitutions, dates, whitespace)
-- Multi-scorer ensemble (token_set_ratio, token_sort_ratio, partial_ratio)
-- Sequential/temporal awareness (slides appear in order within a video)
-- Configurable thresholds and fallback strategies
-- Support for shorter slides (50+ chars) with higher confidence requirement
-"""
-
 import json
 import os
 import re
@@ -29,7 +18,6 @@ def _int_env(name: str, default: int) -> int:
     return int(val) if val and val.isdigit() else default
 
 
-# Matching configuration - override via env vars (e.g. MATCH_LOW_THRESHOLD=50)
 def _get_match_config() -> dict:
     return {
         "min_ocr_length": _int_env("MATCH_MIN_OCR_LENGTH", 50),
@@ -41,54 +29,38 @@ def _get_match_config() -> dict:
 
 
 def clean_text(text: str) -> str:
-    """Basic cleanup: special chars and whitespace."""
     text = re.sub(r"[\u201c\u201d\u2022\u00bb\u2014\u2013]", "", text)
     text = re.sub(r"\s+", " ", text.strip())
     return text
 
 
 def normalize_ocr_text(text: str) -> str:
-    """
-    OCR-specific normalization to improve matching.
-    Handles common OCR variations without altering semantic content.
-    """
     if not text:
         return ""
-    # Unicode normalization (e.g. different dash representations)
     text = unicodedata.normalize("NFKC", text)
-    # Remove date patterns (e.g. 2024-02-12, 12.02.2024) - often in slide footers
     text = re.sub(r"\d{4}-\d{2}-\d{2}", "", text)
     text = re.sub(r"\d{2}[./\-]\d{2}[./\-]\d{2,4}", "", text)
-    # Remove slide numbers at start/end
     text = re.sub(r"^\d+\s*[.)]\s*", "", text)
     text = re.sub(r"\s*\d+\s*$", "", text)
-    # Normalize bullets and dashes
     text = re.sub(r"[\u2022\u2023\u25E6\u2043\u2219]", " ", text)
     text = re.sub(r"[\u2014\u2013\u2212]", "-", text)
-    # Collapse repeated spaces
     text = re.sub(r"\s+", " ", text.strip())
     return text
 
 
 def prepare_for_matching(text: str) -> str:
-    """Full pipeline: clean + OCR normalize."""
     return normalize_ocr_text(clean_text(text))
 
 
 def compute_ensemble_score(ocr_text: str, slide_text: str) -> float:
-    """
-    Multi-scorer ensemble: combine multiple fuzzy metrics for robustness.
-    OCR often differs in: word order, partial capture, extra/missing chars.
-    """
     if not slide_text:
         return 0.0
     scores = [
-        fuzz.token_set_ratio(ocr_text, slide_text),  # Order-invariant, set-based
-        fuzz.token_sort_ratio(ocr_text, slide_text),  # Order-normalized
-        fuzz.partial_ratio(ocr_text, slide_text),  # Partial match (OCR captured subset)
-        fuzz.ratio(ocr_text, slide_text),  # Simple Levenshtein
+        fuzz.token_set_ratio(ocr_text, slide_text),
+        fuzz.token_sort_ratio(ocr_text, slide_text),
+        fuzz.partial_ratio(ocr_text, slide_text),
+        fuzz.ratio(ocr_text, slide_text),
     ]
-    # Weight: token_set and partial are most useful for OCR; take weighted max
     weights = [0.35, 0.25, 0.30, 0.10]
     return sum(s * w for s, w in zip(scores, weights))
 
@@ -96,14 +68,10 @@ def compute_ensemble_score(ocr_text: str, slide_text: str) -> float:
 def find_best_match(
     ocr_text: str,
     all_slides: list,
-    slide_texts: list,  # Pre-extracted cleaned_slide_content for fast lookup
+    slide_texts: list,
     last_matched_index: Optional[int],
     config: dict,
 ) -> Tuple[Optional[dict], float, Optional[int]]:
-    """
-    Find best matching slide using two-stage: fast pre-filter, then ensemble.
-    Returns (matched_slide, score, matched_index) or (None, 0, None).
-    """
     if not ocr_text or not all_slides:
         return None, 0.0, None
 
@@ -114,7 +82,6 @@ def find_best_match(
         else config["low_confidence_threshold"]
     )
 
-    # Stage 1: Fast pre-filter with token_set_ratio - get top candidates (saves 10-100x time)
     pre_limit = min(20, len(all_slides))
     try:
         extracted = process.extract(
@@ -126,14 +93,12 @@ def find_best_match(
     except Exception:
         extracted = [(t, 0, i) for i, t in enumerate(slide_texts)][:pre_limit]
 
-    # Build candidate indices from pre-filter: (match, score, index)
     candidate_indices = set()
     for item in extracted:
         idx = item[2] if len(item) >= 3 else None
         if isinstance(idx, int) and 0 <= idx < len(all_slides):
             candidate_indices.add(idx)
 
-    # Include sequential window if we have last match
     if last_matched_index is not None:
         window = config["sequential_search_window"]
         for i in range(
@@ -142,7 +107,6 @@ def find_best_match(
         ):
             candidate_indices.add(i)
 
-    # Stage 2: Run ensemble only on candidates
     best_slide = None
     best_score = 0.0
     best_index = None
@@ -196,7 +160,6 @@ def match_and_update_extracted_content(course_id: str, semester_key: str):
     with open(ocr_extracted_file_path, "r", encoding="utf-8") as results_file:
         results = json.load(results_file)
 
-    # Preprocess slides: clean + OCR-normalize for matching
     for slide in all_slides:
         raw = slide.get("slideContent", "")
         slide["cleaned_slide_content"] = prepare_for_matching(raw)
@@ -211,7 +174,6 @@ def match_and_update_extracted_content(course_id: str, semester_key: str):
         video_data = results[video_id]
         print(f"  Processing video {vi + 1}/{len(videos)}: {video_id}...", flush=True)
 
-        # Sort by timestamp for sequential awareness
         entries = sorted(
             video_data["extracted_content"].items(),
             key=lambda x: float(x[0]),
