@@ -3,10 +3,7 @@ import os
 import sys
 from pathlib import Path
 from collections import defaultdict
-
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-SLIDES_OUTPUT_DIR = os.path.join(BASE_DIR, "data/slides/")
-
+from config import SLIDES_OUTPUT_DIR
 
 def compute_duration(entry):
     try:
