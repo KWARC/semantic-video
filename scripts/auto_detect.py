@@ -35,10 +35,10 @@ def update_current_sem():
                 timestamps.append((recording_ts, clip["clip_id"]))
         clip_timestamp_map[course_id] = timestamps
 
-    for course_id, lectures in current_sem.items():
+    for course_id, course_data in current_sem.items():
         print(f"\nProcessing course: {course_id}")
-        course_entries = [entries for entries in lectures]
-        
+        course_entries = course_data.get("lectures", [])
+
         if course_id not in all_clips:
             print(f"Skipping {course_id}, not found in all_clips.")
             continue
